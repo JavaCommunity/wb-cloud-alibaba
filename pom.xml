@@ -3,12 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <modules>
-        <module>wb-cloud-common</module>
-        <module>wb-module-components</module>
-        <module>wb-module-examples</module>
-        <module>wb-module-oauth</module>
-    </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -19,7 +13,16 @@
     <artifactId>wb-cloud-alibaba</artifactId>
     <name>wb-cloud-alibaba</name>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>${revision}</version>
+
+    <developers>
+        <developer>
+            <id>wb</id>
+            <name>wangbo</name>
+            <url>http://wb.com</url>
+            <email>169966586@qq.com</email>
+        </developer>
+    </developers>
 
     <repositories>
         <repository>
@@ -64,8 +67,23 @@
         </pluginRepository>
     </pluginRepositories>
 
+    <modules>
+        <module>wb-cloud-common</module>
+        <module>wb-module-components</module>
+        <module>wb-module-examples</module>
+        <module>wb-module-oauth</module>
+    </modules>
+
     <properties>
+        <revision>1.1.0-SNAPSHOT</revision>
         <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- Compiler settings properties -->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <!-- Maven properties -->
+        <maven.test.skip>false</maven.test.skip>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
@@ -77,6 +95,7 @@
         <docker-maven-plugin.version>1.2.0</docker-maven-plugin.version>
         <spring-cloud-knife4j.version>2.0.1</spring-cloud-knife4j.version>
     </properties>
+
     <dependencyManagement>
         <dependencies>
             <!--spring cloud start-->
