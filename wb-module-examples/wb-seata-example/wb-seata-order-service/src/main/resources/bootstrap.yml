@@ -1,0 +1,52 @@
+server:
+  port: ${SERVER_PORT:7001}
+
+spring:
+  application:
+    name: ${APPLICATION_NAME:wb-seata-order-service}
+
+  # the datasource config
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/seata_order?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&useOldAliasMetadataBehavior=true&autoReconnect=true&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: root
+
+  cloud:
+    nacos:
+      discovery:
+        enabled: ${NACOS_DISCOVERY_ENABLED:true}
+        server-addr: ${NACOS_DISCOVERY_SERVER_ADDR:192.168.5.39:8848}
+    alibaba:
+      seata:
+        tx-service-group: default
+# the seata config
+seata:
+  enabled: true
+  application-id: ${spring.application.name}
+  enable-auto-data-source-proxy: false
+  tx-service-group: SEATA_GROUP
+  service:
+    vgroup-mapping:
+      SEATA_GROUP: default
+  config:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      group: "SEATA_GROUP"
+      namespace: ""
+      username: "nacos"
+      password: "nacos"
+  registry:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      namespace: ""
+      group: SEATA_GROUP
+      cluster: default
+
+logging:
+  level:
+    io:
+      seata: debug

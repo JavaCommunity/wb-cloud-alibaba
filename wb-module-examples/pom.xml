@@ -13,4 +13,9 @@
     <name>wb-module-examples</name>
     <packaging>pom</packaging>
     <description>wb module examples for spring-boot</description>
+
+    <modules>
+        <module>wb-nacos-example</module>
+        <module>wb-seata-example</module>
+    </modules>
 </project>

@@ -3,14 +3,19 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
+        <artifactId>wb-module-examples</artifactId>
         <groupId>com.wb</groupId>
-        <artifactId>wb-cloud-alibaba</artifactId>
         <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>wb-cloud-common</artifactId>
-    <name>wb-cloud-common</name>
-    <packaging>jar</packaging>
-    <description>wb cloud for spring-boot</description>
+    <artifactId>wb-seata-example</artifactId>
+    <name>wb-seata-example</name>
+    <packaging>pom</packaging>
+    <description>wb seata example for spring-boot</description>
+
+    <modules>
+        <module>wb-seata-order-service</module>
+        <module>wb-seata-storage-service</module>
+    </modules>
 </project>
