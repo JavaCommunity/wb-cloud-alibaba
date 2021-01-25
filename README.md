@@ -1,2 +1,2 @@
 # wb-cloud-alibaba
-wb cloud alibaba for spring-boot
+wb cloud alibaba for spring cloud alibaba
