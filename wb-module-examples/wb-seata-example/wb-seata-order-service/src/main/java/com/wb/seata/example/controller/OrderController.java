@@ -31,4 +31,13 @@ public class OrderController {
             put("message", "操作成功！");
         }};
     }
+
+    @RequestMapping("/placeOrder/rollback")
+    public Map<String, Object> placeOrderRollback() {
+        orderService.placeOrder("1", "product-2", 1);
+        return new HashMap<String, Object>(2) {{
+            put("code", "9998");
+            put("message", "操作失败！");
+        }};
+    }
 }

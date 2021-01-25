@@ -1,10 +1,13 @@
 package com.wb.seata.example.service.impl;
 
 import com.wb.seata.example.entity.OrderEntity;
+import com.wb.seata.example.feign.StorageFeignService;
 import com.wb.seata.example.repository.OrderRepository;
 import com.wb.seata.example.service.OrderService;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
@@ -22,10 +25,12 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
-//    @Autowired
-//    private StorageFeignService storageFeignService;
+    @Autowired
+    private StorageFeignService storageFeignService;
 
     @Override
+    @GlobalTransactional
+    @Transactional(rollbackFor = Exception.class)
     public void placeOrder(String userId, String commodityCode, Integer count) {
         BigDecimal orderMoney = new BigDecimal(count).multiply(new BigDecimal(5));
         OrderEntity orderEntity = new OrderEntity();
@@ -34,6 +39,7 @@ public class OrderServiceImpl implements OrderService {
         orderEntity.setCount(count);
         orderEntity.setMoney(orderMoney);
         orderRepository.insert(orderEntity);
-        // storageFeignService.deduct(commodityCode, count);
+
+        storageFeignService.deduct(commodityCode, count);
     }
 }

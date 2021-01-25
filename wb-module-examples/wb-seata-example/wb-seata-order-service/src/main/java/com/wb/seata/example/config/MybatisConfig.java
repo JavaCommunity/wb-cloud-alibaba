@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 
@@ -32,12 +33,17 @@ public class MybatisConfig {
         return druidDataSource;
     }
 
-    @Bean(name = "sqlSessionFactory")
-    public SqlSessionFactory sqlSessionFactoryBean(DataSourceProxy dataSourceProxy) throws Exception {
+    @Primary
+    public DataSourceProxy dataSourceProxy() {
+        return new DataSourceProxy(druidDataSource());
+    }
+
+    @Bean
+    public SqlSessionFactory sqlSessionFactory() throws Exception {
         MybatisSqlSessionFactoryBean bean = new MybatisSqlSessionFactoryBean();
-        bean.setDataSource(dataSourceProxy);
+        bean.setDataSource(dataSourceProxy());
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        bean.setMapperLocations(resolver.getResources("classpath:mapper/*/*Mapper.xml"));
+        bean.setMapperLocations(resolver.getResources("classpath*:mybatis/**/*-mapper.xml"));
         bean.setTypeAliasesPackage("com.wb.seata.example.entity");
         SqlSessionFactory factory = null;
         try {

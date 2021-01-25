@@ -1,15 +1,15 @@
 server:
-  port: ${SERVER_PORT:7001}
+  port: ${SERVER_PORT:7002}
 
 spring:
   application:
-    name: ${APPLICATION_NAME:wb-seata-order-service}
+    name: ${APPLICATION_NAME:wb-seata-storage-service}
 
   # the datasource config
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://127.0.0.1:3306/seata_order?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&useOldAliasMetadataBehavior=true&autoReconnect=true&useSSL=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://127.0.0.1:3306/seata_storage?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&useOldAliasMetadataBehavior=true&autoReconnect=true&useSSL=false&serverTimezone=GMT%2B8
     username: root
     password: root
 
@@ -25,7 +25,7 @@ spring:
 seata:
   enabled: true
   application-id: ${spring.application.name}
-  tx-service-group: order-service-group
+  tx-service-group: storage-service-group
   enable-auto-data-source-proxy: true
   data-source-proxy-mode: AT
   use-jdk-proxy: false
