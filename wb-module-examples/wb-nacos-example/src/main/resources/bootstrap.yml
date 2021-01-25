@@ -1,0 +1,59 @@
+server:
+  port: ${SERVER_PORT:7003}
+
+spring:
+  application:
+    name: ${APPLICATION_NAME:wb-nacos-example}
+  profiles:
+    active: ${PROFILES_ACTIVE:test}
+
+  cloud:
+    # nacos配置,参考文献：https://github.com/alibaba/spring-cloud-alibaba/wiki,https://nacos.io/zh-cn/docs/quick-start-spring-cloud.html
+    nacos:
+      # nacos cofig
+      config:
+        # 是否开启nacos config功能,默认为"true"
+        enabled: ${NACOS_CONFIG_ENABLED:true}
+        # 是否开启nacos配置文件文件刷新
+        refresh-enabled: ${NACOS_CONFIG_REFRESH_ENABLED:true}
+        # 注意当你使用域名的方式来访问 Nacos 时，spring.cloud.nacos.config.server-addr 配置的方式为 域名:port。
+        # 例如 Nacos 的域名为abc.com.nacos，监听的端口为 80，则 spring.cloud.nacos.config.server-addr=abc.com.nacos:80。
+        # 注意 80 端口不能省略。
+        server-addr: ${NACOS_CONFIG_SERVER_ADDR:127.0.0.1:8848}
+        # 配置nacos所支持的配置文件的格式
+        file-extension: ${NACOS_CONFIG_FILE_EXTENSION:yaml}
+        # nacos命令空间
+        #namespace: ${NACOS_CONFIG_NAMESPACE:dcfbc853-6997-4628-bbea-d00a1f6f3fbc}
+        # nacos服务分组,默认为"DEFAULT_GROUP"
+        group: ${NACOS_CONFIG_GROUP:DEFAULT_GROUP}
+        # nacos多环境共享配置方案，参考文献：https://github.com/alibaba/spring-cloud-alibaba/issues/141
+        # shared-configs:
+      # nacos discovery配置
+      discovery:
+        # 是否开启nacos-discovery功能，默认为"true"
+        enabled: ${NACOS_DISCOVERY_ENABLED:true}
+        # 注意当你使用域名的方式来访问 Nacos 时，spring.cloud.nacos.config.server-addr 配置的方式为 域名:port。
+        # 例如 Nacos 的域名为abc.com.nacos，监听的端口为 80，则 spring.cloud.nacos.config.server-addr=abc.com.nacos:80。
+        # 注意 80 端口不能省略。
+        server-addr: ${NACOS_DISCOVERY_SERVER_ADDR:127.0.0.1:8848}
+        # 取值范围 1 到 100，数值越大，权重越大,默认为"1"
+        weight: ${NACOS_DISCOVERY_WEIGHT:1}
+        # 是否开启Nacos Watch,默认为"true"
+        watch:  ${NACOS_DISCOVERY_WATCH:true}
+        # 注册到nacos的服务名，默认为"${spring.application.name}"
+        service: ${NACOS_DISCOVERY_SERVICE:${spring.application.name}}
+        # nacos服务分组,默认为"DEFAULT_GROUP"
+        group: ${NACOS_DISCOVERY_GROUP:DEFAULT_GROUP}
+        # 配置注册到nacos的ip地址，优先级高于network-interface
+        #ip: ${NACOS_DISCOVERY_IP:192.168.1.1}
+        # 当IP未配置时，注册的IP为此网卡所对应的IP地址，如果此项也未配置，则默认取第一块网卡的地址
+        #network-interface: ${NACOS_DISCOVERY_NETWORK_INTERFACE:}
+        # 注册到nacos的端口号
+        port: ${NACOS_DISCOVERY_PORT:${server.port}}
+        # 命名空间,常用场景之一是不同环境的注册的区分隔离，例如开发测试环境和生产环境的资源（如配置、服务）隔离等。
+        #namespace: ${NACOS_DISCOVERY_NAMESPACE:dcfbc853-6997-4628-bbea-d00a1f6f3fbc}
+        # nacos-discovery日志文件名
+        #log-name: ${NACOS_DISCOVERY_LOG_NAME:nacos-discovery-log.log}
+        # 使用Map格式配置，用户可以根据自己的需要自定义一些和服务相关的元数据信息
+        # metadata:
+

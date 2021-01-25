@@ -6,12 +6,13 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * @ClassName R<E>
- * @Description 前后端统一交互对象
- * @Author [bo.Wang]
- * @CreateDate 2020/7/30
- * @Version 1.0
- **/
+ * @ClassName: R
+ * @Package: com.knx.common.utils.result
+ * @Description: 前后端交互统一返回对象
+ * @Author：[bo.wang]
+ * @Date: 2021/1/5
+ * @Version: 1.0
+ */
 public class R<E> implements Serializable {
 
     private static final long serialVersionUID = -8075732403653477717L;
@@ -32,7 +33,7 @@ public class R<E> implements Serializable {
     private E data = null;
 
     /**
-     * 其他参数
+     * 其他属性
      */
     private Map<String, Object> attributes;
 
@@ -43,7 +44,7 @@ public class R<E> implements Serializable {
     }
 
     public R(String code, String message) {
-        this.code = String.valueOf(code);
+        this.code = code;
         this.msg = message;
     }
 
@@ -73,7 +74,7 @@ public class R<E> implements Serializable {
 
     public static R error(String code, String msg) {
         R r = new R();
-        r.setCode(code + "");
+        r.setCode(code);
         r.setMsg(msg);
         return r;
     }
@@ -100,7 +101,7 @@ public class R<E> implements Serializable {
      * @return
      */
     public boolean isOk() {
-        return Objects.equals(this.code, GlobalCodeEnum.SUCCESS.toString()) || Objects.equals(this.code, HttpCodeEnum.SUCCESS.getCode());
+        return Objects.equals(this.code, HttpCodeEnum.SUCCESS.getCode());
     }
 
     public String getCode() {

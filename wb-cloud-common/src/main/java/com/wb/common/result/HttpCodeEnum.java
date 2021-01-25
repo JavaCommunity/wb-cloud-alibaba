@@ -9,8 +9,8 @@ package com.wb.common.result;
  **/
 public enum HttpCodeEnum {
 
-    SUCCESS("9999", "操作成功"),
-    ERROR("9997", "操作失败");
+    SUCCESS("9999", "操作成功！"),
+    ERROR("9998", "操作失败！");
 
     /**
      * 编码

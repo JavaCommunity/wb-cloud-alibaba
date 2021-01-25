@@ -1,0 +1,32 @@
+version: "2"
+services:
+  nacos:
+    image: nacos/nacos-server:1.3.1
+    container_name: nacos-server-standalone
+    environment:
+      # 参考文献：https://nacos.io/zh-cn/docs/quick-start-docker.html
+      # 是否支持hostname,默认ip地址
+      - PREFER_HOST_MODE=192.168.79.3
+      # nacos启动模式,默认cluster
+      - MODE=standalone
+      # standalone支持mysql
+      - SPRING_DATASOURCE_PLATFORM=mysql
+      # mysql账号
+      - MYSQL_SERVICE_USER=root
+      # mysql密码
+      - MYSQL_SERVICE_PASSWORD=root
+      # mysql地址
+      - MYSQL_SERVICE_HOST=127.0.0.1
+      # mysql端口
+      - MYSQL_SERVICE_PORT=53306
+      # mysql中nacos数据库名称
+      - MYSQL_SERVICE_DB_NAME=nacos_config
+      # mysql连接其他参数配置
+      - MYSQL_SERVICE_DB_PARAM=useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    volumes:
+      # docker文件挂载，宿主机文件地址:docker容器文件地址
+      - /home/nacos/logs:/home/nacos/logs
+    ports:
+      - "8848:8848"
+
+
