@@ -1,0 +1,7 @@
+server:
+  port: 7002
+
+spring:
+  application:
+    name: ${APPLICATION_NAME:wb-docker-example}
+

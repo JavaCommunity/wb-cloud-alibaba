@@ -19,7 +19,6 @@
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-micro-spring-boot-starter</artifactId>
-            <!--<optional>true</optional>-->
         </dependency>
         <!--knife4j end-->
 

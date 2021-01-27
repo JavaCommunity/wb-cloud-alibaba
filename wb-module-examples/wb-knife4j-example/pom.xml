@@ -38,13 +38,6 @@
         </dependency>
         <!--cloud common end-->
 
-        <!--        &lt;!&ndash;spring-boot knife4j start&ndash;&gt;-->
-        <!--        <dependency>-->
-        <!--            <groupId>com.github.xiaoymin</groupId>-->
-        <!--            <artifactId>knife4j-spring-boot-starter</artifactId>-->
-        <!--        </dependency>-->
-        <!--        &lt;!&ndash;spring-boot knife4j end&ndash;&gt;-->
-
         <!--alibaba nacos start-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>

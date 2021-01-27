@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>wb-module-examples</artifactId>
+        <groupId>com.wb</groupId>
+        <version>${revision}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>wb-docker-example</artifactId>
+    <name>wb-docker-example</name>
+    <packaging>jar</packaging>
+    <description>wb docker example for spring-boot</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <start-class>com.wb.docker.example.DockerExampleApplication</start-class>
+    </properties>
+
+    <dependencies>
+        <!--spring-boot web start-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--spring-boot web end-->
+
+        <!--cloud common start-->
+        <dependency>
+            <groupId>com.wb</groupId>
+            <artifactId>wb-cloud-common</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <!--cloud common end-->
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>${start-class}</mainClass>
+                </configuration>
+            </plugin>
+
+            <!--docker maven plugin start-->
+            <!--参考文献：https://github.com/spotify/docker-maven-plugin-->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>${docker-maven-plugin.version}</version>
+                <executions>
+                    <!--将插件的goal绑定在某个phase，执行mvn package时插件自动为我们构建Docker镜像-->
+                    <execution>
+                        <id>build-image</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <!--harbor镜像仓库配置-->
+                <!--                <configuration>-->
+                <!--                    &lt;!&ndash;配置docker镜像名称&ndash;&gt;-->
+                <!--                    <imageName>${docker.image.prefix-harbor}/${project.artifactId}</imageName>-->
+                <!--                    &lt;!&ndash;配置Dockerfile文件位置&ndash;&gt;-->
+                <!--                    <dockerDirectory>src/main/docker</dockerDirectory>-->
+                <!--                    &lt;!&ndash;配置docker 仓库位置,本案例采用harbor作为docker镜像仓库&ndash;&gt;-->
+                <!--                    &lt;!&ndash;-->
+                <!--                        注意:-->
+                <!--                            1.maven setting.xml文件中需要配置-->
+                <!--                                <server>-->
+                <!--                                    id随便取值,与父pom中的docker-maven-serverId属性值对应即可-->
+                <!--                                    <id>docker-repository</id>-->
+                <!--                                    harbor账号-->
+                <!--                                    <username>admin</username>-->
+                <!--                                    harbor密码-->
+                <!--                                    <password>admin</password>-->
+                <!--                                </server>-->
+
+                <!--                            2.本地用户环境变量,系统环境变量中需要增加环境变量(DOCKER_HOST=tcp://<host>:2375),-->
+                <!--                              配置完成之后重启电脑-->
+                <!--                    &ndash;&gt;-->
+                <!--                    <serverId>${docker-maven-serverId}</serverId>-->
+                <!--                    &lt;!&ndash;配置docker build完成之后推送镜像到仓库中&ndash;&gt;-->
+                <!--                    <pushImage>true</pushImage>-->
+                <!--                    <resources>-->
+                <!--                        <resource>-->
+                <!--                            <targetPath>/</targetPath>-->
+                <!--                            <directory>${project.build.directory}</directory>-->
+                <!--                            <include>${project.build.finalName}.jar</include>-->
+                <!--                        </resource>-->
+                <!--                    </resources>-->
+                <!--                </configuration>-->
+
+                <!--alibaba镜像仓库配置-->
+                <configuration>
+                    <!--配置docker镜像名称-->
+                    <imageName>${docker.image.prefix-alibaba}/${project.artifactId}</imageName>
+                    <!--配置Dockerfile文件位置-->
+                    <dockerDirectory>src/main/docker</dockerDirectory>
+                    <!--配置docker 仓库位置,本案例采用alibaba镜像仓库作为docker镜像仓库-->
+                    <!--
+                        注意:
+                            1.maven setting.xml文件中需要配置
+                                <server>
+                                    id随便取值,与父pom中的docker-maven-serverId属性值对应即可
+                                    <id>docker-repository</id>
+                                    alibaba阿里云登录账号
+                                    <username>wangbo199675</username>
+                                    alibaba docker镜像仓库登录密码
+                                    <password>1234567898</password>
+                                </server>
+                            2.本地用户环境变量,系统环境变量中需要增加环境变量(DOCKER_HOST=tcp://<host>:2375),
+                              配置完成之后重启电脑
+                    -->
+                    <serverId>${docker-maven-serverId}</serverId>
+                    <!--配置docker build完成之后推送镜像到仓库中-->
+                    <pushImage>true</pushImage>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
+            <!-- docker maven plugin end -->
+        </plugins>
+    </build>
+</project>

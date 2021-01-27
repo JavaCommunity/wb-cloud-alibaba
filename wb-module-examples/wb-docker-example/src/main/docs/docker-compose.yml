@@ -1,0 +1,20 @@
+version: '2'
+services:
+  wb-docker-example:
+    image: 192.168.79.3/wb/cloud/wb-docker-example
+    container_name: wb-docker-example
+    restart: always
+    networks:
+      - wb-cloud
+    volumes:
+      - /home/wb-cloud/logs:/home/wb-cloud/wb-docker-example/logs
+      - /etc/localtime:/etc/localtime
+      - /etc/timezone:/etc/timezone
+    ports:
+      - "7002:7002"
+    environment:
+      - APPLICATION_NAME=wb-docker-example
+      - JAVA_OPTS=-Xms512m -Xmx512m -Duser.timezone=GMT+08
+networks:
+  wb-cloud:
+    external: false

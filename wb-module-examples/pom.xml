@@ -15,6 +15,7 @@
     <description>wb module examples for spring-boot</description>
 
     <modules>
+        <module>wb-docker-example</module>
         <module>wb-nacos-example</module>
         <module>wb-seata-example</module>
         <module>wb-sso-example</module>
