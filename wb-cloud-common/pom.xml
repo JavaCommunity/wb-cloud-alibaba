@@ -13,4 +13,14 @@
     <name>wb-cloud-common</name>
     <packaging>jar</packaging>
     <description>wb cloud for spring-boot</description>
+
+    <dependencies>
+        <!--spring-context start-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!--spring-context end-->
+    </dependencies>
 </project>

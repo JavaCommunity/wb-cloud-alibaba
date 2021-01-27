@@ -1,0 +1,25 @@
+server:
+  port: ${SERVER_PORT:7001}
+
+spring:
+  application:
+    name: ${APPLICATION_NAME:wb-cloud-oauth}
+  profiles:
+    active: ${PROFILES_ACTIVE:dev}
+
+  cloud:
+    nacos:
+      discovery:
+        enabled: ${NACOS_DISCOVERY_ENABLED:true}
+        server-addr: ${NACOS_DISCOVERY_SERVER_ADDR:127.0.0.1:8848}
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 0
+
+wb-cloud:
+  security-oauth:
+    token-store:
+      type: redis

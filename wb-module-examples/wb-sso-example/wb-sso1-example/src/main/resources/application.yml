@@ -1,0 +1,27 @@
+server:
+  port: 7004
+  servlet:
+    session:
+      cookie:
+        name: OAUTH2-CLIENT1
+
+spring:
+  application:
+    name: wb-sso1-example
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 0
+
+security:
+  oauth2:
+    server-uri: http://localhost:7001
+    client:
+      client-id: client
+      client-secret: 123456
+      user-authorization-uri: ${security.oauth2.server-uri}/oauth/authorize
+      access-token-uri: ${security.oauth2.server-uri}/oauth/token
+    resource:
+      user-info-uri: ${security.oauth2.server-uri}/user/getCurrentUser
