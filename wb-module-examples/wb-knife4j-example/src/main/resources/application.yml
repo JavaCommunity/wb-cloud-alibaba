@@ -5,6 +5,14 @@ spring:
   application:
     name: wb-knife4j-example
 
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_DISCOVERY_SERVER_ADDR:127.0.0.1:8848}
+        service: ${NACOS_DISCOVERY_SERVICE:${spring.application.name}}
+        group: ${NACOS_DISCOVERY_GROUP:DEFAULT_GROUP}
+        port: ${NACOS_DISCOVERY_PORT:${server.port}}
+
 wb-cloud:
   knife4j:
     enabled: true

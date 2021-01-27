@@ -3,59 +3,59 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>wb-module-examples</artifactId>
+        <artifactId>wb-cloud-alibaba</artifactId>
         <groupId>com.wb</groupId>
         <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>wb-nacos-example</artifactId>
-    <name>wb-naocs-example</name>
+    <artifactId>wb-cloud-gateway</artifactId>
+    <name>wb-cloud-gateway</name>
     <packaging>jar</packaging>
-    <version>${revision}</version>
-    <description>wb nacos example for spring-boot</description>
+    <description>wb cloud gateway for spring-boot</description>
 
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <start-class>com.wb.nacos.example.NacosExampleApplication</start-class>
+        <start-class>com.wb.gateway.GatewayApplication</start-class>
     </properties>
 
     <dependencies>
-        <!--alibaba nacos start-->
+        <!--spring cloud gateway start-->
         <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.tomcat.embed</groupId>
+                    <artifactId>tomcat-embed-core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+        <!--spring cloud gateway end-->
 
+        <!--alibaba nacos start-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
         <!--alibaba nacos end-->
 
-        <!--spring-boot actuator start-->
+        <!--knife4j start-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
         </dependency>
-        <!--spring-boot actuator end-->
+        <!--knife4j end-->
 
-        <!--spring-boot web start-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <!--spring-boot web end-->
-
-        <!--knife4j component start-->
+        <!--cloud common start-->
         <dependency>
             <groupId>com.wb</groupId>
-            <artifactId>wb-knife4j-component</artifactId>
+            <artifactId>wb-cloud-common</artifactId>
             <version>${revision}</version>
         </dependency>
-        <!--knife4j component end-->
+        <!--cloud common end-->
     </dependencies>
 
     <build>

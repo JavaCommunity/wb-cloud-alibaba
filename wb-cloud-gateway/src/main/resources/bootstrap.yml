@@ -1,0 +1,39 @@
+server:
+  port: ${SERVER_PORT:9000}
+
+spring:
+  application:
+    name: ${APPLICATION_NAME:wb-cloud-gateway}
+  profiles:
+    active: ${PROFILES_ACTIVE:dev}
+
+  cloud:
+    # gateway 配置
+    # 参考文献：https://docs.spring.io/spring-cloud-gateway/docs/2.2.5.RELEASE/reference/html/
+    gateway:
+      enabled: true
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        # id 不能重复
+        - id: api-wb-nacos-example
+          uri: lb://wb-nacos-example
+          predicates:
+            - Path=/nacosdemo/**
+          filters:
+            - StripPrefix=1
+            # 在请求header中添加参数
+            - AddRequestHeader=X-Request-red, blue
+        - id: api-wb-knife4j-example
+          uri: lb://wb-knife4j-example
+          predicates:
+            - Path=/knife4j/**
+          filters:
+            - StripPrefix=1
+    nacos:
+      discovery:
+        server-addr: ${NACOS_DISCOVERY_SERVER_ADDR:127.0.0.1:8848}
+        service: ${NACOS_DISCOVERY_SERVICE:${spring.application.name}}
+        group: ${NACOS_DISCOVERY_GROUP:DEFAULT_GROUP}
+        port: ${NACOS_DISCOVERY_PORT:${server.port}}

@@ -57,3 +57,15 @@ spring:
         # 使用Map格式配置，用户可以根据自己的需要自定义一些和服务相关的元数据信息
         # metadata:
 
+wb-cloud:
+  knife4j:
+    enabled: true
+    title: Wb Cloud Alibaba 接口规范
+    terms-of-service-url: http://localhost:${server.port}
+    scan-package: com.wb.knife4j.example.controller
+    description: Wb Cloud Alibaba 接口规范
+    version: 1.0.1
+    contactUrl: www.wb.com
+    contactName: BoWang
+    contatcEmail: 169966586@qq.com
+
