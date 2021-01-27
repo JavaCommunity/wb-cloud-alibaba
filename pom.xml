@@ -70,9 +70,9 @@
     <modules>
         <module>wb-cloud-common</module>
         <module>wb-module-components</module>
-        <module>wb-module-examples</module>
         <module>wb-module-oauth</module>
         <module>wb-cloud-gateway</module>
+        <module>wb-module-examples</module>
     </modules>
 
     <properties>

@@ -9,18 +9,15 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>${parent.groupId}</groupId>
     <artifactId>wb-core-oauth</artifactId>
     <name>wb-core-oauth</name>
     <packaging>jar</packaging>
-    <version>${revision}</version>
     <description>wb core oauth for spring-boot</description>
 
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <start-class>com.wb.oauth.OauthServiceApplication</start-class>
     </properties>
 
     <dependencies>
@@ -53,17 +50,4 @@
         </dependency>
         <!--cloud common end-->
     </dependencies>
-
-    <build>
-        <finalName>${project.artifactId}</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>${start-class}</mainClass>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>

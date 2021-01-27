@@ -9,11 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>${parent.groupId}</groupId>
     <artifactId>wb-service-oauth</artifactId>
     <name>wb-service-oauth</name>
     <packaging>jar</packaging>
-    <version>${revision}</version>
     <description>wb service oauth for spring-boot</description>
 
     <properties>

@@ -11,11 +11,11 @@
 
     <artifactId>wb-module-oauth</artifactId>
     <name>wb-module-oauth</name>
-    <modules>
-        <module>wb-service-oauth</module>
-        <module>wb-core-oauth</module>
-    </modules>
     <packaging>pom</packaging>
-    <version>${revision}</version>
     <description>wb module oauth for spring-boot</description>
+
+    <modules>
+        <module>wb-core-oauth</module>
+        <module>wb-service-oauth</module>
+    </modules>
 </project>
