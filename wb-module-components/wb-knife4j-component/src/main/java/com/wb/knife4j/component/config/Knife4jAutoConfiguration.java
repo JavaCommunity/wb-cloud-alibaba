@@ -27,7 +27,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableConfigurationProperties({Knife4jProperties.class})
 @Import({Knife4jConfig.class, BeanValidatorPluginsConfiguration.class})
 @ConditionalOnProperty(
-        name = {"wb.knife4j.enabled"},
+        name = {"wb-cloud.knife4j.enabled"},
         matchIfMissing = true
 )
 public class Knife4jAutoConfiguration implements InitializingBean {
