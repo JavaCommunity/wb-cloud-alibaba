@@ -1,0 +1,45 @@
+{
+  "properties": [
+    {
+      "name": "wb-cloud.knife4j.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "enable or disable knife4j auto configure."
+    },
+    {
+      "name": "wb-cloud.knife4j.title",
+      "type": "java.lang.String",
+      "description": "knife4j title."
+    },
+    {
+      "name": "wb-cloud.knife4j.termsOfServiceUrl",
+      "type": "java.lang.String",
+      "description": "knife4j terms service url."
+    },
+    {
+      "name": "wb-cloud.knife4j.version",
+      "type": "java.lang.String",
+      "description": "knife4j version."
+    },
+    {
+      "name": "wb-cloud.knife4j.contactName",
+      "type": "java.lang.String",
+      "description": "knife4j contact name."
+    },
+    {
+      "name": "wb-cloud.knife4j.contactUrl",
+      "type": "java.lang.String",
+      "description": "knife4j contact url."
+    },
+    {
+      "name": "wb-cloud.knife4j.scanPackage",
+      "type": "java.lang.String",
+      "description": "knife4j scan package."
+    },
+    {
+      "name": "wb-cloud.knife4j.description",
+      "type": "java.lang.String",
+      "description": "knife4j description."
+    }
+  ]
+}

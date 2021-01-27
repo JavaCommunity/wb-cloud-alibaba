@@ -13,4 +13,8 @@
     <name>wb-module-components</name>
     <packaging>pom</packaging>
     <description>wb module components for spring-boot</description>
+
+    <modules>
+        <module>wb-knife4j-component</module>
+    </modules>
 </project>

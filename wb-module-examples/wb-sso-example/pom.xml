@@ -18,4 +18,27 @@
         <module>wb-sso1-example</module>
         <module>wb-sso2-example</module>
     </modules>
+
+    <dependencies>
+        <!--spring-boot web start-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--spring-boot web end-->
+
+        <!--spring cloud oauth2 start-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
+        </dependency>
+        <!--spring cloud oauth2 end-->
+
+        <!--spring cloud security start-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-security</artifactId>
+        </dependency>
+        <!--spring cloud security end-->
+    </dependencies>
 </project>
