@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>wb-module-components</artifactId>
+        <groupId>com.wb</groupId>
+        <version>${revision}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>wb-office-component</artifactId>
+    <name>wb-office-component</name>
+    <packaging>jar</packaging>
+    <description>wb office component for spring-boot</description>
+
+    <dependencies>
+        <!--spring-boot web start-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--spring-boot web end-->
+
+        <!--pageOffice start-->
+        <dependency>
+            <groupId>com.zhuozhengsoft</groupId>
+            <artifactId>pageoffice</artifactId>
+            <version>5.1.0.1</version>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/src/main/resources/lib/pageoffice5.1.0.1.jar</systemPath>
+        </dependency>
+
+        <!-- 添加Sqlite依赖（可选：如果不需要使用印章功能的话，不需要添加此依赖）-->
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.7.2</version>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/src/main/resources/lib/sqlite-jdbc-3.7.2.jar</systemPath>
+        </dependency>
+        <!--pageOffice end-->
+
+        <!--spring-boot configuration processor start-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!--spring-boot configuration processor end-->
+
+        <!--spring-boot autoconfigure start-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!--spring-boot autoconfigure end-->
+
+        <!--slf4j start-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+        <!--slf4j end-->
+    </dependencies>
+</project>
