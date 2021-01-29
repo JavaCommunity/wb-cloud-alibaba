@@ -1,6 +1,6 @@
 # wb-cloud-alibaba
 ## 前言
-wb-cloud-alibaba致力与打造一个完整的基于spring cloud alibaba的企业级系统。
+wb-cloud-alibaba致力与打造一个完整的基于spring cloud alibaba的企业级管理系统。
 
 ## 项目介绍
 wb-cloud-alibaba基于spring cloud，spring cloud alibaba，mybatis实现。
