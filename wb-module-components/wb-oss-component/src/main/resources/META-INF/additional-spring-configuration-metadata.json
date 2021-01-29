@@ -1,0 +1,43 @@
+{
+  "properties": [
+    {
+      "name": "wb-cloud.oss.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "enable or disable oss auto configure."
+    },
+    {
+      "name": "wb-cloud.oss.type",
+      "type": "java.lang.String",
+      "defaultValue": "minio",
+      "description": "oss server type."
+    },
+    {
+      "name": "wb-cloud.oss.minio.objectPrefix",
+      "type": "java.lang.String",
+      "description": "minio object prefix."
+    },
+    {
+      "name": "wb-cloud.oss.minio.endpoint",
+      "type": "java.lang.String",
+      "description": "minio endpoint."
+    },
+    {
+      "name": "wb-cloud.oss.minio.accessKey",
+      "type": "java.lang.String",
+      "defaultValue": "admin",
+      "description": "minio access key."
+    },
+    {
+      "name": "wb-cloud.oss.minio.accessSecret",
+      "type": "java.lang.String",
+      "defaultValue": "admin123",
+      "description": "minio access secret."
+    },
+    {
+      "name": "wb-cloud.oss.minio.region",
+      "type": "java.lang.String",
+      "description": "minio region."
+    }
+  ]
+}

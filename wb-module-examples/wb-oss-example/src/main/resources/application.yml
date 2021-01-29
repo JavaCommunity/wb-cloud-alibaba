@@ -1,0 +1,16 @@
+server:
+  port: 7007
+
+spring:
+  application:
+    name: wb-oss-example
+
+wb-cloud:
+  oss:
+    enabled: true
+    type: minio
+    minio:
+      endpoint: http://127.0.0.1:9200
+      accessKey: admin
+      accessSecret: admin123
+      objectPrefix: wb_cloud_

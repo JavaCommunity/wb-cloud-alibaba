@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>wb-module-examples</artifactId>
+        <groupId>com.wb</groupId>
+        <version>${revision}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>wb-oss-example</artifactId>
+    <name>wb-oss-example</name>
+    <packaging>jar</packaging>
+    <description>wb oss example for spring-boot</description>
+
+    <dependencies>
+        <!--oss component start-->
+        <dependency>
+            <groupId>com.wb</groupId>
+            <artifactId>wb-oss-component</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <!--oss component end-->
+
+        <!--spring-boot web start-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--spring-boot web end-->
+
+        <!--cloud common start-->
+        <dependency>
+            <groupId>com.wb</groupId>
+            <artifactId>wb-cloud-common</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <!--cloud common end-->
+    </dependencies>
+</project>

@@ -17,5 +17,6 @@
     <modules>
         <module>wb-knife4j-component</module>
         <module>wb-office-component</module>
+        <module>wb-oss-component</module>
     </modules>
 </project>
