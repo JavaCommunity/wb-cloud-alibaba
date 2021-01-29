@@ -1,0 +1,19 @@
+server:
+  port: 7006
+
+spring:
+  application:
+    name: wb-office-example
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    cache: false
+
+wb-cloud:
+  office:
+    enabled: true
+    window-width: 800px
+    window-height: 600px

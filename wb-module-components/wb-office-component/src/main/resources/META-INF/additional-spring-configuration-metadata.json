@@ -1,0 +1,25 @@
+{
+  "properties": [
+    {
+      "name": "wb-cloud.office.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "enable or disable office auto configure."
+    },
+    {
+      "name": "wb-cloud.office.windowWidth",
+      "type": "java.lang.String",
+      "description": "pageOffice window width."
+    },
+    {
+      "name": "wb-cloud.office.windowHeight",
+      "type": "java.lang.String",
+      "description": "pageOffice window height."
+    },
+    {
+      "name": "wb-cloud.office.saveMaxFileSize",
+      "type": "java.lang.Integer",
+      "description": "save max file size."
+    }
+  ]
+}

@@ -64,5 +64,29 @@
             <version>1.7.25</version>
         </dependency>
         <!--slf4j end-->
+
+        <!--knife4j component start-->
+        <dependency>
+            <groupId>com.wb</groupId>
+            <artifactId>wb-knife4j-component</artifactId>
+            <version>${revision}</version>
+            <optional>true</optional>
+        </dependency>
+        <!--knife4j component end-->
+
+        <!--cloud common start-->
+        <dependency>
+            <groupId>com.wb</groupId>
+            <artifactId>wb-cloud-common</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <!--cloud common end-->
+
+        <!--spring-boot thymeleaf start-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <!--spring-boot thymeleaf end-->
     </dependencies>
 </project>

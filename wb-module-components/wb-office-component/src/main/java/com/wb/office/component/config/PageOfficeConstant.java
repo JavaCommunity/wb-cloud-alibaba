@@ -18,4 +18,7 @@ public interface PageOfficeConstant {
 
     //  the char set
     String CHAR_SET = "UTF-8";
+
+    //  the default open window page
+    String DEFAULT_OPEN_WINDOW_PAGE = "open_window";
 }

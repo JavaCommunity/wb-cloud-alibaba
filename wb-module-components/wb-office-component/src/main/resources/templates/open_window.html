@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="/jquery.min.js"></script>
+    <script type="text/javascript" src="/pageoffice.js" id="po_js_main"></script>
+    <script>
+        window.onload = function () {
+            var fileId = $("#fileId").val();
+            var businessDataId = $("#businessDataId").val();
+            var authorityType = $("#authorityType").val();
+            var windowHeight = $("#windowHeight").val();
+            var windowWidth = $("#windowWidth").val();
+            POBrowser.openWindowModeless('/pageOffice/handler/v1/loadFile?fileId=' +
+                fileId + '&businessDataId=' + businessDataId + '&authorityType=' +
+                authorityType, 'width=' + windowWidth + ';;height=' + windowHeight + ';');
+        }
+    </script>
+</head>
+<body>
+<input id="fileId" th:value="${fileId}" type="hidden"/>
+<input id="businessDataId" th:value="${businessDataId}" type="hidden"/>
+<input id="authorityType" th:value="${authorityType}" type="hidden"/>
+<input id="windowHeight" th:value="${windowHeight}" type="hidden"/>
+<input id="windowWidth" th:value="${windowWidth}" type="hidden"/>
+</body>
+</html>
+

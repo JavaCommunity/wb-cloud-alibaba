@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>系统错误</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .no-file {
+            background: #f3f6ff;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content {
+            flex-direction: row;
+        }
+
+        .left {
+            margin-right: 20px;
+        }
+
+        .right {
+            align-items: center;
+        }
+
+        .right-content {
+            flex-direction: column;
+        }
+
+        .text {
+            font-size: 36px;
+            color: #606266;
+            line-height: 96px;
+        }
+
+        .btns .btn {
+            font-size: 14px;
+            height: 36px;
+            line-height: 36px;
+            border-radius: 3px;
+            border: 1px solid #3160e2;
+            background-color: #d7e2fe;
+            color: #3160e2;
+            padding: 0 20px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .btns .primary-btn {
+            background-color: #3160e2;
+            color: #fff;
+        }
+
+        .btn:hover {
+            background-color: #3160e2;
+            color: #fff;
+        }
+
+        .primary-btn:hover {
+            background: #5a80e8;
+            border-color: #5a80e8;
+            color: #FFF;
+        }
+    </style>
+    <script>
+
+    </script>
+</head>
+<body>
+<div class="no-file flex">
+    <div class="content flex">
+        <img class="left" src="../img/nofile.png"/>
+        <div class="right flex">
+            <div class="right-content flex">
+                <span class="text">系统错误，请联系管理员！</span>
+                <div class="btns flex">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

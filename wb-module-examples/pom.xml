@@ -20,5 +20,6 @@
         <module>wb-seata-example</module>
         <module>wb-sso-example</module>
         <module>wb-knife4j-example</module>
+        <module>wb-office-example</module>
     </modules>
 </project>
