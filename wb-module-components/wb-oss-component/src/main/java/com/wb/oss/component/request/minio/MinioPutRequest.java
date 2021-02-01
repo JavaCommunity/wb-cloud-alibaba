@@ -2,6 +2,7 @@ package com.wb.oss.component.request.minio;
 
 import com.wb.oss.component.request.BaseOssRequest;
 import com.wb.oss.component.response.minio.MinioPutResponse;
+import org.springframework.util.Assert;
 
 /**
  * @ClassName: MinioPutRequest
@@ -18,7 +19,9 @@ public class MinioPutRequest extends BaseOssRequest<MinioPutResponse> {
 
     @Override
     public void check() throws IllegalAccessException {
-
+        Assert.hasLength(this.getBucketName(), "'bucketName' must not be null！");
+        Assert.hasLength(this.getObjectName(), "'objectName' must not be null！");
+        Assert.notNull(this.getObjectContent(), "'objectContent' must not be null！");
     }
 
     public String getBucketName() {
