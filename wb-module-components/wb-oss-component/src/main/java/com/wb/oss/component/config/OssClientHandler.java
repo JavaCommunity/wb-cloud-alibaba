@@ -30,9 +30,6 @@ public class OssClientHandler extends InstantiationAwareBeanPostProcessorAdapter
     //  the slf4j log
     private static final Logger log = LoggerFactory.getLogger(OssClientHandler.class);
 
-    //  the default token store prefix
-    private static final String DEFAULT_TOKEN_STORE_PREFIX = "wb-cloud-oss-";
-
     //  the default listable bean factory
     private final DefaultListableBeanFactory beanFactory;
 
@@ -43,7 +40,7 @@ public class OssClientHandler extends InstantiationAwareBeanPostProcessorAdapter
     private final Environment env;
 
     /**
-     * contract a new ossClientHandler with specified beanFactory and ossProperties and env
+     * constructs a new ossClientHandler with specified beanFactory and ossProperties and env
      *
      * @param beanFactory   the beanFactory
      * @param ossProperties the ossProperties
@@ -69,7 +66,7 @@ public class OssClientHandler extends InstantiationAwareBeanPostProcessorAdapter
         Assert.notNull(abstractOssProperties, "not found match oss properties：" + type);
         abstractOssProperties.setEnv(env);
         abstractOssProperties.check(this.beanFactory);
-        registryBean(abstractOssProperties, DEFAULT_TOKEN_STORE_PREFIX + type);
+        registryBean(abstractOssProperties, OssConstants.DEFAULT_TOKEN_STORE_PREFIX + type);
     }
 
     /**
@@ -90,6 +87,7 @@ public class OssClientHandler extends InstantiationAwareBeanPostProcessorAdapter
         Class<?> factoryBeanResource = ossProperties.getFactoryBeanResource();
         BeanDefinitionBuilder builder = BeanDefinitionBuilder.genericBeanDefinition(factoryBeanResource);
 
+        propertyMap.put("ossProperties", ossProperties);
         //  load property value
         propertyMap.forEach((propertyName, propertyValue) -> {
             Field field = ReflectionUtils.findField(factoryBeanResource, propertyName);
@@ -99,6 +97,19 @@ public class OssClientHandler extends InstantiationAwareBeanPostProcessorAdapter
                 });
             }
         });
+
+        //  load property reference
+        Map<String, String> propertyReferenceMap = new HashMap<>(16);
+        ossProperties.putPropertyReference(propertyReferenceMap);
+        propertyReferenceMap.forEach((propertyName, propertyValue) -> {
+            Field field = ReflectionUtils.findField(factoryBeanResource, propertyName);
+            if (!ObjectUtils.isEmpty(field)) {
+                Optional.ofNullable(propertyValue).ifPresent((v) -> {
+                    builder.addPropertyReference(propertyName, v);
+                });
+            }
+        });
+
         this.beanFactory.registerBeanDefinition(ossPropertiesName, builder.getBeanDefinition());
         this.beanFactory.getBean(ossPropertiesName);
     }

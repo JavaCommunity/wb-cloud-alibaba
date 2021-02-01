@@ -10,7 +10,7 @@ wb-cloud:
     enabled: true
     type: minio
     minio:
-      endpoint: http://127.0.0.1:9200
-      accessKey: admin
-      accessSecret: admin123
+      endpoint: http://127.0.0.1:9000
+      accessKey: minioadmin
+      accessSecret: minioadmin
       objectPrefix: wb_cloud_

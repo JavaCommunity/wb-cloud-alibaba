@@ -3,6 +3,8 @@ package com.wb.oss.component.config;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.core.env.Environment;
 
+import java.util.Map;
+
 /**
  * @ClassName: AbstractOssProperties
  * @Package: com.wb.oss.component.config
@@ -20,7 +22,7 @@ public class AbstractOssProperties {
     private Environment env;
 
     /**
-     * contract a new abstractOssProperties with the specified factoryBeanResource
+     * constructs a new abstractOssProperties with the specified factoryBeanResource
      *
      * @param factoryBeanResource the factory bean resource
      */
@@ -34,6 +36,15 @@ public class AbstractOssProperties {
      * @param beanFactory the bean factory
      */
     public void check(final DefaultListableBeanFactory beanFactory) {
+    }
+
+    /**
+     * the put property reference map
+     *
+     * @param propertyReferenceMap the property reference map
+     */
+    public void putPropertyReference(Map<String, String> propertyReferenceMap) {
+
     }
 
     public Environment getEnv() {

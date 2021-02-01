@@ -1,5 +1,7 @@
 package com.wb.oss.component.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -26,6 +28,9 @@ import org.springframework.core.env.Environment;
 @ComponentScan({"com.wb.oss.component"})
 @EnableConfigurationProperties({OssProperties.class})
 public class OssAutoConfiguration {
+
+    //  the slf4j log
+    private static final Logger log = LoggerFactory.getLogger(OssAutoConfiguration.class);
 
     @ConditionalOnMissingBean
     @Bean(name = "ossClientHandler", initMethod = "determineOssClient")

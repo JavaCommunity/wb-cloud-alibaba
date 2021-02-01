@@ -17,4 +17,14 @@ public class DefaultFastDFSClient implements FastDFSClient {
     public <T extends OssResponse> T putObject(OssRequest<T> request) {
         return null;
     }
+
+    @Override
+    public <T extends OssResponse> T getObject(OssRequest<T> request) {
+        return null;
+    }
+
+    @Override
+    public <T extends OssResponse> T removeObject(OssRequest<T> request) {
+        return null;
+    }
 }

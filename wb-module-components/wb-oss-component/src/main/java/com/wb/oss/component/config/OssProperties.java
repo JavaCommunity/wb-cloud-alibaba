@@ -32,7 +32,7 @@ public class OssProperties {
     private FastDFSProperties fastdfs;
 
     /**
-     * contract a new ossProperties
+     * constructs a new ossProperties
      */
     public OssProperties() {
         this.type = OssConstants.DEFAULT_OSS_SERVER_TYPE;

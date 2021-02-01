@@ -2,6 +2,8 @@ package com.wb.oss.component.config;
 
 import com.wb.oss.component.factorybean.MinioClientFactoryBean;
 
+import java.util.Map;
+
 /**
  * @ClassName: MinioProperties
  * @Package: com.wb.oss.component.config
@@ -28,10 +30,14 @@ public class MinioProperties extends AbstractOssProperties {
     private String region;
 
     /**
-     * contract a new minioProperties
+     * constructs a new minioProperties
      */
     public MinioProperties() {
         super(MinioClientFactoryBean.class);
+    }
+
+    @Override
+    public void putPropertyReference(Map<String, String> propertyReferenceMap) {
     }
 
     public String getObjectPrefix() {

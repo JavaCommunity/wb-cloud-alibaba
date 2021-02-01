@@ -20,6 +20,15 @@ public abstract class BaseOssRequest<T extends OssResponse> implements OssReques
     //  the object name
     private String objectName;
 
+    //  the content type
+    private String contentType;
+
+    //  the content size
+    private long size;
+
+    //  the object id
+    private String objectId;
+
     public InputStream getObjectContent() {
         return objectContent;
     }
@@ -34,5 +43,29 @@ public abstract class BaseOssRequest<T extends OssResponse> implements OssReques
 
     public void setObjectName(String objectName) {
         this.objectName = objectName;
+    }
+
+    public String getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
+    }
+
+    public long getSize() {
+        return size;
+    }
+
+    public void setSize(long size) {
+        this.size = size;
+    }
+
+    public String getObjectId() {
+        return objectId;
+    }
+
+    public void setObjectId(String objectId) {
+        this.objectId = objectId;
     }
 }

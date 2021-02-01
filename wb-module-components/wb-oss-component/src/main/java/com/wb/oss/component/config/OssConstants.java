@@ -12,4 +12,7 @@ public interface OssConstants {
 
     //  the default oss server type
     String DEFAULT_OSS_SERVER_TYPE = "minio";
+
+    //  the default token store prefix
+    String DEFAULT_TOKEN_STORE_PREFIX = "wb-cloud-oss-";
 }

@@ -10,8 +10,8 @@ package com.wb.oss.component.config;
  */
 public enum OssErrorCodeEnum {
 
-    SUCCESS("30001", "上传成功！"),
-    FAIL("30002", "上传失败！");
+    SUCCESS("30001", "操作成功！"),
+    FAIL("30002", "操作失败！");
 
     //  the error code
     private String errCode;
@@ -20,7 +20,7 @@ public enum OssErrorCodeEnum {
     private String errMsg;
 
     /**
-     * contract a new OssErrorCodeEnum with the specified errCode and errMsg
+     * constructs a new OssErrorCodeEnum with the specified errCode and errMsg
      *
      * @param errCode the error code
      * @param errMsg  the error message

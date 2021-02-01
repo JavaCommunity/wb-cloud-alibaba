@@ -14,14 +14,6 @@ import com.wb.oss.component.response.OssResponse;
 public interface OssClient {
 
     /**
-     * the check object size
-     *
-     * @param ossRequest the oss request
-     */
-    default void checkObjectSize(OssRequest ossRequest) {
-    }
-
-    /**
      * the put object with the specified request
      *
      * @param request the request
@@ -29,4 +21,22 @@ public interface OssClient {
      * @return the oss response
      */
     <T extends OssResponse> T putObject(OssRequest<T> request);
+
+    /**
+     * the get object with the specified request
+     *
+     * @param request the request
+     * @param <T>
+     * @return the oss response
+     */
+    <T extends OssResponse> T getObject(OssRequest<T> request);
+
+    /**
+     * the remove object with the specified request
+     *
+     * @param request the request
+     * @param <T>
+     * @return the oss response
+     */
+    <T extends OssResponse> T removeObject(OssRequest<T> request);
 }

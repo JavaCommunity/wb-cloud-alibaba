@@ -13,7 +13,7 @@ import com.wb.oss.component.factorybean.FastDFSClientFactoryBean;
 public class FastDFSProperties extends AbstractOssProperties {
 
     /**
-     * contract a new fastDFSProperties
+     * constructs a new fastDFSProperties
      */
     public FastDFSProperties() {
         super(FastDFSClientFactoryBean.class);
