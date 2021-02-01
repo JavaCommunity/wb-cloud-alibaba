@@ -40,7 +40,7 @@ public class TokenStoreProperties {
     private JdbcTokenStoreProperties jdbc;
 
     /**
-     * contract a new token store properties
+     * constructs a new token store properties
      */
     public TokenStoreProperties() {
         this.type = DEFAULT_TOKEN_STORE_TYPE;

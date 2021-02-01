@@ -57,7 +57,7 @@ public class MinioPutResponse extends OssResponse implements Serializable {
     }
 
     /**
-     * contract a new minioResponse with the error code and error message
+     * constructs a new minioResponse with the error code and error message
      *
      * @param errCode the error code
      * @param errMsg  the error message
