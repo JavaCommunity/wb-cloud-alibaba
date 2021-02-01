@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * @ClassName: R
  * @Package: com.knx.common.utils.result
- * @Description: 前后端交互统一返回对象
+ * @Description: the R
  * @Author：[bo.wang]
  * @Date: 2021/1/5
  * @Version: 1.0
