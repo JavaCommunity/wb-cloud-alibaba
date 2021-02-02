@@ -1,18 +1,18 @@
 package com.wb.oss.component.request.minio;
 
 import com.wb.oss.component.request.OssRequest;
-import com.wb.oss.component.response.minio.MinioGetResponse;
+import com.wb.oss.component.response.minio.MinioRemoveObjectResponse;
 import org.springframework.util.Assert;
 
 /**
- * @ClassName: MinioGetRequest
+ * @ClassName: MinioRemoveRequest
  * @Package: com.wb.oss.component.request.minio
- * @Description: the minio get request
+ * @Description: the minio remove request
  * @Author：[bo.wang]
  * @Date: 2021/2/1
  * @Version: 1.0
  */
-public class MinioGetRequest implements OssRequest<MinioGetResponse> {
+public class MinioRemoveObjectRequest implements OssRequest<MinioRemoveObjectResponse> {
 
     //  the bucket name
     private String bucketName;

@@ -1,7 +1,7 @@
 package com.wb.oss.component.client;
 
 import com.wb.oss.component.request.OssRequest;
-import com.wb.oss.component.response.OssResponse;
+import com.wb.oss.component.response.GenericResponse;
 
 /**
  * @ClassName: OssClient
@@ -20,7 +20,7 @@ public interface OssClient {
      * @param <T>
      * @return the oss response
      */
-    <T extends OssResponse> T putObject(OssRequest<T> request);
+    <T extends GenericResponse> T putObject(OssRequest<T> request);
 
     /**
      * the get object with the specified request
@@ -29,7 +29,7 @@ public interface OssClient {
      * @param <T>
      * @return the oss response
      */
-    <T extends OssResponse> T getObject(OssRequest<T> request);
+    <T extends GenericResponse> T getObject(OssRequest<T> request);
 
     /**
      * the remove object with the specified request
@@ -38,5 +38,5 @@ public interface OssClient {
      * @param <T>
      * @return the oss response
      */
-    <T extends OssResponse> T removeObject(OssRequest<T> request);
+    <T extends GenericResponse> T removeObject(OssRequest<T> request);
 }

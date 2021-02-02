@@ -22,5 +22,13 @@
             <optional>true</optional>
         </dependency>
         <!--spring-context end-->
+
+        <!--tomcat embed core start-->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!--tomcat embed core end-->
     </dependencies>
 </project>

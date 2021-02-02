@@ -1,8 +1,10 @@
 package com.wb.office.component.controller;
 
+import com.wb.office.component.handler.OfficeFileHandler;
 import com.wb.office.component.request.PageOfficeRequest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,6 +24,9 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/pageOffice/handler/")
 @Api(value = "PageOfficeHandlerController", tags = "pageOffice处理控制器器")
 public class PageOfficeHandlerController {
+
+    @Autowired
+    private OfficeFileHandler fileHandler;
 
     @RequestMapping(value = "v1/loadFile", method = RequestMethod.GET)
     @ApiOperation(value = "PageOffice加载文件入口v1", notes = "PageOffice加载文件入口v1")

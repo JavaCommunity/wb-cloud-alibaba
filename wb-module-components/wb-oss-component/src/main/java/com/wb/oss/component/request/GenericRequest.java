@@ -1,18 +1,18 @@
 package com.wb.oss.component.request;
 
-import com.wb.oss.component.response.OssResponse;
+import com.wb.oss.component.response.GenericResponse;
 
 import java.io.InputStream;
 
 /**
- * @ClassName: BaseOssRequest
+ * @ClassName: GenericRequest
  * @Package: com.wb.oss.component.request
- * @Description: the base oss request
+ * @Description: the generic request
  * @Author：[bo.wang]
  * @Date: 2021/1/29
  * @Version: 1.0
  */
-public abstract class BaseOssRequest<T extends OssResponse> implements OssRequest<T> {
+public abstract class GenericRequest<T extends GenericResponse> implements OssRequest<T> {
 
     //  the object content
     private InputStream objectContent;
@@ -28,6 +28,23 @@ public abstract class BaseOssRequest<T extends OssResponse> implements OssReques
 
     //  the object id
     private String objectId;
+
+    /**
+     * constructs a new generic request
+     */
+    public GenericRequest() {
+    }
+
+    /**
+     * constructs a new generic request with the specified object name and object content
+     *
+     * @param objectName    the object name
+     * @param objectContent the object content
+     */
+    public GenericRequest(String objectName, InputStream objectContent) {
+        this.objectName = objectName;
+        this.objectContent = objectContent;
+    }
 
     public InputStream getObjectContent() {
         return objectContent;

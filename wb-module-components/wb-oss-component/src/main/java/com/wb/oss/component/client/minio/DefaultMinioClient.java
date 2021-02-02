@@ -3,13 +3,13 @@ package com.wb.oss.component.client.minio;
 import com.wb.oss.component.config.OssErrorCodeEnum;
 import com.wb.oss.component.exception.OssServiceException;
 import com.wb.oss.component.request.OssRequest;
-import com.wb.oss.component.request.minio.MinioGetRequest;
-import com.wb.oss.component.request.minio.MinioPutRequest;
-import com.wb.oss.component.request.minio.MinioRemoveRequest;
-import com.wb.oss.component.response.OssResponse;
-import com.wb.oss.component.response.minio.MinioGetResponse;
-import com.wb.oss.component.response.minio.MinioPutResponse;
-import com.wb.oss.component.response.minio.MinioRemoveResponse;
+import com.wb.oss.component.request.minio.MinioGetObjectRequest;
+import com.wb.oss.component.request.minio.MinioPutObjectRequest;
+import com.wb.oss.component.request.minio.MinioRemoveObjectRequest;
+import com.wb.oss.component.response.GenericResponse;
+import com.wb.oss.component.response.minio.MinioGetObjectResponse;
+import com.wb.oss.component.response.minio.MinioPutObjectResponse;
+import com.wb.oss.component.response.minio.MinioRemoveObjectResponse;
 import com.wb.oss.component.utils.RequestCheckUtils;
 import io.minio.MinioClient;
 import org.slf4j.Logger;
@@ -48,9 +48,9 @@ public class DefaultMinioClient implements IMinioClient {
     }
 
     @Override
-    public <T extends OssResponse> T putObject(OssRequest<T> request) {
+    public <T extends GenericResponse> T putObject(OssRequest<T> request) {
         try {
-            MinioPutRequest req = (MinioPutRequest) request;
+            MinioPutObjectRequest req = (MinioPutObjectRequest) request;
             req.check();
 
             String bucketName = req.getBucketName();
@@ -60,56 +60,53 @@ public class DefaultMinioClient implements IMinioClient {
             }
 
             minioClient.putObject(bucketName, req.getObjectName(), req.getObjectContent(), req.getContentType());
-            return (T) MinioPutResponse.ok()
-                    .objectId(req.getObjectId())
-                    .bucketName(req.getBucketName())
-                    .contentType(req.getContentType())
-                    .size(req.getSize());
+            return (T) new MinioPutObjectResponse(req.getObjectId(), req.getObjectName(), req.getBucketName(),
+                    req.getContentType(), req.getSize());
         } catch (OssServiceException e) {
-            return (T) MinioPutResponse.error(e.getMessage());
+            return (T) new MinioPutObjectResponse(e.getMessage());
         } catch (Exception e) {
             log.error("[Oss Starter] Minio Put Object Error,ErrMsg:{}", e.getMessage());
-            return (T) MinioPutResponse.error(e.getMessage());
+            return (T) new MinioPutObjectResponse(e.getMessage());
         }
     }
 
     @Override
-    public <T extends OssResponse> T getObject(OssRequest<T> request) {
+    public <T extends GenericResponse> T getObject(OssRequest<T> request) {
         try {
-            MinioGetRequest req = (MinioGetRequest) request;
+            MinioGetObjectRequest req = (MinioGetObjectRequest) request;
 
             String bucketName = req.getBucketName();
             boolean isExists = this.bucketExists(bucketName);
             if (!isExists) {
-                return (T) new MinioGetResponse(OssErrorCodeEnum.FAIL.getErrCode(), "Minio Bucket Not Exists！");
+                return (T) new MinioGetObjectResponse(OssErrorCodeEnum.FAIL.getErrCode(), "Minio Bucket Not Exists！");
             }
 
             InputStream objectContent = minioClient.getObject(bucketName, req.getObjectName());
-            MinioGetResponse response = new MinioGetResponse(OssErrorCodeEnum.SUCCESS.getErrCode(), OssErrorCodeEnum.SUCCESS.getErrMsg());
+            MinioGetObjectResponse response = new MinioGetObjectResponse(OssErrorCodeEnum.SUCCESS.getErrCode(), OssErrorCodeEnum.SUCCESS.getErrMsg());
             response.setObjectContent(objectContent);
             return (T) response;
         } catch (Exception e) {
             log.error("[Oss Starter] Minio Get Object Error,ErrMsg:{}", e.getMessage());
-            return (T) new MinioGetResponse(OssErrorCodeEnum.FAIL.getErrCode(), OssErrorCodeEnum.FAIL.getErrMsg());
+            return (T) new MinioGetObjectResponse(OssErrorCodeEnum.FAIL.getErrCode(), OssErrorCodeEnum.FAIL.getErrMsg());
         }
     }
 
     @Override
-    public <T extends OssResponse> T removeObject(OssRequest<T> request) {
+    public <T extends GenericResponse> T removeObject(OssRequest<T> request) {
         try {
-            MinioRemoveRequest req = (MinioRemoveRequest) request;
+            MinioRemoveObjectRequest req = (MinioRemoveObjectRequest) request;
 
             String bucketName = req.getBucketName();
             boolean isExists = this.bucketExists(bucketName);
             if (!isExists) {
-                return (T) new MinioRemoveResponse(OssErrorCodeEnum.FAIL.getErrCode(), "Minio Bucket Not Exists！");
+                return (T) new MinioRemoveObjectResponse(OssErrorCodeEnum.FAIL.getErrCode(), "Minio Bucket Not Exists！");
             }
 
             minioClient.removeObject(bucketName, req.getObjectName());
-            return (T) new MinioRemoveResponse(OssErrorCodeEnum.SUCCESS.getErrCode(), OssErrorCodeEnum.SUCCESS.getErrMsg());
+            return (T) new MinioRemoveObjectResponse(OssErrorCodeEnum.SUCCESS.getErrCode(), OssErrorCodeEnum.SUCCESS.getErrMsg());
         } catch (Exception e) {
             log.error("[Oss Starter] Minio Remove Object Error,ErrMsg:{}", e.getMessage());
-            return (T) new MinioRemoveResponse(OssErrorCodeEnum.FAIL.getErrCode(), OssErrorCodeEnum.FAIL.getErrMsg());
+            return (T) new MinioRemoveObjectResponse(OssErrorCodeEnum.FAIL.getErrCode(), OssErrorCodeEnum.FAIL.getErrMsg());
         }
     }
 

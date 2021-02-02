@@ -1,6 +1,6 @@
 package com.wb.oss.component.request;
 
-import com.wb.oss.component.response.OssResponse;
+import com.wb.oss.component.response.GenericResponse;
 
 /**
  * @ClassName: OssRequest
@@ -10,7 +10,7 @@ import com.wb.oss.component.response.OssResponse;
  * @Date: 2021/1/29
  * @Version: 1.0
  */
-public interface OssRequest<T extends OssResponse> {
+public interface OssRequest<T extends GenericResponse> {
 
     /**
      * the oss request check

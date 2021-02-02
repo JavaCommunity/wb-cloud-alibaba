@@ -2,13 +2,13 @@ package com.wb.oss.example.controller;
 
 import com.wb.common.result.R;
 import com.wb.oss.component.client.OssClient;
-import com.wb.oss.component.request.minio.MinioGetRequest;
-import com.wb.oss.component.request.minio.MinioPutRequest;
-import com.wb.oss.component.request.minio.MinioRemoveRequest;
-import com.wb.oss.component.response.OssResponse;
-import com.wb.oss.component.response.minio.MinioGetResponse;
-import com.wb.oss.component.response.minio.MinioPutResponse;
-import com.wb.oss.component.response.minio.MinioRemoveResponse;
+import com.wb.oss.component.request.minio.MinioGetObjectRequest;
+import com.wb.oss.component.request.minio.MinioPutObjectRequest;
+import com.wb.oss.component.request.minio.MinioRemoveObjectRequest;
+import com.wb.oss.component.response.GenericResponse;
+import com.wb.oss.component.response.minio.MinioGetObjectResponse;
+import com.wb.oss.component.response.minio.MinioPutObjectResponse;
+import com.wb.oss.component.response.minio.MinioRemoveObjectResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,34 +33,34 @@ public class AttachController {
     @Autowired
     private OssClient ossClient;
 
-    @PostMapping("/upload")
-    public R<OssResponse> upload(MultipartFile file) throws IOException {
-        MinioPutRequest request = new MinioPutRequest();
-        request.setObjectName(file.getOriginalFilename());
-        request.setObjectContent(file.getInputStream());
-        request.setContentType(file.getContentType());
-        request.setSize(file.getSize());
-        request.setBucketName("defaultds");
-        request.setObjectId("122222222222222222222222223123");
-        MinioPutResponse minioResponse = ossClient.putObject(request);
-        return R.ok().data(minioResponse);
-    }
+//    @PostMapping("/upload")
+//    public R<GenericResponse> upload(MultipartFile file) throws IOException {
+//        MinioPutObjectRequest request = new MinioPutObjectRequest();
+//        request.setObjectName(file.getOriginalFilename());
+//        request.setObjectContent(file.getInputStream());
+//        request.setContentType(file.getContentType());
+//        request.setSize(file.getSize());
+//        request.setBucketName("defaultds");
+//        request.setObjectId("122222222222222222222222223123");
+//        MinioPutObjectResponse minioResponse = ossClient.putObject(request);
+//        return R.ok().data(minioResponse);
+//    }
 
-    @GetMapping("/get")
-    public void get() throws IOException {
-        MinioGetRequest request = new MinioGetRequest();
-        request.setBucketName("defaultds123123");
-        request.setObjectName("访问是否成功.txt");
-        MinioGetResponse minioGetResponse = ossClient.getObject(request);
-        System.out.println(minioGetResponse);
-    }
-
-    @GetMapping("/remove")
-    public R<MinioRemoveResponse> remove() throws IOException {
-        MinioRemoveRequest request = new MinioRemoveRequest();
-        request.setBucketName("defaultds");
-        request.setObjectName("访问是否成功.txt");
-        MinioRemoveResponse removeResponse = ossClient.removeObject(request);
-        return R.ok().data(removeResponse);
-    }
+//    @GetMapping("/get")
+//    public void get() throws IOException {
+//        MinioGetObjectRequest request = new MinioGetObjectRequest();
+//        request.setBucketName("defaultds123123");
+//        request.setObjectName("访问是否成功.txt");
+//        MinioGetObjectResponse minioGetResponse = ossClient.getObject(request);
+//        System.out.println(minioGetResponse);
+//    }
+//
+//    @GetMapping("/remove")
+//    public R<MinioRemoveObjectResponse> remove() throws IOException {
+//        MinioRemoveObjectRequest request = new MinioRemoveObjectRequest();
+//        request.setBucketName("defaultds");
+//        request.setObjectName("访问是否成功.txt");
+//        MinioRemoveObjectResponse removeResponse = ossClient.removeObject(request);
+//        return R.ok().data(removeResponse);
+//    }
 }

@@ -1,6 +1,6 @@
 package com.wb.oss.component.response.minio;
 
-import com.wb.oss.component.response.OssResponse;
+import com.wb.oss.component.response.GenericResponse;
 
 /**
  * @ClassName: MinioRemoveResponse
@@ -10,7 +10,7 @@ import com.wb.oss.component.response.OssResponse;
  * @Date: 2021/2/1
  * @Version: 1.0
  */
-public class MinioRemoveResponse extends OssResponse {
+public class MinioRemoveObjectResponse extends GenericResponse {
 
     /**
      * constructs a new minioRemoveResponse with the specified error code and error message
@@ -18,7 +18,7 @@ public class MinioRemoveResponse extends OssResponse {
      * @param errCode the error code
      * @param errMsg  the error message
      */
-    public MinioRemoveResponse(String errCode, String errMsg) {
+    public MinioRemoveObjectResponse(String errCode, String errMsg) {
         this.setErrCode(errCode);
         this.setErrMsg(errMsg);
     }

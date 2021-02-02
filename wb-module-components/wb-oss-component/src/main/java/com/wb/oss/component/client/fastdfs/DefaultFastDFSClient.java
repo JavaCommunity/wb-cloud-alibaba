@@ -1,7 +1,7 @@
 package com.wb.oss.component.client.fastdfs;
 
 import com.wb.oss.component.request.OssRequest;
-import com.wb.oss.component.response.OssResponse;
+import com.wb.oss.component.response.GenericResponse;
 
 /**
  * @ClassName: DefaultFastDFSClient
@@ -14,17 +14,17 @@ import com.wb.oss.component.response.OssResponse;
 public class DefaultFastDFSClient implements FastDFSClient {
 
     @Override
-    public <T extends OssResponse> T putObject(OssRequest<T> request) {
+    public <T extends GenericResponse> T putObject(OssRequest<T> request) {
         return null;
     }
 
     @Override
-    public <T extends OssResponse> T getObject(OssRequest<T> request) {
+    public <T extends GenericResponse> T getObject(OssRequest<T> request) {
         return null;
     }
 
     @Override
-    public <T extends OssResponse> T removeObject(OssRequest<T> request) {
+    public <T extends GenericResponse> T removeObject(OssRequest<T> request) {
         return null;
     }
 }

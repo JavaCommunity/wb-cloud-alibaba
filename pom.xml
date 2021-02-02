@@ -73,6 +73,7 @@
         <module>wb-module-oauth</module>
         <module>wb-cloud-gateway</module>
         <module>wb-module-examples</module>
+        <module>wb-module-oss</module>
     </modules>
 
     <properties>

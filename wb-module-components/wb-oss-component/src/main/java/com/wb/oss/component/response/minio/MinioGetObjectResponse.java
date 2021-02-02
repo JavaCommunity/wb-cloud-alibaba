@@ -1,19 +1,19 @@
 package com.wb.oss.component.response.minio;
 
-import com.wb.oss.component.response.OssResponse;
+import com.wb.oss.component.response.GenericResponse;
 
 import java.io.InputStream;
 import java.io.Serializable;
 
 /**
- * @ClassName: MinioGetResponse
+ * @ClassName: MinioGetObjectResponse
  * @Package: com.wb.oss.component.response.minio
  * @Description: the minio get response
  * @Author：[bo.wang]
  * @Date: 2021/2/1
  * @Version: 1.0
  */
-public class MinioGetResponse extends OssResponse implements Serializable {
+public class MinioGetObjectResponse extends GenericResponse implements Serializable {
 
     //  the object content
     private InputStream objectContent;
@@ -24,7 +24,7 @@ public class MinioGetResponse extends OssResponse implements Serializable {
      * @param errCode the error code
      * @param errMsg  the error message
      */
-    public MinioGetResponse(String errCode, String errMsg) {
+    public MinioGetObjectResponse(String errCode, String errMsg) {
         this.setErrCode(errCode);
         this.setErrMsg(errMsg);
     }
