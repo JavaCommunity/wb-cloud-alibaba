@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>wb-module-components</artifactId>
+        <groupId>com.wb</groupId>
+        <version>${revision}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>wb-dynamic-datasource-component</artifactId>
+    <name>wb-dynamic-datasource-component</name>
+    <packaging>jar</packaging>
+    <description>wb dynamic datasource component for spring-boot</description>
+
+    <dependencies>
+        <!--spring-boot aop start-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <!--spring-boot aop end-->
+
+        <!--spring-boot jdbc start-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <!--spring-boot jdbc end-->
+
+        <!--alibaba druid start-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+        </dependency>
+        <!--alibaba druid end-->
+    </dependencies>
+</project>

@@ -1,0 +1,25 @@
+server:
+  port: 7009
+
+spring:
+  application:
+    name: wb-quartz-example
+
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:mysql://127.0.0.1:3306/wb-cloud?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&useOldAliasMetadataBehavior=true&autoReconnect=true&useSSL=false&serverTimezone=GMT%2B8
+      username: root
+      password: root
+
+wb-cloud:
+  quartz:
+    instance-id: wb-quartz-example
+    is-clustered: true
+    table-prefix: QRTZ_
+    thread-count: 10
+    datasource:
+      url: jdbc:mysql://127.0.0.1:3306/wb-cloud?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+      username: root
+      password: root

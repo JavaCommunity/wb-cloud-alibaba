@@ -1,0 +1,49 @@
+{
+  "properties": [
+    {
+      "name": "wb-cloud.quartz.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "enable or disable quartz auto configure."
+    },
+    {
+      "name": "wb-cloud.quartz.instance-id",
+      "type": "java.lang.String",
+      "defaultValue": "WB_CLOUD_QUARTZ",
+      "description": "quartz instance id."
+    },
+    {
+      "name": "wb-cloud.quartz.is-clustered",
+      "type": "java.lang.String",
+      "defaultValue": "false",
+      "description": "quartz is clustered."
+    },
+    {
+      "name": "wb-cloud.quartz.table-prefix",
+      "type": "java.lang.String",
+      "defaultValue": "QRTZ_",
+      "description": "quartz table prefix."
+    },
+    {
+      "name": "wb-cloud.quartz.thread-count",
+      "type": "java.lang.String",
+      "defaultValue": "10",
+      "description": "quartz thread count."
+    },
+    {
+      "name": "wb-cloud.quartz.datasource.url",
+      "type": "java.lang.String",
+      "description": "quartz datasource url."
+    },
+    {
+      "name": "wb-cloud.quartz.datasource.url.username",
+      "type": "java.lang.String",
+      "description": "quartz datasource username."
+    },
+    {
+      "name": "wb-cloud.quartz.datasource.url.password",
+      "type": "java.lang.String",
+      "description": "quartz datasource password."
+    }
+  ]
+}

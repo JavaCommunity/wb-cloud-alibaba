@@ -18,5 +18,7 @@
         <module>wb-knife4j-component</module>
         <module>wb-office-component</module>
         <module>wb-oss-component</module>
+        <module>wb-quartz-component</module>
+        <module>wb-dynamic-datasource-component</module>
     </modules>
 </project>

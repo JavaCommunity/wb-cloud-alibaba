@@ -74,6 +74,7 @@
         <module>wb-cloud-gateway</module>
         <module>wb-module-examples</module>
         <module>wb-module-oss</module>
+        <module>wb-module-workflow</module>
     </modules>
 
     <properties>

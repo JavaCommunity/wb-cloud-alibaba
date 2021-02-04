@@ -22,5 +22,6 @@
         <module>wb-knife4j-example</module>
         <module>wb-office-example</module>
         <module>wb-oss-example</module>
+        <module>wb-quartz-example</module>
     </modules>
 </project>
