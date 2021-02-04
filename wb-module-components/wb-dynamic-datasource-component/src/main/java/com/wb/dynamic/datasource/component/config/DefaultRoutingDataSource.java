@@ -33,7 +33,7 @@ public class DefaultRoutingDataSource extends AbstractRoutingDataSource {
     @Override
     protected Object determineCurrentLookupKey() {
         String currentDataSource = DynamicDataSourceContext.getCurrentDataSource();
-        log.info("Determine Current Dynamic DataSource：{}", currentDataSource);
+        log.info("[Dynamic Datasource Starter] Determine Current Dynamic DataSource：{}", currentDataSource);
         return currentDataSource;
     }
 

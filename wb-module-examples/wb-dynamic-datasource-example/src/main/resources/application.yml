@@ -1,0 +1,28 @@
+server:
+  port: 7010
+
+spring:
+  application:
+    name: wb-dynamic-datasource-example
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/wb-cloud?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&useOldAliasMetadataBehavior=true&autoReconnect=true&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: root
+
+wb-cloud:
+  dynamic-datasource:
+    enabled: true
+    datasource:
+      second:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/wb-cloud-second?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&useOldAliasMetadataBehavior=true&autoReconnect=true&useSSL=false&serverTimezone=GMT%2B8
+        username: root
+        password: root
+
+mybatis:
+  mapper-locations: classpath:mapper/*/*Mapper.xml
+  type-aliases-package: com.wb.dynamic.datasource.example.entity
+

@@ -33,7 +33,7 @@ public class DataSourceFactory {
         try {
             druidDataSource.init();
         } catch (SQLException e) {
-            log.error("Init Druid DataSource Error,ErrMsg：{}", e.getMessage());
+            log.error("[Dynamic Datasource Starter] Init Druid DataSource Error,ErrMsg：{}", e.getMessage());
             throw new DynamicDataSourceException("Init Druid Data Source Fail！");
         }
         return druidDataSource;
