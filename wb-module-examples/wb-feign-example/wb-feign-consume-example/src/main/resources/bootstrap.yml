@@ -1,0 +1,36 @@
+server:
+  port: 7011
+
+spring:
+  application:
+    name: wb-feign-consume-example
+
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        server-addr: 127.0.0.1:8848
+        port: ${server.port}
+
+# 参考文献：https://docs.spring.io/spring-cloud-openfeign/docs/2.2.5.RELEASE/reference/html/
+feign:
+  client:
+    config:
+      default:
+        # the feign connect timeout
+        connectTimeout: 5000
+        # the feign read timeout
+        readTimeout: 8000
+        # feign全局日志级别
+        loggerLevel: full
+  # feign 压缩配置
+  compression:
+    request:
+      enabled: true
+      # 配置压缩支持的 MIME TYPE
+      mime-types: text/xml,application/xml,application/json
+      # 配置压缩数据大小的最小阀值，默认 2048
+      min-request-size: 2048
+    response:
+      enabled: true
+

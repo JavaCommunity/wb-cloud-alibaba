@@ -24,5 +24,6 @@
         <module>wb-oss-example</module>
         <module>wb-quartz-example</module>
         <module>wb-dynamic-datasource-example</module>
+        <module>wb-feign-example</module>
     </modules>
 </project>
