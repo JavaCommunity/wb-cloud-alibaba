@@ -3,7 +3,12 @@ package com.wb.common.base.entity;
 import java.io.Serializable;
 
 /**
- * 基础实体类
+ * @ClassName: BaseEntity
+ * @Package: com.wb.common.base.entity
+ * @Description: the base entity
+ * @Author：[bo.wang]
+ * @Date: 2021/1/19
+ * @Version: 1.0
  */
 public class BaseEntity implements Serializable {
 
@@ -13,10 +18,6 @@ public class BaseEntity implements Serializable {
 
     private String createTime;
 
-    private String delTime;
-
-    private String delFlag;
-
     private String createUserId;
 
     private String createUser;
@@ -25,17 +26,17 @@ public class BaseEntity implements Serializable {
 
     private String createOrg;
 
-    private String forOrgId;
-
     private String updateTime;
 
     private String updateUserId;
 
     private String updateUser;
 
-    private String updateOrgId;
+    private String forOrgId;
 
-    private String updateOrg;
+    private String delTime;
+
+    private String delFlag;
 
     public String getId() {
         return id;
@@ -51,22 +52,6 @@ public class BaseEntity implements Serializable {
 
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
-    }
-
-    public String getDelTime() {
-        return delTime;
-    }
-
-    public void setDelTime(String delTime) {
-        this.delTime = delTime;
-    }
-
-    public String getDelFlag() {
-        return delFlag;
-    }
-
-    public void setDelFlag(String delFlag) {
-        this.delFlag = delFlag;
     }
 
     public String getCreateUserId() {
@@ -101,14 +86,6 @@ public class BaseEntity implements Serializable {
         this.createOrg = createOrg;
     }
 
-    public String getForOrgId() {
-        return forOrgId;
-    }
-
-    public void setForOrgId(String forOrgId) {
-        this.forOrgId = forOrgId;
-    }
-
     public String getUpdateTime() {
         return updateTime;
     }
@@ -133,19 +110,27 @@ public class BaseEntity implements Serializable {
         this.updateUser = updateUser;
     }
 
-    public String getUpdateOrgId() {
-        return updateOrgId;
+    public String getForOrgId() {
+        return forOrgId;
     }
 
-    public void setUpdateOrgId(String updateOrgId) {
-        this.updateOrgId = updateOrgId;
+    public void setForOrgId(String forOrgId) {
+        this.forOrgId = forOrgId;
     }
 
-    public String getUpdateOrg() {
-        return updateOrg;
+    public String getDelTime() {
+        return delTime;
     }
 
-    public void setUpdateOrg(String updateOrg) {
-        this.updateOrg = updateOrg;
+    public void setDelTime(String delTime) {
+        this.delTime = delTime;
+    }
+
+    public String getDelFlag() {
+        return delFlag;
+    }
+
+    public void setDelFlag(String delFlag) {
+        this.delFlag = delFlag;
     }
 }
