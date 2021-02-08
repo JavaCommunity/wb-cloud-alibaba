@@ -20,5 +20,6 @@
         <module>wb-oss-component</module>
         <module>wb-quartz-component</module>
         <module>wb-dynamic-datasource-component</module>
+        <module>wb-sign-component</module>
     </modules>
 </project>

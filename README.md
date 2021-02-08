@@ -57,10 +57,11 @@ TBD
 √   6.wb-cloud-gateway 网关
 √   7.wb-knife4j-component knife4j在线接口显示组件 
 √   8.wb-docker-example docker打包使用样例
-    9.wb-feign-example feign使用样例
+√   9.wb-feign-example feign使用样例
     10.wb-ureport-component 在线报表组件
 √   11.wb-quartz-component 定时任务组件
     12.wb-workflow-component 工作流组件，基于flowable实现
+    13.wb-sign-component 电子签名组件
 ~~~
 
 
