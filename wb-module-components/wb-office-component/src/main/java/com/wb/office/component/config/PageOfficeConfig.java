@@ -89,7 +89,7 @@ public class PageOfficeConfig {
             inputStream.close();
             return newFile.getPath();
         } catch (Exception e) {
-            log.error("Init PageOffice Config File Error,ErrMsg：{}", e.getMessage());
+            log.error("[Office Starter] Init PageOffice Config File Error,ErrMsg：{}", e.getMessage());
             e.printStackTrace();
         }
         return null;

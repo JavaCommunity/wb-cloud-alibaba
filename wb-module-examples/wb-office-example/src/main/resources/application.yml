@@ -15,5 +15,5 @@ spring:
 wb-cloud:
   office:
     enabled: true
-    window-width: 800px
-    window-height: 600px
+    window-width: 900px
+    window-height: 1000px

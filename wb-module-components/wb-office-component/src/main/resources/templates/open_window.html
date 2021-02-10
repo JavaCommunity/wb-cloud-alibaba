@@ -8,14 +8,10 @@
     <script type="text/javascript" src="/pageoffice.js" id="po_js_main"></script>
     <script>
         window.onload = function () {
-            var fileId = $("#fileId").val();
-            var businessDataId = $("#businessDataId").val();
-            var authorityType = $("#authorityType").val();
-            var windowHeight = $("#windowHeight").val();
-            var windowWidth = $("#windowWidth").val();
-            POBrowser.openWindowModeless('/pageOffice/handler/v1/loadFile?fileId=' +
-                fileId + '&businessDataId=' + businessDataId + '&authorityType=' +
-                authorityType, 'width=' + windowWidth + ';;height=' + windowHeight + ';');
+            POBrowser.openWindowModeless('/pageOffice/handler/v1/load?fileId=' + $("#fileId").val()
+                + '&businessDataId=' + $("#businessDataId").val() + '&authorityType='
+                + $("#authorityType").val() + '&businessCode=' + $("#businessCode").val(),
+                'width=' + $("#windowHeight").val() + ';;height=' + $("#windowWidth").val() + ';');
         }
     </script>
 </head>
@@ -25,6 +21,7 @@
 <input id="authorityType" th:value="${authorityType}" type="hidden"/>
 <input id="windowHeight" th:value="${windowHeight}" type="hidden"/>
 <input id="windowWidth" th:value="${windowWidth}" type="hidden"/>
+<input id="businessCode" th:value="${businessCode}" type="hidden"/>
 </body>
 </html>
 

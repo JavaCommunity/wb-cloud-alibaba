@@ -39,21 +39,20 @@ public class PageOfficeIndexController {
     @GetMapping(value = "v1/openWindow")
     @ApiOperation(value = "打开pageOffice窗口v1", notes = "打开pageOffice窗口v1")
     public ModelAndView openWindow(PageOfficeRequest request) {
-        ModelAndView view = null;
         try {
-            view = new ModelAndView(Optional.ofNullable(request.getOpenWindowPage())
+            ModelAndView view = new ModelAndView(Optional.ofNullable(request.getOpenWindowPage())
                     .orElse(PageOfficeConstant.DEFAULT_OPEN_WINDOW_PAGE));
             Map<String, Object> model = view.getModel();
             Map<String, Object> beanMap = MapUtils.beanToMap(request);
             model.putAll(beanMap);
+
             //  set pageOffice  window size
             model.put("windowHeight", officeProperties.getWindowHeight());
             model.put("windowWidth", officeProperties.getWindowWidth());
+            return view;
         } catch (Exception e) {
-            view = new ModelAndView("error");
-            log.error("Load PageOffice Window Error,ErrMsg：{}", e.getMessage());
-            e.printStackTrace();
+            log.error("[Office Starter] Load PageOffice Window Error,ErrMsg：{}", e.getMessage());
+            return new ModelAndView("error");
         }
-        return view;
     }
 }

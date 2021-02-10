@@ -19,6 +19,9 @@ public class PageOfficeRequest implements Serializable {
     @ApiModelProperty(value = "文件ID")
     private String fileId;
 
+    @ApiModelProperty(value = "PageOffice Handler Code")
+    private String businessCode;
+
     @ApiModelProperty(value = "业务数据ID")
     private String businessDataId;
 
@@ -40,6 +43,14 @@ public class PageOfficeRequest implements Serializable {
 
     public void setFileId(String fileId) {
         this.fileId = fileId;
+    }
+
+    public String getBusinessCode() {
+        return businessCode;
+    }
+
+    public void setBusinessCode(String businessCode) {
+        this.businessCode = businessCode;
     }
 
     public String getBusinessDataId() {

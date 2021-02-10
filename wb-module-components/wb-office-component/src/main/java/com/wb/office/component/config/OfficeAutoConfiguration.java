@@ -52,8 +52,7 @@ public class OfficeAutoConfiguration implements InitializingBean {
     @Bean
     @ConditionalOnMissingBean
     public OfficeFileHandler officeFileHandler() {
-        OfficeFileHandler officeFileHandler = this.composite.addOfficeFileHandler();
-        return officeFileHandler;
+        return this.composite.addOfficeFileHandler();
     }
 
     @Override

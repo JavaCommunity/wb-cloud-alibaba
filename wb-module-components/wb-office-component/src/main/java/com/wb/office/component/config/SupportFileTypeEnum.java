@@ -27,6 +27,7 @@ public enum SupportFileTypeEnum {
      * @return the is support
      */
     public static boolean isSupport(String fileType) {
-        return StringUtils.isEmpty(fileType) ? false : Arrays.asList(SupportFileTypeEnum.values()).contains(fileType);
+        return StringUtils.isEmpty(fileType) ? false : Arrays.asList(SupportFileTypeEnum.values())
+                .stream().filter(type -> type.name().equalsIgnoreCase(fileType)).findAny().isPresent();
     }
 }
