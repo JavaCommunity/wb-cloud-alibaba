@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wb.workflow.service.repository.WorkFlowDefinitionMapper">
+
+    <sql id="table_name">
+        sys_workflow_definition
+    </sql>
+
+    <sql id="column_name">
+        id,
+        create_time,
+        create_org,
+        create_org_id,
+        create_user,
+        create_user_id,
+        update_time,
+        update_user,
+        update_user_id,
+        del_flag,
+        del_time,
+        code,
+        name,
+        description,
+        group_Id,
+        publish_status,
+        act_definition_id,
+        act_model_id,
+        act_deploy_id,
+        version,
+        is_main_version,
+        conf_info,
+        node_conf,
+        extend_info
+    </sql>
+
+    <resultMap id="workFlowDefinitionEntityMap" type="com.wb.workflow.service.entity.WorkFlowDefinitionEntity">
+        <result column="id" property="id"></result>
+        <result column="create_time" property="createTime"></result>
+        <result column="create_org" property="createOrg"></result>
+        <result column="create_org_id" property="createOrgId"></result>
+        <result column="create_user" property="createUser"></result>
+        <result column="create_user_id" property="createUserId"></result>
+        <result column="update_time" property="updateTime"></result>
+        <result column="update_user" property="updateUser"></result>
+        <result column="update_user_id" property="updateUserId"></result>
+        <result column="del_flag" property="delFlag"></result>
+        <result column="del_time" property="delTime"></result>
+        <result column="code" property="code"></result>
+        <result column="name" property="name"></result>
+        <result column="description" property="description"></result>
+        <result column="group_Id" property="groupId"></result>
+        <result column="publish_status" property="publishStatus"></result>
+        <result column="act_definition_id" property="fDefinitionId"></result>
+        <result column="act_model_id" property="fModelId"></result>
+        <result column="act_deploy_id" property="fDeployId"></result>
+        <result column="version" property="version"></result>
+        <result column="is_main_version" property="isMainVersion"></result>
+    </resultMap>
+
+    <insert id="save" parameterType="com.wb.workflow.service.entity.WorkFlowDefinitionEntity">
+        insert into
+        <include refid="table_name"></include>(<include refid="column_name"></include>)
+        values(#{id},#{createTime},#{createOrg},#{createOrgId},#{createUser},#{createUserId},
+        #{updateTime},#{updateUser},#{updateUserId},#{delFlag},#{delTime},#{code},#{name},
+        #{description},#{groupId},#{publishStatus},#{actDefinitionId},#{actModelId},#{actDeployId},
+        #{version},#{isMainVersion},#{confInfo},#{nodeConf},#{extendInfo})
+    </insert>
+
+    <update id="update" parameterType="com.wb.workflow.service.entity.WorkFlowDefinitionEntity">
+        update
+        <include refid="table_name"></include>
+        <set>
+            <if test="delTime != null and delTime != ''">
+                del_time = #{delTime},
+            </if>
+            <if test="delFlag != null and delFlag != ''">
+                del_flag = #{delFlag},
+            </if>
+            <if test="updateTime != null and updateTime != ''">
+                update_time = #{updateTime},
+            </if>
+            <if test="updateUser != null and updateUser != ''">
+                update_user = #{updateUser},
+            </if>
+            <if test="updateUserId != null and updateUserId != ''">
+                update_user_id = #{updateUserId},
+            </if>
+            <if test="code != null and code != ''">
+                code = #{code},
+            </if>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="description != null and description != ''">
+                description = #{description},
+            </if>
+            <if test="groupId != null and groupId != ''">
+                group_Id = #{groupId},
+            </if>
+            <if test="publishStatus != null and publishStatus != ''">
+                publish_status = #{publishStatus},
+            </if>
+            <if test="actDefinitionId != null and actDefinitionId != ''">
+                act_definition_id = #{actDefinitionId},
+            </if>
+            <if test="actModelId != null and actModelId != ''">
+                act_model_id = #{actModelId},
+            </if>
+            <if test="actDeployId != null and actDeployId != ''">
+                act_deploy_id = #{actDeployId},
+            </if>
+            <if test="version != null and version != ''">
+                version = #{version},
+            </if>
+            <if test="isMainVersion != null and isMainVersion != ''">
+                is_main_version = #{isMainVersion},
+            </if>
+            <if test="confInfo != null and confInfo != ''">
+                conf_info = #{confInfo},
+            </if>
+            <if test="nodeConf != null and nodeConf != ''">
+                node_conf = #{nodeConf},
+            </if>
+            <if test="extendInfo != null and extendInfo != ''">
+                extend_info = #{extendInfo},
+            </if>
+        </set>
+        where id = #{id}
+        and del_flag = '1'
+    </update>
+
+    <!--根据流程定义ID查询流程定义信息-->
+    <select id="queryForId" resultMap="workFlowDefinitionEntityMap">
+        select
+        <include refid="column_name"></include>
+        from
+        <include refid="table_name"></include>
+        where del_flag = '1'
+        and id = #{definitionId}
+    </select>
+</mapper>

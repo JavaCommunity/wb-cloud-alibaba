@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wb.workflow.service.repository.WorkFlowGroupMapper">
+
+    <sql id="table_name">
+        sys_workflow_group
+    </sql>
+
+    <sql id="column_name">
+        id,
+        create_time,
+        create_org,
+        create_org_id,
+        create_user,
+        create_user_id,
+        update_time,
+        update_user,
+        update_user_id,
+        del_flag,
+        del_time,
+        name,
+        description
+    </sql>
+
+    <insert id="save" parameterType="com.wb.workflow.service.entity.WorkFlowGroupEntity">
+        insert into
+        <include refid="table_name"></include>(<include refid="column_name"></include>)
+        values(#{id},#{createTime},#{createOrg},#{createOrgId},#{createUser},#{createUserId},
+        #{updateTime},#{updateUser},#{updateUserId},#{delFlag},#{delTime},#{name},#{description})
+    </insert>
+
+    <update id="update" parameterType="com.wb.workflow.service.entity.WorkFlowGroupEntity">
+        update
+        <include refid="table_name"></include>
+        <set>
+            <if test="delTime != null and delTime != ''">
+                del_time = #{delTime},
+            </if>
+            <if test="delFlag != null and delFlag != ''">
+                del_flag = #{delFlag},
+            </if>
+            <if test="updateTime != null and updateTime != ''">
+                update_time = #{updateTime},
+            </if>
+            <if test="updateUser != null and updateUser != ''">
+                update_user = #{updateUser},
+            </if>
+            <if test="updateUserId != null and updateUserId != ''">
+                update_user_id = #{updateUserId},
+            </if>
+            <if test="code != null and code != ''">
+                code = #{code},
+            </if>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="description != null and description != ''">
+                description = #{description},
+            </if>
+        </set>
+        where id = #{id}
+        and del_flag = '1'
+    </update>
+
+    <select id="queryForId" resultType="com.wb.workflow.service.entity.WorkFlowGroupEntity">
+        select
+        <include refid="column_name"></include>
+        from
+        <include refid="table_name"></include>
+        where id = #{id}
+        and del_flag = '1'
+    </select>
+</mapper>

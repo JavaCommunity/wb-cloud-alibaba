@@ -5,7 +5,7 @@
     <parent>
         <artifactId>wb-cloud-alibaba</artifactId>
         <groupId>com.wb</groupId>
-        <version>1.1.0-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -13,4 +13,11 @@
     <name>wb-module-workflow</name>
     <packaging>pom</packaging>
     <description>wb module workflow for spring-boot</description>
+
+    <modules>
+        <module>wb-flowable-ext-api</module>
+        <module>wb-service-workflow</module>
+        <module>wb-core-workflow</module>
+        <module>wb-feign-workflow</module>
+    </modules>
 </project>

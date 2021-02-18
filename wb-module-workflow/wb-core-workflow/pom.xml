@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>wb-module-workflow</artifactId>
+        <groupId>com.wb</groupId>
+        <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>wb-core-workflow</artifactId>
+    <name>wb-core-workflow</name>
+    <packaging>jar</packaging>
+    <description>wb core workflow for spring-boot</description>
+
+    <dependencies>
+        <!--spring-boot web start-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--spring-boot web end-->
+
+        <!--flowable ext api start-->
+        <dependency>
+            <groupId>com.wb</groupId>
+            <artifactId>wb-flowable-ext-api</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <!--flowable ext api end-->
+    </dependencies>
+</project>

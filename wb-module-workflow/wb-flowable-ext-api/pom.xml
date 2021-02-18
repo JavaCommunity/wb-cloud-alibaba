@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>wb-module-workflow</artifactId>
+        <groupId>com.wb</groupId>
+        <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>wb-flowable-ext-api</artifactId>
+    <name>wb-flowable-ext-api</name>
+    <packaging>jar</packaging>
+    <description>wb flowable ext api for spring-boot</description>
+
+    <dependencies>
+        <!--spring-boot autoconfigure start-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!--spring-boot autoconfigure end-->
+
+        <!--spring-boot configuration processor start-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!--spring-boot configuration processor end-->
+
+        <!--flowable start-->
+        <dependency>
+            <groupId>org.flowable</groupId>
+            <artifactId>flowable-spring-boot-starter</artifactId>
+            <version>${flowable.version}</version>
+        </dependency>
+        <!--flowable end-->
+
+        <!--alibaba fastjson start-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${alibaba-fastjson.version}</version>
+        </dependency>
+        <!--alibaba fastjson end-->
+
+        <!--cloud common start-->
+        <dependency>
+            <groupId>com.wb</groupId>
+            <artifactId>wb-cloud-common</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <!--cloud common end-->
+    </dependencies>
+</project>
