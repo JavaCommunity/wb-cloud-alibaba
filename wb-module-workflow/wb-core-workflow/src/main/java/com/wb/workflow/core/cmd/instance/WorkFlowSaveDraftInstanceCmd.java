@@ -1,6 +1,6 @@
 package com.wb.workflow.core.cmd.instance;
 
-import com.wb.workflow.core.cmd.WorkFlowCmd;
+import com.wb.workflow.core.cmd.request.WorkFlowGenericCmdRequest;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,10 +12,15 @@ import org.springframework.stereotype.Component;
  * @Version: 1.0
  */
 @Component
-public class WorkFlowSaveDraftInstanceCmd<T> extends AbstractWorkFlowInstanceCmd implements WorkFlowCmd<Void> {
+public class WorkFlowSaveDraftInstanceCmd extends AbstractWorkFlowInstanceCmd {
 
     @Override
-    public Void execute() {
+    public <T> T execute(WorkFlowGenericCmdRequest<T> cmdRequest) {
+        return null;
+    }
+
+    @Override
+    public Class<?> getReqClass() {
         return null;
     }
 }

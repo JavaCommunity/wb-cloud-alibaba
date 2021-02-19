@@ -1,7 +1,7 @@
 package com.wb.workflow.core.cmd.interceptor;
 
 import com.wb.workflow.core.cmd.WorkFlowCmd;
-import com.wb.workflow.core.cmd.WorkFlowCmdInterceptor;
+import com.wb.workflow.core.cmd.request.WorkFlowGenericCmdRequest;
 import org.springframework.stereotype.Component;
 
 /**
@@ -13,11 +13,11 @@ import org.springframework.stereotype.Component;
  * @Version: 1.0
  */
 @Component
-public class WorkFlowInitCmdInterceptor extends AbstractWorkFlowCmdInterceptor implements WorkFlowCmdInterceptor {
+public class WorkFlowInitCmdInterceptor extends AbstractWorkFlowCmdInterceptor {
 
     @Override
-    public <T> T execute(WorkFlowCmd<T> cmd) {
-        return super.execute(cmd);
+    public <T> T execute(WorkFlowCmd cmd, WorkFlowGenericCmdRequest<T> cmdRequest) {
+        return super.execute(cmd, cmdRequest);
     }
 
     @Override

@@ -1,12 +1,13 @@
-package com.wb.workflow.core.executor;
+package com.wb.workflow.core.cmd.executor;
 
 import com.wb.workflow.core.cmd.WorkFlowCmd;
-import com.wb.workflow.core.cmd.WorkFlowCmdInterceptor;
+import com.wb.workflow.core.cmd.interceptor.WorkFlowCmdInterceptor;
+import com.wb.workflow.core.cmd.request.WorkFlowGenericCmdRequest;
 import org.springframework.stereotype.Component;
 
 /**
  * @ClassName: DefaultWorkFlowExecutor
- * @Package: com.wb.workflow.core.executor
+ * @Package: com.wb.workflow.core.cmd.executor
  * @Description: the default work flow executor
  * @Author：[bo.wang]
  * @Date: 2021/2/18
@@ -19,8 +20,8 @@ public class DefaultWorkFlowExecutor implements WorkFlowExecutor {
     private WorkFlowCmdInterceptor firstCmdInterceptor;
 
     @Override
-    public <T> T execute(WorkFlowCmd<T> cmd) {
-        return this.firstCmdInterceptor.execute(cmd);
+    public <T> T execute(WorkFlowCmd cmd, WorkFlowGenericCmdRequest<T> cmdRequest) {
+        return this.firstCmdInterceptor.execute(cmd, cmdRequest);
     }
 
     @Override

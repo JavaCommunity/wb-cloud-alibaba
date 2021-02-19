@@ -1,8 +1,8 @@
 package com.wb.workflow.core.config;
 
 import com.wb.common.utils.spring.SpringApplicationContextProvider;
-import com.wb.workflow.core.cmd.WorkFlowCmdInterceptor;
-import com.wb.workflow.core.executor.WorkFlowExecutor;
+import com.wb.workflow.core.cmd.interceptor.WorkFlowCmdInterceptor;
+import com.wb.workflow.core.cmd.executor.WorkFlowExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanFactoryUtils;

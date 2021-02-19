@@ -1,7 +1,7 @@
 package com.wb.workflow.core.cmd.interceptor;
 
 import com.wb.workflow.core.cmd.WorkFlowCmd;
-import com.wb.workflow.core.cmd.WorkFlowCmdInterceptor;
+import com.wb.workflow.core.cmd.request.WorkFlowGenericCmdRequest;
 import org.springframework.util.ObjectUtils;
 
 /**
@@ -12,7 +12,7 @@ import org.springframework.util.ObjectUtils;
  * @Date: 2021/2/18
  * @Version: 1.0
  */
-public class AbstractWorkFlowCmdInterceptor {
+public abstract class AbstractWorkFlowCmdInterceptor implements WorkFlowCmdInterceptor {
 
     //  the cmd interceptor
     private WorkFlowCmdInterceptor next;
@@ -29,13 +29,14 @@ public class AbstractWorkFlowCmdInterceptor {
     /**
      * execute cmd with the specified cmd
      *
-     * @param cmd the cmd
+     * @param cmd        cmd the command
+     * @param cmdRequest the cmd request
      * @param <T>
-     * @return the T
+     * @return
      */
-    public <T> T execute(WorkFlowCmd<T> cmd) {
+    public <T> T execute(WorkFlowCmd cmd, WorkFlowGenericCmdRequest<T> cmdRequest) {
         if (!ObjectUtils.isEmpty(next)) {
-            return next.execute(cmd);
+            return next.execute(cmd, cmdRequest);
         }
         return null;
     }

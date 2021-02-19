@@ -1,6 +1,6 @@
 package com.wb.workflow.core.cmd.instance;
 
-import com.wb.workflow.core.cmd.WorkFlowCmd;
+import com.wb.workflow.core.cmd.request.WorkFlowGenericCmdRequest;
 
 /**
  * @ClassName: WorkFlowTerminateInstanceCmd
@@ -10,10 +10,15 @@ import com.wb.workflow.core.cmd.WorkFlowCmd;
  * @Date: 2021/2/18
  * @Version: 1.0
  */
-public class WorkFlowTerminateInstanceCmd<T> extends AbstractWorkFlowInstanceCmd implements WorkFlowCmd<Void> {
+public class WorkFlowTerminateInstanceCmd extends AbstractWorkFlowInstanceCmd {
 
     @Override
-    public Void execute() {
+    public <T> T execute(WorkFlowGenericCmdRequest<T> cmdRequest) {
+        return null;
+    }
+
+    @Override
+    public Class<?> getReqClass() {
         return null;
     }
 }

@@ -1,6 +1,7 @@
 package com.wb.workflow.core.cmd.model;
 
 import com.wb.workflow.core.cmd.WorkFlowCmd;
+import com.wb.workflow.core.cmd.request.WorkFlowGenericCmdRequest;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,10 +13,16 @@ import org.springframework.stereotype.Component;
  * @Version: 1.0
  */
 @Component
-public class WorkFlowCreateModelCmd<T> implements WorkFlowCmd<String> {
+public class WorkFlowCreateModelCmd implements WorkFlowCmd {
 
     @Override
-    public String execute() {
+    public <T> T execute(WorkFlowGenericCmdRequest<T> cmdRequest) {
+
+        return null;
+    }
+
+    @Override
+    public Class<?> getReqClass() {
         return null;
     }
 }

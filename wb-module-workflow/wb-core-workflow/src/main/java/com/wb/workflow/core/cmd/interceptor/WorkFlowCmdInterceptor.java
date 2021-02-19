@@ -1,8 +1,11 @@
-package com.wb.workflow.core.cmd;
+package com.wb.workflow.core.cmd.interceptor;
+
+import com.wb.workflow.core.cmd.WorkFlowCmd;
+import com.wb.workflow.core.cmd.request.WorkFlowGenericCmdRequest;
 
 /**
  * @ClassName: WorkFlowCmdInterceptor
- * @Package: com.wb.workflow.core.cmd
+ * @Package: com.wb.workflow.core.cmd.interceptor
  * @Description: the workFlow cmd interceptor
  * @Author：[bo.wang]
  * @Date: 2021/2/10
@@ -13,11 +16,12 @@ public interface WorkFlowCmdInterceptor extends WorkFlowCmdInterceptorOrder {
     /**
      * execute command
      *
-     * @param cmd the command
+     * @param cmd        cmd the command
+     * @param cmdRequest the cmd request
      * @param <T>
      * @return
      */
-    <T> T execute(WorkFlowCmd<T> cmd);
+    <T> T execute(WorkFlowCmd cmd, WorkFlowGenericCmdRequest<T> cmdRequest);
 
     /**
      * set next cmd interceptor

@@ -1,5 +1,7 @@
 package com.wb.workflow.core.cmd;
 
+import com.wb.workflow.core.cmd.request.WorkFlowGenericCmdRequest;
+
 /**
  * @ClassName: WorkFlowCmd
  * @Package: com.wb.workflow.core.cmd
@@ -8,14 +10,14 @@ package com.wb.workflow.core.cmd;
  * @Date: 2021/2/10
  * @Version: 1.0
  */
-public interface WorkFlowCmd<T> {
+public interface WorkFlowCmd {
 
     /**
      * execute command
      *
      * @return
      */
-    T execute();
+    <T> T execute(WorkFlowGenericCmdRequest<T> cmdRequest);
 
     /**
      * the before execute command
@@ -34,4 +36,11 @@ public interface WorkFlowCmd<T> {
      */
     default void check() {
     }
+
+    /**
+     * get request class
+     *
+     * @return the request class
+     */
+    Class<?> getReqClass();
 }

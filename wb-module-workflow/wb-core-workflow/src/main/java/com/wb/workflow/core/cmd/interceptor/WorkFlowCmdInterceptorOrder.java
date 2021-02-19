@@ -1,8 +1,8 @@
-package com.wb.workflow.core.cmd;
+package com.wb.workflow.core.cmd.interceptor;
 
 /**
  * @ClassName: WorkFlowCmdInterceptorOrder
- * @Package: com.wb.workflow.core.cmd
+ * @Package: com.wb.workflow.core.cmd.interceptor
  * @Description: the workFlow cmd interceptor order
  * @Author：[bo.wang]
  * @Date: 2021/2/10
@@ -16,11 +16,4 @@ public interface WorkFlowCmdInterceptorOrder {
      * @return the order number
      */
     int getOrder();
-
-    /**
-     * set next cmd interceptor
-     *
-     * @param next the next cmd interceptor
-     */
-    void setNext(WorkFlowCmdInterceptor next);
 }
