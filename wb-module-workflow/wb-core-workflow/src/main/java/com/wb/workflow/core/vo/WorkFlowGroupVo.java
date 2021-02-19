@@ -1,11 +1,11 @@
-package com.wb.workflow.service.vo;
+package com.wb.workflow.core.vo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
  * @ClassName: WorkFlowGroupVo
- * @Package: com.wb.workflow.service.vo
+ * @Package: com.wb.workflow.core.vo
  * @Description: the work flow group vo
  * @Author：[bo.wang]
  * @Date: 2021/2/18

@@ -1,4 +1,4 @@
-package com.wb.workflow.service.config;
+package com.wb.workflow.core.config;
 
 import com.wb.common.context.BaseContext;
 import com.wb.common.wrapper.SysUserWrapper;
@@ -6,7 +6,7 @@ import org.springframework.util.ObjectUtils;
 
 /**
  * @ClassName: WorkFlowContextHolder
- * @Package: com.wb.workflow.service.config
+ * @Package: com.wb.workflow.core.config
  * @Description: the work flow context holder
  * @Author：[bo.wang]
  * @Date: 2021/2/18

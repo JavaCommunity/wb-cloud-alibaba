@@ -1,13 +1,13 @@
-package com.wb.workflow.service.service.impl;
+package com.wb.workflow.core.service.impl;
 
-import com.wb.workflow.service.entity.WorkFlowGroupEntity;
-import com.wb.workflow.service.service.WorkFlowGroupService;
+import com.wb.workflow.core.entity.WorkFlowGroupEntity;
+import com.wb.workflow.core.service.WorkFlowGroupService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @ClassName: WorkFlowGroupServiceImpl
- * @Package: com.wb.workflow.service.service.impl
+ * @Package: com.wb.workflow.core.service.impl
  * @Description: the work flow group service impl
  * @Author：[bo.wang]
  * @Date: 2021/2/18

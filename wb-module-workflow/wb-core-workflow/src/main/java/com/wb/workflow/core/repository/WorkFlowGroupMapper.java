@@ -1,11 +1,11 @@
-package com.wb.workflow.service.repository;
+package com.wb.workflow.core.repository;
 
-import com.wb.workflow.service.entity.WorkFlowGroupEntity;
+import com.wb.workflow.core.entity.WorkFlowGroupEntity;
 import org.apache.ibatis.annotations.Param;
 
 /**
  * @ClassName: WorkFlowGroupMapper
- * @Package: com.wb.workflow.service.repository
+ * @Package: com.wb.workflow.core.repository
  * @Description: the work flow group mapper
  * @Author：[bo.wang]
  * @Date: 2021/2/18

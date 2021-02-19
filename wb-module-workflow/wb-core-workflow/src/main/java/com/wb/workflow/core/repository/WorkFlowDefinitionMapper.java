@@ -1,11 +1,13 @@
-package com.wb.workflow.service.repository;
+package com.wb.workflow.core.repository;
 
-import com.wb.workflow.service.entity.WorkFlowDefinitionEntity;
+import com.wb.workflow.core.entity.WorkFlowDefinitionEntity;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @ClassName: WorkFlowDefinitionMapper
- * @Package: com.wb.workflow.service.repository
+ * @Package: com.wb.workflow.core.repository
  * @Description: the work flow definition mapper
  * @Author：[bo.wang]
  * @Date: 2021/2/18
@@ -36,4 +38,12 @@ public interface WorkFlowDefinitionMapper {
      * @return the definition entity
      */
     WorkFlowDefinitionEntity queryForId(@Param(value = "definitionId") String definitionId);
+
+    /**
+     * query definition entity with the specified definition code
+     *
+     * @param code the definition code
+     * @return the definition entity
+     */
+    List<WorkFlowDefinitionEntity> queryForCode(@Param(value = "code") String code);
 }

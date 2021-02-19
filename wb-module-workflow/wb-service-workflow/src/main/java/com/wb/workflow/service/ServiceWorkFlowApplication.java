@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableDiscoveryClient
 @EnableTransactionManagement
 @MapperScan(basePackages =
-        "com.wb.workflow.service.repository"
+        "com.wb.workflow.core.repository"
 )
 @ComponentScan(basePackages = {
         "com.wb.flowable.ext.api",

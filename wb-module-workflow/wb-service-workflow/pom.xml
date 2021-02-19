@@ -60,14 +60,6 @@
         </dependency>
         <!--spring jdbc end-->
 
-        <!--knife4j component start-->
-        <dependency>
-            <groupId>com.wb</groupId>
-            <artifactId>wb-knife4j-component</artifactId>
-            <version>${revision}</version>
-        </dependency>
-        <!--knife4j component end-->
-
         <!--spring-boot thymeleaf start-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -1,9 +1,10 @@
 package com.wb.workflow.service.controller;
 
 import com.wb.common.result.R;
-import com.wb.workflow.service.entity.WorkFlowDefinitionEntity;
-import com.wb.workflow.service.service.WorkFlowDefinitionService;
-import com.wb.workflow.service.vo.WorkFlowDefinitionVo;
+import com.wb.workflow.core.config.WorkFlowCmdEnum;
+import com.wb.workflow.core.entity.WorkFlowDefinitionEntity;
+import com.wb.workflow.core.service.WorkFlowDefinitionService;
+import com.wb.workflow.core.vo.WorkFlowDefinitionVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -30,9 +31,10 @@ public class WorkFlowDefinitionController {
 
     @ApiOperation(value = "保存工作流定义信息", notes = "保存工作流定义信息", httpMethod = "POST", code = 9999)
     @RequestMapping(value = "v1/save", method = RequestMethod.POST)
-    public R v1Save(@RequestBody WorkFlowDefinitionVo workFlowDefinition) {
-        WorkFlowDefinitionEntity workFlowDefinitionEntity = definitionService.save(workFlowDefinition);
-        return R.ok().put("definitionId", workFlowDefinitionEntity.getId());
+    public R v1Save(@RequestBody WorkFlowDefinitionVo definitionVo) {
+        definitionVo.setCmdType(WorkFlowCmdEnum.CREATE_MODEL.getType());
+        Object resultObj = definitionService.executeCmd(definitionVo);
+        return R.ok().put("definitionId", resultObj);
     }
 
     @ResponseStatus(value = HttpStatus.OK)
@@ -52,5 +54,12 @@ public class WorkFlowDefinitionController {
     public R v1QueryForId(@RequestParam(value = "id") String id) {
         WorkFlowDefinitionEntity workFlowDefinition = definitionService.queryForId(id);
         return R.ok().put("workFlowDefinition", workFlowDefinition);
+    }
+
+    @RequestMapping(value = "v1/executeCmd", method = RequestMethod.POST)
+    @ApiOperation(value = "指定流程定义相关命令", notes = "指定流程定义相关命令", httpMethod = "POST", code = 9999)
+    public R v1ExecuteCmd(@RequestBody WorkFlowDefinitionVo definitionVo) {
+        Object resultObj = definitionService.executeCmd(definitionVo);
+        return R.ok().data(resultObj);
     }
 }

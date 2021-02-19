@@ -4,10 +4,10 @@ import com.wb.common.utils.spring.SpringApplicationContextProvider;
 import com.wb.workflow.core.cmd.WorkFlowCmd;
 import com.wb.workflow.core.cmd.executor.WorkFlowExecutor;
 import com.wb.workflow.core.cmd.request.WorkFlowGenericCmdRequest;
-import com.wb.workflow.core.cmd.request.model.WorkFlowCreateModelCmdRequest;
 import com.wb.workflow.core.config.WorkFlowCmdEnum;
 import com.wb.workflow.core.config.WorkFlowErrorEnum;
 import com.wb.workflow.core.exception.WorkFlowObjectNotFoundException;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
@@ -42,7 +42,14 @@ public class DefaultWorkFlowCmdResolver implements WorkFlowCmdResolver {
             throw new WorkFlowObjectNotFoundException(WorkFlowErrorEnum.NOT_FOUND_CMD.getMsg(), DefaultWorkFlowCmdResolver.class);
         }
 
-        WorkFlowCreateModelCmdRequest cmdRequest = new WorkFlowCreateModelCmdRequest();
-        return defaultExecutor.execute((WorkFlowCmd) bean, (WorkFlowGenericCmdRequest) cmdRequest);
+        WorkFlowCmd command = (WorkFlowCmd) bean;
+        WorkFlowGenericCmdRequest cmdRequest = null;
+        try {
+            cmdRequest = (WorkFlowGenericCmdRequest) command.getReqClass().newInstance();
+        } catch (Exception e) {
+            throw new WorkFlowObjectNotFoundException(WorkFlowErrorEnum.EXECUTE_CMD.getMsg(), DefaultWorkFlowCmdResolver.class);
+        }
+        BeanUtils.copyProperties(reqObj, cmdRequest);
+        return defaultExecutor.execute(command, cmdRequest);
     }
 }

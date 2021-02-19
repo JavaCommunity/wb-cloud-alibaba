@@ -9,4 +9,15 @@ package com.wb.workflow.core.cmd.request;
  * @Version: 1.0
  */
 public abstract class WorkFlowGenericCmdRequest<T> implements WorkFlowCmdRequest<T> {
+
+    //  the workFlow definition id
+    protected String definitionId;
+
+    public String getDefinitionId() {
+        return definitionId;
+    }
+
+    public void setDefinitionId(String definitionId) {
+        this.definitionId = definitionId;
+    }
 }

@@ -30,5 +30,13 @@
             <version>${revision}</version>
         </dependency>
         <!--flowable ext api end-->
+
+        <!--knife4j component start-->
+        <dependency>
+            <groupId>com.wb</groupId>
+            <artifactId>wb-knife4j-component</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <!--knife4j component end-->
     </dependencies>
 </project>

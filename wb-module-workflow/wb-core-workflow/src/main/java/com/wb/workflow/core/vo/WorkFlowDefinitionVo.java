@@ -1,4 +1,4 @@
-package com.wb.workflow.service.vo;
+package com.wb.workflow.core.vo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -7,7 +7,7 @@ import java.util.Date;
 
 /**
  * @ClassName: WorkFlowDefinitionVo
- * @Package: com.wb.workflow.service.vo
+ * @Package: com.wb.workflow.core.vo
  * @Description: the work flow definition vo
  * @Author：[bo.wang]
  * @Date: 2021/2/18
@@ -24,6 +24,9 @@ public class WorkFlowDefinitionVo {
 
     @ApiModelProperty(value = "流程名称")
     private String name;
+
+    @ApiModelProperty(value = "命令类型，详情可见：com.wb.workflow.core.config.WorkFlowCmdEnum")
+    private String cmdType;
 
     @ApiModelProperty(value = "流程描述")
     private String description;
@@ -64,6 +67,7 @@ public class WorkFlowDefinitionVo {
 
     @ApiModelProperty(value = "设置挂起这个流程定义的时间，如果不填写，则立即挂起")
     private Date suspensionDate;
+
     /*****************流程挂起 end*******************/
 
     public String getDefinitionId() {
@@ -88,6 +92,14 @@ public class WorkFlowDefinitionVo {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCmdType() {
+        return cmdType;
+    }
+
+    public void setCmdType(String cmdType) {
+        this.cmdType = cmdType;
     }
 
     public String getDescription() {

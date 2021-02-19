@@ -29,7 +29,7 @@ spring:
 
 mybatis:
   mapper-locations: classpath:mapper/*/*Mapper.xml
-  type-aliases-package: com.wb.workflow.service.entity
+  type-aliases-package: com.wb.workflow.core.entity
 
 wb-cloud:
   knife4j:

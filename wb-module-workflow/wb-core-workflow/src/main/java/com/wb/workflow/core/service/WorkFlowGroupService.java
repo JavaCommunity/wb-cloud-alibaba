@@ -1,10 +1,10 @@
-package com.wb.workflow.service.service;
+package com.wb.workflow.core.service;
 
-import com.wb.workflow.service.entity.WorkFlowGroupEntity;
+import com.wb.workflow.core.entity.WorkFlowGroupEntity;
 
 /**
  * @ClassName: WorkFlowGroupService
- * @Package: com.wb.workflow.service.service
+ * @Package: com.wb.workflow.core.service
  * @Description: the work flow group service
  * @Author：[bo.wang]
  * @Date: 2021/2/18

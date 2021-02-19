@@ -1,10 +1,10 @@
-package com.wb.workflow.service.entity;
+package com.wb.workflow.core.entity;
 
 import com.wb.common.base.entity.BaseEntity;
 
 /**
  * @ClassName: WorkFlowDefinitionEntity
- * @Package: com.wb.workflow.service.entity
+ * @Package: com.wb.workflow.core.entity
  * @Description: the work flow definition entity
  * @Author：[bo.wang]
  * @Date: 2021/2/18

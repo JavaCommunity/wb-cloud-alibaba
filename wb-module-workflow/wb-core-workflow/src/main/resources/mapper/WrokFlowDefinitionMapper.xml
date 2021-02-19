@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.wb.workflow.service.repository.WorkFlowDefinitionMapper">
+<mapper namespace="com.wb.workflow.core.repository.WorkFlowDefinitionMapper">
 
     <sql id="table_name">
         sys_workflow_definition
@@ -33,7 +33,7 @@
         extend_info
     </sql>
 
-    <resultMap id="workFlowDefinitionEntityMap" type="com.wb.workflow.service.entity.WorkFlowDefinitionEntity">
+    <resultMap id="workFlowDefinitionEntityMap" type="com.wb.workflow.core.entity.WorkFlowDefinitionEntity">
         <result column="id" property="id"></result>
         <result column="create_time" property="createTime"></result>
         <result column="create_org" property="createOrg"></result>
@@ -57,7 +57,7 @@
         <result column="is_main_version" property="isMainVersion"></result>
     </resultMap>
 
-    <insert id="save" parameterType="com.wb.workflow.service.entity.WorkFlowDefinitionEntity">
+    <insert id="save" parameterType="com.wb.workflow.core.entity.WorkFlowDefinitionEntity">
         insert into
         <include refid="table_name"></include>(<include refid="column_name"></include>)
         values(#{id},#{createTime},#{createOrg},#{createOrgId},#{createUser},#{createUserId},
@@ -66,7 +66,7 @@
         #{version},#{isMainVersion},#{confInfo},#{nodeConf},#{extendInfo})
     </insert>
 
-    <update id="update" parameterType="com.wb.workflow.service.entity.WorkFlowDefinitionEntity">
+    <update id="update" parameterType="com.wb.workflow.core.entity.WorkFlowDefinitionEntity">
         update
         <include refid="table_name"></include>
         <set>
@@ -137,5 +137,14 @@
         <include refid="table_name"></include>
         where del_flag = '1'
         and id = #{definitionId}
+    </select>
+
+    <select id="queryForCode" resultMap="workFlowDefinitionEntityMap">
+        select
+        <include refid="column_name"></include>
+        from
+        <include refid="table_name"></include>
+        where del_flag = '1'
+        and code = #{code}
     </select>
 </mapper>

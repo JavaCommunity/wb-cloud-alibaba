@@ -1,13 +1,13 @@
-package com.wb.workflow.service.service;
+package com.wb.workflow.core.service;
 
-import com.wb.workflow.service.entity.WorkFlowDefinitionEntity;
-import com.wb.workflow.service.vo.WorkFlowDefinitionVo;
+import com.wb.workflow.core.entity.WorkFlowDefinitionEntity;
+import com.wb.workflow.core.vo.WorkFlowDefinitionVo;
 
 import java.util.List;
 
 /**
  * @ClassName: WorkFlowDefinitionService
- * @Package: com.wb.workflow.service.service
+ * @Package: com.wb.workflow.core.service
  * @Description: the work flow definition service
  * @Author：[bo.wang]
  * @Date: 2021/2/18
@@ -18,10 +18,9 @@ public interface WorkFlowDefinitionService {
     /**
      * 保存流程定义信息
      *
-     * @param definitionVo 流程定义信息
-     * @return 流程定义实体
+     * @param definitionEntity 流程定义信息
      */
-    WorkFlowDefinitionEntity save(WorkFlowDefinitionVo definitionVo);
+    void save(WorkFlowDefinitionEntity definitionEntity);
 
     /**
      * 修改流程定义信息
@@ -46,4 +45,12 @@ public interface WorkFlowDefinitionService {
      * @return 流程定义信息
      */
     List<WorkFlowDefinitionEntity> queryForCode(String definitionCode);
+
+    /**
+     * 执行流程定义相关命令
+     *
+     * @param definitionVo 流程定义信息vo
+     * @return 返回执行流程定义命令结果
+     */
+    Object executeCmd(WorkFlowDefinitionVo definitionVo);
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.wb.workflow.service.repository.WorkFlowGroupMapper">
+<mapper namespace="com.wb.workflow.core.repository.WorkFlowGroupMapper">
 
     <sql id="table_name">
         sys_workflow_group
@@ -22,14 +22,14 @@
         description
     </sql>
 
-    <insert id="save" parameterType="com.wb.workflow.service.entity.WorkFlowGroupEntity">
+    <insert id="save" parameterType="com.wb.workflow.core.entity.WorkFlowGroupEntity">
         insert into
         <include refid="table_name"></include>(<include refid="column_name"></include>)
         values(#{id},#{createTime},#{createOrg},#{createOrgId},#{createUser},#{createUserId},
         #{updateTime},#{updateUser},#{updateUserId},#{delFlag},#{delTime},#{name},#{description})
     </insert>
 
-    <update id="update" parameterType="com.wb.workflow.service.entity.WorkFlowGroupEntity">
+    <update id="update" parameterType="com.wb.workflow.core.entity.WorkFlowGroupEntity">
         update
         <include refid="table_name"></include>
         <set>
@@ -62,7 +62,7 @@
         and del_flag = '1'
     </update>
 
-    <select id="queryForId" resultType="com.wb.workflow.service.entity.WorkFlowGroupEntity">
+    <select id="queryForId" resultType="com.wb.workflow.core.entity.WorkFlowGroupEntity">
         select
         <include refid="column_name"></include>
         from

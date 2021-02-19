@@ -1,8 +1,8 @@
-package com.wb.workflow.service.exception;
+package com.wb.workflow.core.exception;
 
 /**
  * @ClassName: WorkFlowServiceException
- * @Package: com.wb.workflow.service.exception
+ * @Package: com.wb.workflow.core.exception
  * @Description: the work flow service exception
  * @Author：[bo.wang]
  * @Date: 2021/2/18

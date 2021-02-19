@@ -1,8 +1,8 @@
-package com.wb.workflow.service.service;
+package com.wb.workflow.core.service;
 
 /**
  * @ClassName: WorkFlowInstanceService
- * @Package: com.wb.workflow.service.service
+ * @Package: com.wb.workflow.core.service
  * @Description: the work flow instance service
  * @Author：[bo.wang]
  * @Date: 2021/2/18
