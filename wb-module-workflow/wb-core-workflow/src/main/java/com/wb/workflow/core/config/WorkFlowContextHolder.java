@@ -2,7 +2,6 @@ package com.wb.workflow.core.config;
 
 import com.wb.common.context.BaseContext;
 import com.wb.common.wrapper.SysUserWrapper;
-import org.springframework.util.ObjectUtils;
 
 /**
  * @ClassName: WorkFlowContextHolder
@@ -20,11 +19,14 @@ public class WorkFlowContextHolder extends BaseContext {
      * @return the user info
      */
     public static SysUserWrapper getCurrentUser() {
-        Object obj = get(CONTEXT_USER_KEY);
-        if (!ObjectUtils.isEmpty(obj) && obj instanceof SysUserWrapper) {
-            SysUserWrapper userEntity = (SysUserWrapper) obj;
-            return userEntity;
-        }
-        return null;
+        SysUserWrapper userWrapper = new SysUserWrapper();
+        userWrapper.setName("张三");
+//        Object obj = get(CONTEXT_USER_KEY);
+//        if (!ObjectUtils.isEmpty(obj) && obj instanceof SysUserWrapper) {
+//            SysUserWrapper userEntity = (SysUserWrapper) obj;
+//            return userEntity;
+//        }
+//        return null;
+        return userWrapper;
     }
 }

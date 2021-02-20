@@ -15,6 +15,9 @@ import java.util.Optional;
  */
 public enum WorkFlowCmdEnum {
 
+    //  group
+    CREATE_GROUP("createGroup", "workFlowCreateGroupCmd", "创建分组"),
+
     //  model
     CREATE_MODEL("createModel", "workFlowCreateModelCmd", "创建模型"),
 

@@ -1,5 +1,7 @@
 package com.wb.flowable.ext.api.model;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 /**
  * @ClassName: FlowableModelExt
  * @Package: com.wb.flowable.ext.api.model
@@ -17,4 +19,12 @@ public interface FlowableModelExt {
      * @return the model id
      */
     String create(FlowableModelRequest request);
+
+    /**
+     * query model with the specified model id
+     *
+     * @param modelId the model id
+     * @return the model
+     */
+    ObjectNode queryForId(String modelId);
 }

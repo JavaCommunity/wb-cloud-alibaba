@@ -23,14 +23,11 @@
         description,
         group_Id,
         publish_status,
-        act_definition_id,
-        act_model_id,
-        act_deploy_id,
+        f_definition_id,
+        f_model_id,
+        f_deploy_id,
         version,
-        is_main_version,
-        conf_info,
-        node_conf,
-        extend_info
+        is_main_version
     </sql>
 
     <resultMap id="workFlowDefinitionEntityMap" type="com.wb.workflow.core.entity.WorkFlowDefinitionEntity">
@@ -50,9 +47,9 @@
         <result column="description" property="description"></result>
         <result column="group_Id" property="groupId"></result>
         <result column="publish_status" property="publishStatus"></result>
-        <result column="act_definition_id" property="fDefinitionId"></result>
-        <result column="act_model_id" property="fModelId"></result>
-        <result column="act_deploy_id" property="fDeployId"></result>
+        <result column="f_definition_id" property="fDefinitionId"></result>
+        <result column="f_model_id" property="fModelId"></result>
+        <result column="f_deploy_id" property="fDeployId"></result>
         <result column="version" property="version"></result>
         <result column="is_main_version" property="isMainVersion"></result>
     </resultMap>
@@ -62,8 +59,8 @@
         <include refid="table_name"></include>(<include refid="column_name"></include>)
         values(#{id},#{createTime},#{createOrg},#{createOrgId},#{createUser},#{createUserId},
         #{updateTime},#{updateUser},#{updateUserId},#{delFlag},#{delTime},#{code},#{name},
-        #{description},#{groupId},#{publishStatus},#{actDefinitionId},#{actModelId},#{actDeployId},
-        #{version},#{isMainVersion},#{confInfo},#{nodeConf},#{extendInfo})
+        #{description},#{groupId},#{publishStatus},#{fDefinitionId},#{fModelId},#{fDeployId},
+        #{version},#{isMainVersion})
     </insert>
 
     <update id="update" parameterType="com.wb.workflow.core.entity.WorkFlowDefinitionEntity">
@@ -100,29 +97,20 @@
             <if test="publishStatus != null and publishStatus != ''">
                 publish_status = #{publishStatus},
             </if>
-            <if test="actDefinitionId != null and actDefinitionId != ''">
-                act_definition_id = #{actDefinitionId},
+            <if test="fDefinitionId != null and fDefinitionId != ''">
+                f_definition_id = #{fDefinitionId},
             </if>
-            <if test="actModelId != null and actModelId != ''">
-                act_model_id = #{actModelId},
+            <if test="fModelId != null and fModelId != ''">
+                f_model_id = #{fModelId},
             </if>
-            <if test="actDeployId != null and actDeployId != ''">
-                act_deploy_id = #{actDeployId},
+            <if test="fDeployId != null and fDeployId != ''">
+                f_deploy_id = #{fDeployId},
             </if>
             <if test="version != null and version != ''">
                 version = #{version},
             </if>
             <if test="isMainVersion != null and isMainVersion != ''">
                 is_main_version = #{isMainVersion},
-            </if>
-            <if test="confInfo != null and confInfo != ''">
-                conf_info = #{confInfo},
-            </if>
-            <if test="nodeConf != null and nodeConf != ''">
-                node_conf = #{nodeConf},
-            </if>
-            <if test="extendInfo != null and extendInfo != ''">
-                extend_info = #{extendInfo},
             </if>
         </set>
         where id = #{id}

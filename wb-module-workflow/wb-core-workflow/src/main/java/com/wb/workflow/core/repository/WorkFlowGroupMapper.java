@@ -32,8 +32,8 @@ public interface WorkFlowGroupMapper {
     /**
      * query definition entity with the specified group id
      *
-     * @param groupId the group id
+     * @param id the group id
      * @return the group entity
      */
-    WorkFlowGroupEntity queryForId(@Param(value = "definitionId") String groupId);
+    WorkFlowGroupEntity queryForId(@Param(value = "id") String id);
 }

@@ -22,14 +22,14 @@
         description
     </sql>
 
-    <insert id="save" parameterType="com.wb.workflow.core.entity.WorkFlowGroupEntity">
+    <insert id="save">
         insert into
         <include refid="table_name"></include>(<include refid="column_name"></include>)
         values(#{id},#{createTime},#{createOrg},#{createOrgId},#{createUser},#{createUserId},
         #{updateTime},#{updateUser},#{updateUserId},#{delFlag},#{delTime},#{name},#{description})
     </insert>
 
-    <update id="update" parameterType="com.wb.workflow.core.entity.WorkFlowGroupEntity">
+    <update id="update">
         update
         <include refid="table_name"></include>
         <set>

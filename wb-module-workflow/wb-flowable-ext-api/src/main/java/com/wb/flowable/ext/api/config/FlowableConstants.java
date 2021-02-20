@@ -28,6 +28,9 @@ public interface FlowableConstants {
     //  the model key
     String MODEL_KEY = "key";
 
+    //  the model id
+    String MODEL_ID = "modelId";
+
     //  the model name
     String MODEL_NAME = "name";
 

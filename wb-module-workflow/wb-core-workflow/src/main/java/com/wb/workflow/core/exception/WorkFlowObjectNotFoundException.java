@@ -14,7 +14,7 @@ public class WorkFlowObjectNotFoundException extends WorkFlowException {
     private static final long serialVersionUID = 1L;
 
     //  the exception class
-    private Class<?> cls;
+    private Class<?> cls = null;
 
     /**
      * constructs a new workFlowObjectNotFoundException with the specified message and class.

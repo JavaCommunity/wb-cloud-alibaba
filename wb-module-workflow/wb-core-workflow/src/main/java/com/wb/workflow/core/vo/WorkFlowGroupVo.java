@@ -17,6 +17,9 @@ public class WorkFlowGroupVo {
     @ApiModelProperty(value = "分组名称")
     private String name;
 
+    @ApiModelProperty(value = "命令类型")
+    private String cmdType;
+
     @ApiModelProperty(value = "描述信息")
     private String description;
 
@@ -26,6 +29,14 @@ public class WorkFlowGroupVo {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCmdType() {
+        return cmdType;
+    }
+
+    public void setCmdType(String cmdType) {
+        this.cmdType = cmdType;
     }
 
     public String getDescription() {
