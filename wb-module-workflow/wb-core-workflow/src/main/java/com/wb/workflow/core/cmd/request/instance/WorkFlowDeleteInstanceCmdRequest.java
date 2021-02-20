@@ -10,5 +10,32 @@ import com.wb.workflow.core.cmd.request.WorkFlowGenericCmdRequest;
  * @Date: 2021/2/19
  * @Version: 1.0
  */
-public class WorkFlowDeleteInstanceCmdRequest extends WorkFlowGenericCmdRequest<String> {
+public class WorkFlowDeleteInstanceCmdRequest extends WorkFlowGenericCmdRequest<Void> {
+
+    //  the delete reason
+    private String deleteReason;
+
+    //  the cascade
+    private boolean cascade;
+
+    @Override
+    public void check() {
+
+    }
+
+    public String getDeleteReason() {
+        return deleteReason;
+    }
+
+    public void setDeleteReason(String deleteReason) {
+        this.deleteReason = deleteReason;
+    }
+
+    public boolean isCascade() {
+        return cascade;
+    }
+
+    public void setCascade(boolean cascade) {
+        this.cascade = cascade;
+    }
 }

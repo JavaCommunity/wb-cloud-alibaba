@@ -13,11 +13,22 @@ public abstract class WorkFlowGenericCmdRequest<T> implements WorkFlowCmdRequest
     //  the workFlow definition id
     protected String definitionId;
 
+    //  the workFlow instance id
+    protected String instanceId;
+
     public String getDefinitionId() {
         return definitionId;
     }
 
     public void setDefinitionId(String definitionId) {
         this.definitionId = definitionId;
+    }
+
+    public String getInstanceId() {
+        return instanceId;
+    }
+
+    public void setInstanceId(String instanceId) {
+        this.instanceId = instanceId;
     }
 }
