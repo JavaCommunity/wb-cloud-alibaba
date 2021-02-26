@@ -38,11 +38,11 @@ public class WorkFlowDefinitionController {
     }
 
     @ResponseStatus(value = HttpStatus.OK)
-    @RequestMapping(value = "v1/update/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "v1/update", method = RequestMethod.POST)
     @ApiOperation(value = "修改工作流定义信息", notes = "修改工作流定义信息", httpMethod = "POST", code = 9999)
-    public R v1Update(WorkFlowDefinitionVo workFlowDefinition) {
-        WorkFlowDefinitionEntity workFlowDefinitionEntity = definitionService.update(workFlowDefinition);
-        return R.ok().put("definitionId", workFlowDefinitionEntity.getId());
+    public R v1Update(WorkFlowDefinitionVo definitionVo) {
+        WorkFlowDefinitionEntity definitionEntity = definitionService.updateModel(definitionVo);
+        return R.ok().put("definitionId", definitionEntity.getId());
     }
 
     @RequestMapping(value = "v1/queryForId", method = RequestMethod.GET)

@@ -3,6 +3,8 @@ package com.wb.workflow.core.config;
 import com.wb.common.context.BaseContext;
 import com.wb.common.wrapper.SysUserWrapper;
 
+import java.util.Optional;
+
 /**
  * @ClassName: WorkFlowContextHolder
  * @Package: com.wb.workflow.core.config
@@ -21,6 +23,9 @@ public class WorkFlowContextHolder extends BaseContext {
     public static SysUserWrapper getCurrentUser() {
         SysUserWrapper userWrapper = new SysUserWrapper();
         userWrapper.setName("张三");
+        userWrapper.setId("111111111111");
+        userWrapper.setCreateOrg("技术部");
+        userWrapper.setCreateOrgId("222222222222222222222");
 //        Object obj = get(CONTEXT_USER_KEY);
 //        if (!ObjectUtils.isEmpty(obj) && obj instanceof SysUserWrapper) {
 //            SysUserWrapper userEntity = (SysUserWrapper) obj;
@@ -28,5 +33,15 @@ public class WorkFlowContextHolder extends BaseContext {
 //        }
 //        return null;
         return userWrapper;
+    }
+
+    /**
+     * get current user id
+     *
+     * @return the current user id
+     */
+    public static String getCurrentUserId() {
+        SysUserWrapper currentUser = getCurrentUser();
+        return Optional.ofNullable(currentUser.getId()).orElse(null);
     }
 }

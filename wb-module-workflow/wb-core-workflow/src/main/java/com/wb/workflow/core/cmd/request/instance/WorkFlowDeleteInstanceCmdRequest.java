@@ -1,6 +1,7 @@
 package com.wb.workflow.core.cmd.request.instance;
 
 import com.wb.workflow.core.cmd.request.WorkFlowGenericCmdRequest;
+import com.wb.workflow.core.utils.WorkFlowReqCheckUtils;
 
 /**
  * @ClassName: WorkFlowDeleteInstanceCmdRequest
@@ -20,7 +21,7 @@ public class WorkFlowDeleteInstanceCmdRequest extends WorkFlowGenericCmdRequest<
 
     @Override
     public void check() {
-
+        WorkFlowReqCheckUtils.checkEmpty(instanceId, "instanceId");
     }
 
     public String getDeleteReason() {

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.util.ObjectUtils;
 
 /**
  * @ClassName: WorkFlowGroupServiceImpl
@@ -40,6 +41,13 @@ public class WorkFlowGroupServiceImpl implements WorkFlowGroupService {
     }
 
     @Override
+    public WorkFlowGroupEntity queryForName(String groupName) {
+        Assert.hasLength(groupName, "'groupName' must not be null！");
+
+        return groupMapper.queryForName(groupName);
+    }
+
+    @Override
     public Object executeCmd(WorkFlowGroupVo groupVo) {
         String cmdType = groupVo.getCmdType();
         boolean support = defaultCmdResolver.support(cmdType);
@@ -54,6 +62,26 @@ public class WorkFlowGroupServiceImpl implements WorkFlowGroupService {
         int saveNum = groupMapper.save(groupEntity);
         if (saveNum <= 0) {
             throw new WorkFlowServiceException("save workFlow group info error！");
+        }
+    }
+
+    @Override
+    public void checkForId(String groupId) {
+        Assert.hasLength(groupId, "'groupId' must not be null！");
+
+        WorkFlowGroupEntity groupEntity = this.queryForId(groupId);
+        if (ObjectUtils.isEmpty(groupEntity)) {
+            throw new WorkFlowServiceException(WorkFlowErrorEnum.NOT_FOUND_GROUP.getMsg());
+        }
+    }
+
+    @Override
+    public void checkForName(String groupName) {
+        Assert.hasLength(groupName, "'groupName' must not be null！");
+
+        WorkFlowGroupEntity groupEntity = this.queryForName(groupName);
+        if (!ObjectUtils.isEmpty(groupEntity)) {
+            throw new WorkFlowServiceException(WorkFlowErrorEnum.GROUP_EXIST.getMsg());
         }
     }
 }

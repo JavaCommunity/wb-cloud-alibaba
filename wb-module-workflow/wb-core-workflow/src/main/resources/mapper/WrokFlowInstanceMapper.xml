@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wb.workflow.core.repository.WorkFlowInstanceMapper">
+
+    <sql id="table_name">
+        sys_workflow_instance
+    </sql>
+
+    <sql id="column_name">
+        t1.id,
+        t1.create_time,
+        t1.create_org,
+        t1.create_org_id,
+        t1.create_user,
+        t1.create_user_id,
+        t1.update_time,
+        t1.update_user,
+        t1.update_user_id,
+        t1.del_flag,
+        t1.del_time,
+        t1.definition_id,
+        t1.definition_code,
+        t1.definition_name,
+        t1.f_definition_id,
+        t1.f_instance_id,
+        t1.f_deployment_id,
+        t1.business_key,
+        t1.status,
+        t1.finish_time,
+        t1.due_date,
+        t1.title,
+        t1.result,
+        t1.set_json
+    </sql>
+
+    <resultMap id="workFlowInstanceEntityMap" type="com.wb.workflow.core.entity.WorkFlowInstanceEntity">
+        <result column="id" property="id"></result>
+        <result column="create_time" property="createTime"></result>
+        <result column="create_org" property="createOrg"></result>
+        <result column="create_org_id" property="createOrgId"></result>
+        <result column="create_user" property="createUser"></result>
+        <result column="create_user_id" property="createUserId"></result>
+        <result column="update_time" property="updateTime"></result>
+        <result column="update_user" property="updateUser"></result>
+        <result column="update_user_id" property="updateUserId"></result>
+        <result column="del_flag" property="delFlag"></result>
+        <result column="del_time" property="delTime"></result>
+        <result column="definition_id" property="definitionId"></result>
+        <result column="definition_code" property="definitionCode"></result>
+        <result column="definition_name" property="definitionName"></result>
+        <result column="f_definition_id" property="fDefinitionId"></result>
+        <result column="f_deployment_id" property="fDeploymentId"></result>
+        <result column="f_instance_id" property="fInstanceId"></result>
+        <result column="business_key" property="businessKey"></result>
+        <result column="status" property="status"></result>
+        <result column="finish_time" property="finishTime"></result>
+        <result column="due_date" property="dueDate"></result>
+        <result column="title" property="title"></result>
+        <result column="result" property="result"></result>
+        <result column="set_json" property="setJson"></result>
+    </resultMap>
+
+    <insert id="save" parameterType="com.wb.workflow.core.entity.WorkFlowInstanceEntity">
+        insert into
+        <include refid="table_name"></include>(<include refid="column_name"></include>)
+        values(#{id},#{createTime},#{createOrg},#{createOrgId},#{createUser},#{createUserId},
+        #{updateTime},#{updateUser},#{updateUserId},#{delFlag},#{delTime},#{definitionId},
+        #{definitionCode},#{definitionName},#{fDefinitionId},#{fInstanceId},#{fDeploymentId},
+        #{businessKey},#{status},#{finishTime},#{dueDate},#{title},#{result},#{setJson})
+    </insert>
+
+    <update id="update" parameterType="com.wb.workflow.core.entity.WorkFlowInstanceEntity">
+        update
+        <include refid="table_name"></include>
+        <set>
+            <if test="delTime != null and delTime != ''">
+                del_time = #{delTime},
+            </if>
+            <if test="delFlag != null and delFlag != ''">
+                del_flag = #{delFlag},
+            </if>
+            <if test="updateTime != null and updateTime != ''">
+                update_time = #{updateTime},
+            </if>
+            <if test="updateUser != null and updateUser != ''">
+                update_user = #{updateUser},
+            </if>
+            <if test="updateUserId != null and updateUserId != ''">
+                update_user_id = #{updateUserId},
+            </if>
+            <if test="definitionId != null and definitionId != ''">
+                definition_id = #{definitionId},
+            </if>
+            <if test="definitionCode != null and definitionCode != ''">
+                definition_code = #{definitionCode},
+            </if>
+            <if test="definitionName != null and definitionName != ''">
+                definition_name = #{definitionName},
+            </if>
+            <if test="fDefinitionId != null and fDefinitionId != ''">
+                f_definition_id = #{fDefinitionId},
+            </if>
+            <if test="fInstanceId != null and fInstanceId != ''">
+                f_instance_id = #{fInstanceId},
+            </if>
+            <if test="fDeploymentId != null and fDeploymentId != ''">
+                f_deployment_id = #{fDeploymentId},
+            </if>
+            <if test="businessKey != null and businessKey != ''">
+                business_key = #{businessKey},
+            </if>
+            <if test="status != null and status != ''">
+                status = #{status},
+            </if>
+            <if test="finishTime != null and finishTime != ''">
+                finish_time = #{finishTime},
+            </if>
+            <if test="dueDate != null and dueDate != ''">
+                due_date = #{dueDate},
+            </if>
+            <if test="title != null and title != ''">
+                title = #{title},
+            </if>
+            <if test="result != null and result != ''">
+                result = #{result},
+            </if>
+        </set>
+        where id = #{id}
+        and del_flag = '1'
+    </update>
+
+    <select id="queryForId" resultMap="workFlowInstanceEntityMap">
+        select
+        <include refid="column_name"></include>
+        t1
+        from
+        <include refid="table_name"></include>
+        where t1.id = #{instanceId}
+        and t1.del_flag = '1'
+    </select>
+</mapper>

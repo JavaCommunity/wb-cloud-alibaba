@@ -1,10 +1,11 @@
 package com.wb.workflow.core.service.impl;
 
 import com.wb.common.utils.entity.EntityUtils;
+import com.wb.flowable.ext.api.model.FlowableModelExt;
+import com.wb.flowable.ext.api.model.FlowableModelRequest;
 import com.wb.workflow.core.cmd.resolver.WorkFlowCmdResolver;
 import com.wb.workflow.core.config.WorkFlowContextHolder;
 import com.wb.workflow.core.config.WorkFlowErrorEnum;
-import com.wb.workflow.core.config.WorkFlowPublishStatusEnum;
 import com.wb.workflow.core.entity.WorkFlowDefinitionEntity;
 import com.wb.workflow.core.exception.WorkFlowServiceException;
 import com.wb.workflow.core.repository.WorkFlowDefinitionMapper;
@@ -14,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.util.CollectionUtils;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
 
@@ -30,17 +33,17 @@ import java.util.List;
 public class WorkFlowDefinitionServiceImpl implements WorkFlowDefinitionService {
 
     @Autowired
+    private WorkFlowCmdResolver defaultCmdResolver;
+
+    @Autowired
     private WorkFlowDefinitionMapper definitionMapper;
 
     @Autowired
-    private WorkFlowCmdResolver defaultCmdResolver;
+    private FlowableModelExt modelExt;
 
     @Override
     public void save(WorkFlowDefinitionEntity definitionEntity) {
         EntityUtils.save(definitionEntity, WorkFlowContextHolder.getCurrentUser());
-        definitionEntity.setIsMainVersion("1");
-        definitionEntity.setVersion("1");
-        definitionEntity.setPublishStatus(WorkFlowPublishStatusEnum.DRAFT.name());
         int saveNum = definitionMapper.save(definitionEntity);
         if (saveNum <= 0) {
             throw new WorkFlowServiceException("save workFlow definition info error！");
@@ -48,8 +51,31 @@ public class WorkFlowDefinitionServiceImpl implements WorkFlowDefinitionService 
     }
 
     @Override
-    public WorkFlowDefinitionEntity update(WorkFlowDefinitionVo definitionVo) {
-        return null;
+    public WorkFlowDefinitionEntity updateModel(WorkFlowDefinitionVo definitionVo) {
+        Assert.notNull(definitionVo, "'definitionVo' must not be null！");
+        WorkFlowDefinitionEntity definitionEntity = this.queryForId(definitionVo.getDefinitionId());
+        if (ObjectUtils.isEmpty(definitionEntity)) {
+            throw new WorkFlowServiceException(WorkFlowErrorEnum.DEFINITION_EXIST.getMsg());
+        }
+
+        //  validation bpmn model
+        String jsonXml = definitionVo.getJson_xml();
+        modelExt.validationBpmnModel(jsonXml);
+
+        //  update model
+        FlowableModelRequest modelRequest = new FlowableModelRequest(
+                definitionEntity.getfModelId(),
+                jsonXml,
+                definitionVo.getSvg_xml()
+        );
+        modelExt.update(modelRequest);
+        EntityUtils.save(definitionEntity, WorkFlowContextHolder.getCurrentUser());
+        definitionEntity.setVersion(String.valueOf(Integer.valueOf(definitionEntity.getVersion()) + 1));
+        int updateNum = definitionMapper.update(definitionEntity);
+        if (updateNum < 1) {
+            throw new WorkFlowServiceException("update definition info error！");
+        }
+        return definitionEntity;
     }
 
     @Override
@@ -73,5 +99,25 @@ public class WorkFlowDefinitionServiceImpl implements WorkFlowDefinitionService 
         Assert.isTrue(support, WorkFlowErrorEnum.NO_SUPPORT_CMD.getMsg());
 
         return defaultCmdResolver.resolverCmdInvoke(cmdType, definitionVo);
+    }
+
+    @Override
+    public void checkForCode(String definitionCode) {
+        Assert.hasLength(definitionCode, "'definitionCode' must not be null！");
+
+        List<WorkFlowDefinitionEntity> definitionEntityList = this.queryForCode(definitionCode);
+        if (!CollectionUtils.isEmpty(definitionEntityList)) {
+            throw new WorkFlowServiceException(WorkFlowErrorEnum.DEFINITION_EXIST.getMsg());
+        }
+    }
+
+    @Override
+    public void checkForId(String definitionId) {
+        Assert.hasLength(definitionId, "'definitionId' must not be null！");
+
+        WorkFlowDefinitionEntity definitionEntity = this.queryForId(definitionId);
+        if (ObjectUtils.isEmpty(definitionEntity)) {
+            throw new WorkFlowServiceException(WorkFlowErrorEnum.DEFINITION_EXIST.getMsg());
+        }
     }
 }

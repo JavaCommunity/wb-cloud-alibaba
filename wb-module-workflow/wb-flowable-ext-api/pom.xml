@@ -38,6 +38,12 @@
             <artifactId>flowable-spring-boot-starter</artifactId>
             <version>${flowable.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.flowable</groupId>
+            <artifactId>flowable-json-converter</artifactId>
+            <version>${flowable.version}</version>
+        </dependency>
         <!--flowable end-->
 
         <!--alibaba fastjson start-->
@@ -55,5 +61,31 @@
             <version>${revision}</version>
         </dependency>
         <!--cloud common end-->
+
+        <!-- batik start-->
+        <dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>batik-codec</artifactId>
+            <version>${batik-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>batik-css</artifactId>
+            <version>${batik-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>batik-svg-dom</artifactId>
+            <version>${batik-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>batik-svggen</artifactId>
+            <version>${batik-version}</version>
+        </dependency>
+        <!-- batik end-->
     </dependencies>
 </project>

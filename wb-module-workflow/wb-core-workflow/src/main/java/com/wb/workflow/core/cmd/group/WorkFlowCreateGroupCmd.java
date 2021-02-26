@@ -26,10 +26,12 @@ public class WorkFlowCreateGroupCmd implements WorkFlowCmd {
     @Override
     public <T> T execute(WorkFlowGenericCmdRequest<T> cmdRequest) {
         WorkFlowCreateGroupCmdRequest request = (WorkFlowCreateGroupCmdRequest) cmdRequest;
+        groupService.checkForName(request.getName());
+
         WorkFlowGroupEntity groupEntity = new WorkFlowGroupEntity();
         BeanUtils.copyProperties(request, groupEntity);
         groupService.save(groupEntity);
-        return (T) groupEntity;
+        return (T) groupEntity.getId();
     }
 
     @Override

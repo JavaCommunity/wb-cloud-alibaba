@@ -22,6 +22,14 @@ public interface WorkFlowGroupService {
     WorkFlowGroupEntity queryForId(String groupId);
 
     /**
+     * 根据分组名称查询流程分组信息
+     *
+     * @param groupName 分组名称
+     * @return 分组实体信息
+     */
+    WorkFlowGroupEntity queryForName(String groupName);
+
+    /**
      * 指定流程分组相关命令
      *
      * @param groupVo 流程分组信息vo
@@ -35,4 +43,18 @@ public interface WorkFlowGroupService {
      * @param groupEntity 流程分组信息
      */
     void save(WorkFlowGroupEntity groupEntity);
+
+    /**
+     * 根据流程分组检查信息是否存在
+     *
+     * @param groupId 流程分组ID
+     */
+    void checkForId(String groupId);
+
+    /**
+     * 根据流分组名称检查是否信息是否存在
+     *
+     * @param groupName 流程分组名称
+     */
+    void checkForName(String groupName);
 }

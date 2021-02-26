@@ -25,6 +25,7 @@ public class WorkFlowGlobalExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     public R globalException(Exception e) {
         log.error("[WorkFlow Starter] Service Error,ErrMsg:{}", e.getMessage());
+        e.printStackTrace();
         return R.error(e.getMessage());
     }
 }

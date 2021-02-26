@@ -11,4 +11,13 @@ import com.wb.workflow.core.cmd.WorkFlowCmd;
  * @Version: 1.0
  */
 public abstract class AbstractWorkFlowInstanceCmd implements WorkFlowCmd {
+
+    /**
+     * is suspended with the specified status
+     *
+     * @param status the status
+     */
+    protected void isSuspended(String status) {
+
+    }
 }

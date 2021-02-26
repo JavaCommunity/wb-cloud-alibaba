@@ -23,12 +23,12 @@ public interface WorkFlowDefinitionService {
     void save(WorkFlowDefinitionEntity definitionEntity);
 
     /**
-     * 修改流程定义信息
+     * 修改流程定义模型信息
      *
      * @param definitionVo 流程定义信息
      * @return 流程定义实体
      */
-    WorkFlowDefinitionEntity update(WorkFlowDefinitionVo definitionVo);
+    WorkFlowDefinitionEntity updateModel(WorkFlowDefinitionVo definitionVo);
 
     /**
      * 根据流程定义ID查询流程定义信息
@@ -53,4 +53,18 @@ public interface WorkFlowDefinitionService {
      * @return 返回执行流程定义命令结果
      */
     Object executeCmd(WorkFlowDefinitionVo definitionVo);
+
+    /**
+     * 检查流程定义code是否存在
+     *
+     * @param definitionCode 流程定义code
+     */
+    void checkForCode(String definitionCode);
+
+    /**
+     * 根据流程定义ID判断流程定义信息是否存在
+     *
+     * @param definitionId 流程定义ID
+     */
+    void checkForId(String definitionId);
 }

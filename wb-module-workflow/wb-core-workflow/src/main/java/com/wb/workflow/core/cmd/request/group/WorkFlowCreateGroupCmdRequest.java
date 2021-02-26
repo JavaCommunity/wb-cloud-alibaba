@@ -1,7 +1,6 @@
 package com.wb.workflow.core.cmd.request.group;
 
 import com.wb.workflow.core.cmd.request.WorkFlowGenericCmdRequest;
-import com.wb.workflow.core.entity.WorkFlowGroupEntity;
 
 /**
  * @ClassName: WorkFlowCreateGroupCmdRequest
@@ -11,7 +10,7 @@ import com.wb.workflow.core.entity.WorkFlowGroupEntity;
  * @Date: 2021/2/20
  * @Version: 1.0
  */
-public class WorkFlowCreateGroupCmdRequest extends WorkFlowGenericCmdRequest<WorkFlowGroupEntity> {
+public class WorkFlowCreateGroupCmdRequest extends WorkFlowGenericCmdRequest<String> {
 
     //  the group name
     private String name;

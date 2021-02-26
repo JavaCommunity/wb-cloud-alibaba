@@ -17,7 +17,7 @@ public class WorkFlowBeforeCmdInterceptor extends AbstractWorkFlowCmdInterceptor
 
     @Override
     public <T> T execute(WorkFlowCmd cmd, WorkFlowGenericCmdRequest<T> cmdRequest) {
-        cmd.before();
+        cmd.before(cmdRequest);
         return super.execute(cmd, cmdRequest);
     }
 

@@ -372,7 +372,8 @@ var SaveModelCtrl = [ '$rootScope', '$scope', '$http', '$route', '$location',
             json_xml: json,
             svg_xml: svgDOM,
             name: $scope.saveDialog.name,
-            description: $scope.saveDialog.description
+            description: $scope.saveDialog.description,
+            definitionId: modelMetaData.modelId
         };
 
         // Update

@@ -70,4 +70,13 @@
         where id = #{id}
         and del_flag = '1'
     </select>
+
+    <select id="queryForName" resultType="com.wb.workflow.core.entity.WorkFlowGroupEntity">
+        select
+        <include refid="column_name"></include>
+        from
+        <include refid="table_name"></include>
+        where name = #{name}
+        limit 1
+    </select>
 </mapper>

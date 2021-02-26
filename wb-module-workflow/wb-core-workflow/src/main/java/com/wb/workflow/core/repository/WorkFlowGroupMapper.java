@@ -36,4 +36,12 @@ public interface WorkFlowGroupMapper {
      * @return the group entity
      */
     WorkFlowGroupEntity queryForId(@Param(value = "id") String id);
+
+    /**
+     * query definition entity with the specified group name
+     *
+     * @param name the group name
+     * @return the group entity
+     */
+    WorkFlowGroupEntity queryForName(@Param(value = "name") String name);
 }

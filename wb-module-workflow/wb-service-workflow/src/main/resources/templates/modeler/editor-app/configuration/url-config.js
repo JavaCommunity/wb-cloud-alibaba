@@ -28,6 +28,6 @@ KISBPM.URL = {
     },
 
     putModel: function (id) {
-        return '/workFlow/definition/v1/update/' + id;
+        return '/workFlow/definition/v1/update';
     }
 };

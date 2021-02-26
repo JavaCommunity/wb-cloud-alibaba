@@ -21,20 +21,26 @@ public interface WorkFlowCmd {
 
     /**
      * the before execute command
+     *
+     * @param cmdRequest this cmd request
      */
-    default void before() {
+    default void before(WorkFlowGenericCmdRequest cmdRequest) {
     }
 
     /**
      * the after execute command
+     *
+     * @param cmdRequest this cmd request
      */
-    default void after() {
+    default void after(WorkFlowGenericCmdRequest cmdRequest) {
     }
 
     /**
      * the check command
+     *
+     * @param cmdRequest this cmd request
      */
-    default void check() {
+    default void check(WorkFlowGenericCmdRequest cmdRequest) {
     }
 
     /**

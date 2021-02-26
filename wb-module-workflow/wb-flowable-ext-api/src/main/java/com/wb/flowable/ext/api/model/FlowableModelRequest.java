@@ -30,6 +30,26 @@ public class FlowableModelRequest extends FlowableRequest {
     //  the description
     private String description;
 
+    /**
+     * constructs a new flowableModelRequest.
+     */
+    public FlowableModelRequest() {
+    }
+
+    /**
+     * constructs a new flowableModelRequest with the specified the model id
+     * and model id and json xml and svg xml.
+     *
+     * @param modelId the model id
+     * @param jsonXml the json xml
+     * @param svgXml  the svg xml
+     */
+    public FlowableModelRequest(String modelId, String jsonXml, String svgXml) {
+        this.modelId = modelId;
+        this.jsonXml = jsonXml;
+        this.svgXml = svgXml;
+    }
+
     public String getCode() {
         return code;
     }

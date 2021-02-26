@@ -1,5 +1,8 @@
 package com.wb.workflow.core.cmd.request;
 
+import com.wb.workflow.core.entity.WorkFlowDefinitionEntity;
+import com.wb.workflow.core.entity.WorkFlowInstanceEntity;
+
 /**
  * @ClassName: AbstractWorkFlowCmdRequest
  * @Package: com.wb.workflow.core.cmd.request
@@ -16,6 +19,12 @@ public abstract class WorkFlowGenericCmdRequest<T> implements WorkFlowCmdRequest
     //  the workFlow instance id
     protected String instanceId;
 
+    //  the work flow instance entity
+    protected WorkFlowInstanceEntity instance;
+
+    //  the work flow definition entity
+    protected WorkFlowDefinitionEntity definition;
+
     public String getDefinitionId() {
         return definitionId;
     }
@@ -30,5 +39,21 @@ public abstract class WorkFlowGenericCmdRequest<T> implements WorkFlowCmdRequest
 
     public void setInstanceId(String instanceId) {
         this.instanceId = instanceId;
+    }
+
+    public WorkFlowInstanceEntity getInstance() {
+        return instance;
+    }
+
+    public void setInstance(WorkFlowInstanceEntity instance) {
+        this.instance = instance;
+    }
+
+    public WorkFlowDefinitionEntity getDefinition() {
+        return definition;
+    }
+
+    public void setDefinition(WorkFlowDefinitionEntity definition) {
+        this.definition = definition;
     }
 }

@@ -21,6 +21,9 @@ public enum WorkFlowCmdEnum {
     //  model
     CREATE_MODEL("createModel", "workFlowCreateModelCmd", "创建模型"),
 
+    //  definition
+    CREATE_DEFINITION("createDefinition", "workFlowCreateDefinitionCmd", "创建流程定义信息"),
+
     //  process instance
     SAVE_DRAFT_INSTANCE("saveDraftInstance", "workFlowSaveDraftInstanceCmd", "保存流程实例草稿"),
     ACTIVATE_INSTANCE("activateInstance", "workFlowActivateInstanceCmd", "激活实例命令"),
