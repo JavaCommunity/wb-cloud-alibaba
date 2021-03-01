@@ -35,7 +35,7 @@ public class WorkFlowDefinitionEntity extends BaseEntity {
     /**
      * 流程状态
      */
-    private String publishStatus;
+    private String status;
 
     /**
      * 流程定义ID
@@ -94,12 +94,12 @@ public class WorkFlowDefinitionEntity extends BaseEntity {
         this.groupId = groupId;
     }
 
-    public String getPublishStatus() {
-        return publishStatus;
+    public String getStatus() {
+        return status;
     }
 
-    public void setPublishStatus(String publishStatus) {
-        this.publishStatus = publishStatus;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getfDefinitionId() {

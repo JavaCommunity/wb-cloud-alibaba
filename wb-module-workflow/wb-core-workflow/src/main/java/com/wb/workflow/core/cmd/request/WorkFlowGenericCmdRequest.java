@@ -16,6 +16,9 @@ public abstract class WorkFlowGenericCmdRequest<T> implements WorkFlowCmdRequest
     //  the workFlow definition id
     protected String definitionId;
 
+    //  the workFlow definition code
+    protected String definitionCode;
+
     //  the workFlow instance id
     protected String instanceId;
 
@@ -31,6 +34,14 @@ public abstract class WorkFlowGenericCmdRequest<T> implements WorkFlowCmdRequest
 
     public void setDefinitionId(String definitionId) {
         this.definitionId = definitionId;
+    }
+
+    public String getDefinitionCode() {
+        return definitionCode;
+    }
+
+    public void setDefinitionCode(String definitionCode) {
+        this.definitionCode = definitionCode;
     }
 
     public String getInstanceId() {

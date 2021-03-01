@@ -67,4 +67,19 @@ public interface WorkFlowDefinitionService {
      * @param definitionId 流程定义ID
      */
     void checkForId(String definitionId);
+
+    /**
+     * 修改流程定义信息
+     *
+     * @param definition
+     */
+    void update(WorkFlowDefinitionEntity definition);
+
+    /**
+     * 根据流程定义CODE查询主流程定义信息
+     *
+     * @param definitionCode 流程定义code
+     * @return
+     */
+    WorkFlowDefinitionEntity queryMainForCode(String definitionCode);
 }

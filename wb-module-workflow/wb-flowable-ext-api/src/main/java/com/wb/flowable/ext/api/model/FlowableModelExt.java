@@ -5,7 +5,6 @@ import org.flowable.bpmn.model.BpmnModel;
 import org.flowable.bpmn.model.EndEvent;
 import org.flowable.engine.repository.Model;
 
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
@@ -30,9 +29,17 @@ public interface FlowableModelExt {
      * query model with the specified model id
      *
      * @param modelId the model id
-     * @return the model
+     * @return the object node
      */
     ObjectNode queryForId(String modelId);
+
+    /**
+     * query model with the specified model id
+     *
+     * @param model the model
+     * @return the object node
+     */
+    ObjectNode queryForId(Model model);
 
     /**
      * query end flow element with the specified definition id
@@ -71,4 +78,12 @@ public interface FlowableModelExt {
      * @return the model
      */
     Model queryModelForId(String modelId);
+
+    /**
+     * query model editor source with the specified model id
+     *
+     * @param modelId the model id
+     * @return the object node
+     */
+    ObjectNode queryModelEditorSource(String modelId);
 }

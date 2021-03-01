@@ -27,4 +27,12 @@ public interface WorkFlowInstanceService {
      * @return 执行流程实例命令返回
      */
     Object executeCmd(WorkFlowInstanceVo instanceVo);
+
+    /**
+     * 根据流程实例ID查询流程实例信息
+     *
+     * @param instanceId
+     * @return
+     */
+    WorkFlowInstanceEntity queryForId(String instanceId);
 }

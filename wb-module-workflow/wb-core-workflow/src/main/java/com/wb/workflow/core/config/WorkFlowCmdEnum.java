@@ -23,13 +23,12 @@ public enum WorkFlowCmdEnum {
 
     //  definition
     CREATE_DEFINITION("createDefinition", "workFlowCreateDefinitionCmd", "创建流程定义信息"),
+    DEPLOY_DEFINITION("deployDefinition", "workFlowDeployDefinitionCmd", "部署流程"),
 
     //  process instance
-    SAVE_DRAFT_INSTANCE("saveDraftInstance", "workFlowSaveDraftInstanceCmd", "保存流程实例草稿"),
     ACTIVATE_INSTANCE("activateInstance", "workFlowActivateInstanceCmd", "激活实例命令"),
     DELETE_INSTANCE("deleteInstance", "workFlowDeleteInstanceCmd", "删除流程实例"),
     START_INSTANCE("startInstance", "workFlowStartInstanceCmd", "启动流程实例"),
-    DRAFT_START_INSTANCE("draftStartInstance", "workFlowDraftStartInstanceCmd", "启动草稿流程实例"),
     SUSPEND_INSTANCE("suspendInstance", "workFlowSuspendInstanceCmd", "挂起流程实例"),
     TERMINATION_INSTANCE("terminationInstance", "workFlowTerminateInstanceCmd", "终止流程"),
 

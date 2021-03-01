@@ -17,6 +17,7 @@ import com.wb.workflow.core.service.WorkFlowInstanceService;
 import org.flowable.engine.runtime.ProcessInstance;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 
@@ -30,6 +31,7 @@ import java.util.Map;
  * @Date: 2021/2/18
  * @Version: 1.0
  */
+@Component
 public class WorkFlowStartInstanceCmd extends AbstractWorkFlowInstanceCmd {
 
     @Autowired

@@ -46,4 +46,12 @@ public interface WorkFlowDefinitionMapper {
      * @return the definition entity
      */
     List<WorkFlowDefinitionEntity> queryForCode(@Param(value = "code") String code);
+
+    /**
+     * query main definition entity the specified definition code
+     *
+     * @param code the definition code
+     * @return the definition entity
+     */
+    WorkFlowDefinitionEntity queryMainForCode(@Param(value = "code") String code);
 }

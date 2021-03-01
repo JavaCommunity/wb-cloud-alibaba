@@ -7,7 +7,7 @@ import com.wb.workflow.core.cmd.request.definition.WorkFlowCreateDefinitionCmdRe
 import com.wb.workflow.core.cmd.request.model.WorkFlowCreateModelCmdRequest;
 import com.wb.workflow.core.config.WorkFlowCmdEnum;
 import com.wb.workflow.core.config.WorkFlowErrorEnum;
-import com.wb.workflow.core.config.WorkFlowPublishStatusEnum;
+import com.wb.workflow.core.config.WorkFlowDefinitionStatusEnum;
 import com.wb.workflow.core.entity.WorkFlowDefinitionEntity;
 import com.wb.workflow.core.exception.WorkFlowException;
 import com.wb.workflow.core.service.WorkFlowDefinitionService;
@@ -63,7 +63,7 @@ public class WorkFlowCreateDefinitionCmd implements WorkFlowCmd {
         definitionEntity.setIsMainVersion("1");
         definitionEntity.setVersion("1");
         definitionEntity.setfModelId(modelId);
-        definitionEntity.setPublishStatus(WorkFlowPublishStatusEnum.DRAFT.name());
+        definitionEntity.setStatus(WorkFlowDefinitionStatusEnum.DRAFT.name());
         definitionService.save(definitionEntity);
         return (T) definitionEntity.getId();
     }

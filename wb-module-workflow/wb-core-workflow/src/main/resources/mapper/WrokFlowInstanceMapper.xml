@@ -7,30 +7,30 @@
     </sql>
 
     <sql id="column_name">
-        t1.id,
-        t1.create_time,
-        t1.create_org,
-        t1.create_org_id,
-        t1.create_user,
-        t1.create_user_id,
-        t1.update_time,
-        t1.update_user,
-        t1.update_user_id,
-        t1.del_flag,
-        t1.del_time,
-        t1.definition_id,
-        t1.definition_code,
-        t1.definition_name,
-        t1.f_definition_id,
-        t1.f_instance_id,
-        t1.f_deployment_id,
-        t1.business_key,
-        t1.status,
-        t1.finish_time,
-        t1.due_date,
-        t1.title,
-        t1.result,
-        t1.set_json
+        id,
+        create_time,
+        create_org,
+        create_org_id,
+        create_user,
+        create_user_id,
+        update_time,
+        update_user,
+        update_user_id,
+        del_flag,
+        del_time,
+        definition_id,
+        definition_code,
+        definition_name,
+        f_definition_id,
+        f_instance_id,
+        f_deployment_id,
+        business_key,
+        status,
+        finish_time,
+        due_date,
+        title,
+        result,
+        set_json
     </sql>
 
     <resultMap id="workFlowInstanceEntityMap" type="com.wb.workflow.core.entity.WorkFlowInstanceEntity">
@@ -132,10 +132,9 @@
     <select id="queryForId" resultMap="workFlowInstanceEntityMap">
         select
         <include refid="column_name"></include>
-        t1
         from
         <include refid="table_name"></include>
-        where t1.id = #{instanceId}
-        and t1.del_flag = '1'
+        where id = #{instanceId}
+        and del_flag = '1'
     </select>
 </mapper>

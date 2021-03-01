@@ -22,7 +22,7 @@
         name,
         description,
         group_Id,
-        publish_status,
+        status,
         f_definition_id,
         f_model_id,
         f_deploy_id,
@@ -46,7 +46,7 @@
         <result column="name" property="name"></result>
         <result column="description" property="description"></result>
         <result column="group_Id" property="groupId"></result>
-        <result column="publish_status" property="publishStatus"></result>
+        <result column="status" property="status"></result>
         <result column="f_definition_id" property="fDefinitionId"></result>
         <result column="f_model_id" property="fModelId"></result>
         <result column="f_deploy_id" property="fDeployId"></result>
@@ -59,7 +59,7 @@
         <include refid="table_name"></include>(<include refid="column_name"></include>)
         values(#{id},#{createTime},#{createOrg},#{createOrgId},#{createUser},#{createUserId},
         #{updateTime},#{updateUser},#{updateUserId},#{delFlag},#{delTime},#{code},#{name},
-        #{description},#{groupId},#{publishStatus},#{fDefinitionId},#{fModelId},#{fDeployId},
+        #{description},#{groupId},#{status},#{fDefinitionId},#{fModelId},#{fDeployId},
         #{version},#{isMainVersion})
     </insert>
 
@@ -94,8 +94,8 @@
             <if test="groupId != null and groupId != ''">
                 group_Id = #{groupId},
             </if>
-            <if test="publishStatus != null and publishStatus != ''">
-                publish_status = #{publishStatus},
+            <if test="status != null and status != ''">
+                status = #{status},
             </if>
             <if test="fDefinitionId != null and fDefinitionId != ''">
                 f_definition_id = #{fDefinitionId},
@@ -133,6 +133,16 @@
         from
         <include refid="table_name"></include>
         where del_flag = '1'
+        and code = #{code}
+    </select>
+
+    <select id="queryMainForCode" resultMap="workFlowDefinitionEntityMap">
+        select
+        <include refid="column_name"></include>
+        from
+        <include refid="table_name"></include>
+        where del_flag = '1'
+        and is_main_version = '1'
         and code = #{code}
     </select>
 </mapper>

@@ -52,4 +52,11 @@ public class WorkFlowInstanceServiceImpl implements WorkFlowInstanceService {
 
         return defaultCmdResolver.resolverCmdInvoke(cmdType, instanceVo);
     }
+
+    @Override
+    public WorkFlowInstanceEntity queryForId(String instanceId) {
+        WorkFlowReqCheckUtils.checkEmpty(instanceId, "instanceId");
+
+        return instanceMapper.queryForId(instanceId);
+    }
 }

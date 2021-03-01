@@ -42,4 +42,14 @@ public class DefaultFlowableDefinitionExt implements FlowableDefinitionExt {
                 .processDefinitionId(definitionId)
                 .singleResult();
     }
+
+    @Override
+    public ProcessDefinition queryForDeployId(String deployId) {
+        FlowableReqCheckUtils.checkEmpty(deployId, "deployId");
+
+        return repositoryService
+                .createProcessDefinitionQuery()
+                .deploymentId(deployId)
+                .singleResult();
+    }
 }

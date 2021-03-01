@@ -20,10 +20,18 @@ public interface FlowableDefinitionExt {
     void checkForId(String definitionId);
 
     /**
-     * query definition with the specified the definition id
+     * query definition with the specified definition id
      *
      * @param definitionId the definition id
-     * @return
+     * @return the process definition
      */
     ProcessDefinition queryForId(String definitionId);
+
+    /**
+     * query definition with the specified deploy id.
+     *
+     * @param deployId the deploy id
+     * @return the process definition
+     */
+    ProcessDefinition queryForDeployId(String deployId);
 }

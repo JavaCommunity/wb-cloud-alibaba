@@ -113,6 +113,27 @@ public class DefaultFlowableModelExt implements FlowableModelExt {
     }
 
     @Override
+    public ObjectNode queryForId(Model model) {
+        try {
+            FlowableReqCheckUtils.checkEmpty(model, "model");
+            ObjectNode modelNode = null;
+            if (!StringUtils.isEmpty(model.getMetaInfo())) {
+                modelNode = (ObjectNode) objectMapper.readTree(model.getMetaInfo());
+            } else {
+                modelNode = objectMapper.createObjectNode();
+                modelNode.put(MODEL_NAME, model.getName());
+            }
+            modelNode.put(FlowableConstants.MODEL_ID, model.getId());
+            ObjectNode editorJsonNode = (ObjectNode) objectMapper.readTree(new String(repositoryService.getModelEditorSource(model.getId()), "utf-8"));
+            modelNode.put("model", editorJsonNode);
+            return modelNode;
+        } catch (Exception e) {
+            log.error("[Flowable Ext Api] Model Query Error,ErrMsg:{}", e.getMessage());
+            throw new FlowableException(e.getMessage());
+        }
+    }
+
+    @Override
     public List<EndEvent> queryEndFlowElement(String definitionId) {
         FlowableReqCheckUtils.checkEmpty(definitionId, "definitionId");
         BpmnModel bpmnModel = queryForDefinitionId(definitionId);
@@ -192,5 +213,18 @@ public class DefaultFlowableModelExt implements FlowableModelExt {
         FlowableReqCheckUtils.checkEmpty(modelId, "modelId");
 
         return repositoryService.getModel(modelId);
+    }
+
+    @Override
+    public ObjectNode queryModelEditorSource(String modelId) {
+        FlowableReqCheckUtils.checkEmpty(modelId, "modelId");
+
+        try {
+            byte[] modelEditorSource = repositoryService.getModelEditorSource(modelId);
+            return (ObjectNode) new ObjectMapper().readTree(modelEditorSource);
+        } catch (Exception e) {
+            log.error("[Flowable Ext Api] Query Model Editor Source Error,ErrMsg:{}", e.getMessage());
+            throw new FlowableObjectNotFoundException(FlowableErrorEnum.NOT_FOUND_MODEL.getMsg());
+        }
     }
 }

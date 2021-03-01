@@ -19,6 +19,7 @@ public enum FlowableErrorEnum {
     NOT_FOUND_DEFINITION("10002", "未找到流程定义信息！"),
 
     //  deployment
+    DEPLOYMENT("10002", "部署流程失败！"),
     NOT_FOUND_DEPLOYMENT("10003", "未找到流程部署信息！"),
 
     //  instance

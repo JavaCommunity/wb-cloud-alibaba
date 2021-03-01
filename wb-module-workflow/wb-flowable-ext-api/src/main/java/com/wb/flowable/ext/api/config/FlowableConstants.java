@@ -39,4 +39,7 @@ public interface FlowableConstants {
 
     //  the charset
     String CHARSET = "utf8";
+
+    //  the bpmn suffix
+    String BPMN_SUFFIX = ".bpmn20.xml";
 }

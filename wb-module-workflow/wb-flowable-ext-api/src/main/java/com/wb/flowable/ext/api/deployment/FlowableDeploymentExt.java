@@ -26,4 +26,13 @@ public interface FlowableDeploymentExt {
      * @return the deployment info
      */
     Deployment queryForId(String deploymentId);
+
+    /**
+     * deploy process with the specified model id and code.
+     *
+     * @param modelId the model id
+     * @param code    the code
+     * @return teh deployment
+     */
+    Deployment deploy(String modelId, String code);
 }

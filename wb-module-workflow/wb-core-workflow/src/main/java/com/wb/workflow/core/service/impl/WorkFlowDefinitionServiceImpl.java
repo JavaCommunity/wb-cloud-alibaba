@@ -10,6 +10,7 @@ import com.wb.workflow.core.entity.WorkFlowDefinitionEntity;
 import com.wb.workflow.core.exception.WorkFlowServiceException;
 import com.wb.workflow.core.repository.WorkFlowDefinitionMapper;
 import com.wb.workflow.core.service.WorkFlowDefinitionService;
+import com.wb.workflow.core.utils.WorkFlowReqCheckUtils;
 import com.wb.workflow.core.vo.WorkFlowDefinitionVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -119,5 +120,21 @@ public class WorkFlowDefinitionServiceImpl implements WorkFlowDefinitionService 
         if (ObjectUtils.isEmpty(definitionEntity)) {
             throw new WorkFlowServiceException(WorkFlowErrorEnum.DEFINITION_EXIST.getMsg());
         }
+    }
+
+    @Override
+    public void update(WorkFlowDefinitionEntity definition) {
+        EntityUtils.save(definition, WorkFlowContextHolder.getCurrentUser());
+        int updateNum = definitionMapper.update(definition);
+        if (updateNum < 1) {
+            throw new WorkFlowServiceException("update work flow definition info error！");
+        }
+    }
+
+    @Override
+    public WorkFlowDefinitionEntity queryMainForCode(String definitionCode) {
+        WorkFlowReqCheckUtils.checkEmpty(definitionCode, "definitionCode");
+
+        return definitionMapper.queryMainForCode(definitionCode);
     }
 }
