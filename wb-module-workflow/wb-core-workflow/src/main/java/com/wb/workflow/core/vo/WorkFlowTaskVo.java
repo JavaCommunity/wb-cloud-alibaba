@@ -25,6 +25,12 @@ public class WorkFlowTaskVo {
     @ApiModelProperty(value = "任务ID")
     private String taskId;
 
+    @ApiModelProperty(value = "任务被转交人")
+    private String turnUserId;
+
+    @ApiModelProperty(value = "任务签收人")
+    private String chaimUserId;
+
     @ApiModelProperty(value = "流程变量")
     private Map<String, Object> variables;
 
@@ -50,6 +56,22 @@ public class WorkFlowTaskVo {
 
     public void setTaskId(String taskId) {
         this.taskId = taskId;
+    }
+
+    public String getTurnUserId() {
+        return turnUserId;
+    }
+
+    public void setTurnUserId(String turnUserId) {
+        this.turnUserId = turnUserId;
+    }
+
+    public String getChaimUserId() {
+        return chaimUserId;
+    }
+
+    public void setChaimUserId(String chaimUserId) {
+        this.chaimUserId = chaimUserId;
     }
 
     public Map<String, Object> getVariables() {

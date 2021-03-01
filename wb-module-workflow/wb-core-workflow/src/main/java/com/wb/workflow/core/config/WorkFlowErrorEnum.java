@@ -31,6 +31,7 @@ public enum WorkFlowErrorEnum {
     NOT_FOUND_INSTANCE("4446", "未找到流程实例！"),
 
     //  task
+    CREATE_SUB_TASK("44447", "创建子任务失败！"),
 
     //  system
     EXECUTE_CMD("4444", "执行命令异常！"),

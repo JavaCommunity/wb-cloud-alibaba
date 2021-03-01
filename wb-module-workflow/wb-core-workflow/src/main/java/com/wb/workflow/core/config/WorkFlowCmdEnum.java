@@ -34,7 +34,6 @@ public enum WorkFlowCmdEnum {
 
     //  task
     ADD_TASK_RECORD("addTaskRecord", "workFlowAddTaskRecordCmd", "添加任务操作记录"),
-    AGENT_TASK("agentTask", "workFlowAgentTaskCmd", "办理任务"),
     CLAIM_TASK("claimTask", "workFlowClaimTaskCmd", "认领任务"),
     UN_CLAIM_TASK("unClaimTask", "workFlowUnClaimTaskCmd", "取消任务认领"),
     DELEGATE_TASK("delegateTask", "workFlowDelegateTaskCmd", "委派任务"),
@@ -42,8 +41,7 @@ public enum WorkFlowCmdEnum {
     TURN_TASK("turnTask", "workFlowTurnTaskCmd", "转交任务"),
     TERMINATION_TASK("terminationTask", "workFlowTerminationTaskCmd", "终止任务"),
     GET_WAIT_HANDLE_TASK("getWaitHandleTask", "workFlowGetWaitHandleTaskCmd", "查询代办任务"),
-    LOCK_TASK("lockTask", "workFlowLockTaskCmd", "锁定任务"),
-    UN_LOCK_TASK("unLockTask", "workFlowUnLockTaskCmd", "解锁任务");
+    GET_ALREADY_HANDLE_TASK("getAlreadyHandleTask", "workFlowGetAlreadyHandleTaskCmd", "查询已办任务");
 
     //  the type
     private String type;
