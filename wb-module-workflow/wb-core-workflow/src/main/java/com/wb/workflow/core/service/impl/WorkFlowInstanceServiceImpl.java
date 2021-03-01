@@ -6,6 +6,7 @@ import com.wb.workflow.core.config.WorkFlowContextHolder;
 import com.wb.workflow.core.config.WorkFlowErrorEnum;
 import com.wb.workflow.core.entity.WorkFlowInstanceEntity;
 import com.wb.workflow.core.exception.WorkFlowException;
+import com.wb.workflow.core.exception.WorkFlowServiceException;
 import com.wb.workflow.core.repository.WorkFlowInstanceMapper;
 import com.wb.workflow.core.service.WorkFlowInstanceService;
 import com.wb.workflow.core.utils.WorkFlowReqCheckUtils;
@@ -58,5 +59,16 @@ public class WorkFlowInstanceServiceImpl implements WorkFlowInstanceService {
         WorkFlowReqCheckUtils.checkEmpty(instanceId, "instanceId");
 
         return instanceMapper.queryForId(instanceId);
+    }
+
+    @Override
+    public void update(WorkFlowInstanceEntity instanceEntity) {
+        WorkFlowReqCheckUtils.checkEmpty(instanceEntity, "instanceEntity");
+
+        EntityUtils.save(instanceEntity, WorkFlowContextHolder.getCurrentUser());
+        int updateNum = instanceMapper.update(instanceEntity);
+        if (updateNum < 1) {
+            throw new WorkFlowServiceException("update work flow instance entity error!");
+        }
     }
 }

@@ -32,10 +32,12 @@ public enum WorkFlowErrorEnum {
 
     //  task
     CREATE_SUB_TASK("44447", "创建子任务失败！"),
+    NO_DELEGATE_TASK("44448", "当前任务不是委托任务不能执行取消委托操作！"),
 
     //  system
     EXECUTE_CMD("4444", "执行命令异常！"),
     NOT_FOUND_CMD("4443", "未找到可执行命令！"),
+    REPEAT_EXECUTE("4445", "请勿重复执行！"),
     NO_SUPPORT_CMD("4441", "暂不支持该接口调用,请联系管理员！"),
     ;
 

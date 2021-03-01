@@ -70,4 +70,18 @@ public interface FlowableInstanceExt {
      * @param activityId              the activity id
      */
     void jumpToActivityNode(List<String> executionInstanceIdList, String activityId);
+
+    /**
+     * active process instance with the specified process instance id.
+     *
+     * @param processInstanceId the process instance id
+     */
+    void active(String processInstanceId);
+
+    /**
+     * suspend process instance with the specified process instance id.
+     *
+     * @param processInstanceId the process instance id
+     */
+    void suspend(String processInstanceId);
 }

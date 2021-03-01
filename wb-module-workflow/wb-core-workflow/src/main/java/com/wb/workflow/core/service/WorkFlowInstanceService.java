@@ -35,4 +35,11 @@ public interface WorkFlowInstanceService {
      * @return
      */
     WorkFlowInstanceEntity queryForId(String instanceId);
+
+    /**
+     * update work flow instance entity withe specified instance entity
+     *
+     * @param instanceEntity the instance entity
+     */
+    void update(WorkFlowInstanceEntity instanceEntity);
 }

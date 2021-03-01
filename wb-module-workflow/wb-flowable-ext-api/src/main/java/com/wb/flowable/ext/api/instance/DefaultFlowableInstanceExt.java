@@ -124,4 +124,18 @@ public class DefaultFlowableInstanceExt implements FlowableInstanceExt {
                 .moveExecutionsToSingleActivityId(executionInstanceIdList, activityId)
                 .changeState();
     }
+
+    @Override
+    public void active(String processInstanceId) {
+        FlowableReqCheckUtils.checkEmpty(processInstanceId, "processInstanceId");
+
+        runtimeService.activateProcessInstanceById(processInstanceId);
+    }
+
+    @Override
+    public void suspend(String processInstanceId) {
+        FlowableReqCheckUtils.checkEmpty(processInstanceId, "processInstanceId");
+
+        runtimeService.suspendProcessInstanceById(processInstanceId);
+    }
 }
