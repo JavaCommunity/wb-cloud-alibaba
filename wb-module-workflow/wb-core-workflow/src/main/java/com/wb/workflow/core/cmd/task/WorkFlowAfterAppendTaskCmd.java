@@ -26,12 +26,11 @@ public class WorkFlowAfterAppendTaskCmd extends AbstractWorkFlowTaskCmd {
     @Override
     public <T> T execute(WorkFlowGenericCmdRequest<T> cmdRequest) {
         WorkFlowAfterAppendTaskCmdRequest request = (WorkFlowAfterAppendTaskCmdRequest) cmdRequest;
-
         String userId = request.getUserId();
         if (StringUtils.isEmpty(userId)) {
             userId = WorkFlowContextHolder.getCurrentUserId();
         }
-        taskExt.appendSign(userId, request.getTask(), request.getByAppendUser(), FlowableAppendSignEnum.BEFORE);
+        taskExt.appendSign(userId, request.getTask(), request.getByAppendUser(), FlowableAppendSignEnum.AFTER);
         return null;
     }
 
