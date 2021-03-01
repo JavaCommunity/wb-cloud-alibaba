@@ -1,12 +1,13 @@
 package com.wb.workflow.core.cmd.interceptor;
 
 import com.wb.workflow.core.cmd.WorkFlowCmd;
-import com.wb.workflow.core.cmd.request.WorkFlowCmdRequest;
 import com.wb.workflow.core.cmd.request.WorkFlowGenericCmdRequest;
 import com.wb.workflow.core.entity.WorkFlowDefinitionEntity;
 import com.wb.workflow.core.entity.WorkFlowInstanceEntity;
 import com.wb.workflow.core.service.WorkFlowDefinitionService;
 import com.wb.workflow.core.service.WorkFlowInstanceService;
+import com.wb.workflow.core.service.WorkFlowTaskService;
+import org.flowable.task.api.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
@@ -29,14 +30,21 @@ public class WorkFlowInitCmdInterceptor extends AbstractWorkFlowCmdInterceptor {
     @Autowired
     private WorkFlowInstanceService instanceService;
 
+    @Autowired
+    private WorkFlowTaskService taskService;
+
     @Override
     public <T> T execute(WorkFlowCmd cmd, WorkFlowGenericCmdRequest<T> cmdRequest) {
         if (!ObjectUtils.isEmpty(cmdRequest)) {
+            WorkFlowGenericCmdRequest genericRequest = (WorkFlowGenericCmdRequest) cmdRequest;
             //  init definition info
-            initDefinition(cmdRequest);
+            initDefinition(genericRequest);
 
             //  init instance info
-            initInstance(cmdRequest);
+            initInstance(genericRequest);
+
+            //  init task info
+            initTask(genericRequest);
         }
         return super.execute(cmd, cmdRequest);
     }
@@ -49,35 +57,48 @@ public class WorkFlowInitCmdInterceptor extends AbstractWorkFlowCmdInterceptor {
     /**
      * init work flow definition info.
      *
-     * @param request the cmd request
+     * @param cmdRequest the cmd request
      */
-    private void initDefinition(WorkFlowCmdRequest request) {
-        WorkFlowGenericCmdRequest genericRequest = (WorkFlowGenericCmdRequest) request;
-        genericRequest.setDefinition(null);
-        String definitionId = genericRequest.getDefinitionId();
+    private void initDefinition(WorkFlowGenericCmdRequest cmdRequest) {
+        cmdRequest.setDefinition(null);
+        String definitionId = cmdRequest.getDefinitionId();
         WorkFlowDefinitionEntity definitionEntity = null;
-        String definitionCode = genericRequest.getDefinitionCode();
+        String definitionCode = cmdRequest.getDefinitionCode();
         if (!StringUtils.isEmpty(definitionId)) {
             definitionEntity = definitionService.queryForId(definitionId);
         } else if (!StringUtils.isEmpty(definitionCode) && ObjectUtils.isEmpty(definitionEntity)) {
             definitionEntity = definitionService.queryMainForCode(definitionCode);
         }
-        genericRequest.setDefinition(definitionEntity);
+        cmdRequest.setDefinition(definitionEntity);
     }
 
     /**
      * init work flow instance info.
      *
-     * @param request the cmd request
+     * @param cmdRequest the cmd request
      */
-    private void initInstance(WorkFlowCmdRequest request) {
-        WorkFlowGenericCmdRequest genericRequest = (WorkFlowGenericCmdRequest) request;
-        String instanceId = genericRequest.getInstanceId();
+    private void initInstance(WorkFlowGenericCmdRequest cmdRequest) {
+        String instanceId = cmdRequest.getInstanceId();
         if (StringUtils.isEmpty(instanceId)) {
             return;
         }
-        genericRequest.setInstance(null);
+        cmdRequest.setInstance(null);
         WorkFlowInstanceEntity instanceEntity = instanceService.queryForId(instanceId);
-        genericRequest.setInstance(instanceEntity);
+        cmdRequest.setInstance(instanceEntity);
+    }
+
+    /**
+     * init work flow task info.
+     *
+     * @param cmdRequest the cmd request
+     */
+    private void initTask(WorkFlowGenericCmdRequest cmdRequest) {
+        String taskId = cmdRequest.getTaskId();
+        if (StringUtils.isEmpty(taskId)) {
+            return;
+        }
+        cmdRequest.setInstance(null);
+        Task task = taskService.queryForId(taskId);
+        cmdRequest.setTask(task);
     }
 }

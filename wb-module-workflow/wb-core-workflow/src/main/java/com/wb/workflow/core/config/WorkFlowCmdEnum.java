@@ -38,7 +38,7 @@ public enum WorkFlowCmdEnum {
     CLAIM_TASK("claimTask", "workFlowClaimTaskCmd", "认领任务"),
     UN_CLAIM_TASK("unClaimTask", "workFlowUnClaimTaskCmd", "取消任务认领"),
     DELEGATE_TASK("delegateTask", "workFlowDelegateTaskCmd", "委派任务"),
-    NORMAL_TASK_COMPLETE("normalTaskComplete", "workFlowNormalTaskCompleteCmd", "任务办理"),
+    COMPLETE_TASK("completeTask", "workFlowCompleteTaskCmd", "办理任务"),
     TURN_TASK("turnTask", "workFlowTurnTaskCmd", "转交任务"),
     TERMINATION_TASK("terminationTask", "workFlowTerminationTaskCmd", "终止任务"),
     GET_WAIT_HANDLE_TASK("getWaitHandleTask", "workFlowGetWaitHandleTaskCmd", "查询代办任务"),

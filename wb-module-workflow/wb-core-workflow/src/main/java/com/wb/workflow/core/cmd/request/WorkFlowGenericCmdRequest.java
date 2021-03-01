@@ -2,6 +2,7 @@ package com.wb.workflow.core.cmd.request;
 
 import com.wb.workflow.core.entity.WorkFlowDefinitionEntity;
 import com.wb.workflow.core.entity.WorkFlowInstanceEntity;
+import org.flowable.task.api.Task;
 
 /**
  * @ClassName: AbstractWorkFlowCmdRequest
@@ -27,6 +28,12 @@ public abstract class WorkFlowGenericCmdRequest<T> implements WorkFlowCmdRequest
 
     //  the work flow definition entity
     protected WorkFlowDefinitionEntity definition;
+
+    //  the task id
+    protected String taskId;
+
+    //  the task
+    protected Task task;
 
     public String getDefinitionId() {
         return definitionId;
@@ -66,5 +73,21 @@ public abstract class WorkFlowGenericCmdRequest<T> implements WorkFlowCmdRequest
 
     public void setDefinition(WorkFlowDefinitionEntity definition) {
         this.definition = definition;
+    }
+
+    public String getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(String taskId) {
+        this.taskId = taskId;
+    }
+
+    public Task getTask() {
+        return task;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
     }
 }
