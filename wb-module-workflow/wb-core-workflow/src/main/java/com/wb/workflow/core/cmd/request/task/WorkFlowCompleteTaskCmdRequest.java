@@ -31,14 +31,6 @@ public class WorkFlowCompleteTaskCmdRequest extends WorkFlowGenericCmdRequest<Vo
         this.userId = userId;
     }
 
-    public String getTaskId() {
-        return taskId;
-    }
-
-    public void setTaskId(String taskId) {
-        this.taskId = taskId;
-    }
-
     public Map<String, Object> getVariables() {
         return variables;
     }

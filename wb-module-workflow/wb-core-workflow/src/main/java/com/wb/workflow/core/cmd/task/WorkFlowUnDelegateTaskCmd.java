@@ -28,6 +28,11 @@ public class WorkFlowUnDelegateTaskCmd extends AbstractWorkFlowTaskCmd {
     }
 
     @Override
+    public void after(WorkFlowGenericCmdRequest cmdRequest) {
+        super.addTaskOperation(cmdRequest);
+    }
+
+    @Override
     public Class<?> getReqClass() {
         return WorkFlowUnDelegateTaskCmdRequest.class;
     }

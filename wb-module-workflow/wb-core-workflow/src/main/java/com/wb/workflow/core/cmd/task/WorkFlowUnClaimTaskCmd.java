@@ -27,6 +27,11 @@ public class WorkFlowUnClaimTaskCmd extends AbstractWorkFlowTaskCmd {
     }
 
     @Override
+    public void after(WorkFlowGenericCmdRequest cmdRequest) {
+        super.addTaskOperation(cmdRequest);
+    }
+
+    @Override
     public Class<?> getReqClass() {
         return WorkFlowUnClaimTaskCmdRequest.class;
     }

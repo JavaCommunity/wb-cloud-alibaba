@@ -33,7 +33,7 @@ public enum WorkFlowCmdEnum {
     TERMINATION_INSTANCE("terminationInstance", "workFlowTerminateInstanceCmd", "终止流程"),
 
     //  task
-    ADD_TASK_RECORD("addTaskRecord", "workFlowAddTaskRecordCmd", "添加任务操作记录"),
+    ADD_TASK_OPERATION("addTaskOperation", "workFlowAddTaskOperationCmd", "添加任务操作记录"),
     CLAIM_TASK("claimTask", "workFlowClaimTaskCmd", "认领任务"),
     UN_CLAIM_TASK("unClaimTask", "workFlowUnClaimTaskCmd", "取消任务认领"),
     DELEGATE_TASK("delegateTask", "workFlowDelegateTaskCmd", "委派任务"),
@@ -90,6 +90,19 @@ public enum WorkFlowCmdEnum {
                 .stream().filter(type -> type.type.equalsIgnoreCase(cmdType)).findFirst();
         return cmdEnumOptional.isPresent() ? cmdEnumOptional.get().beanId : null;
     }
+
+    /**
+     * get bean id with the specified cmd type.
+     *
+     * @param cmdType the cmd type
+     * @return the operation
+     */
+    public static String getOperation(String cmdType) {
+        Optional<WorkFlowCmdEnum> cmdEnumOptional = Arrays.asList(WorkFlowCmdEnum.values())
+                .stream().filter(type -> type.type.equalsIgnoreCase(cmdType)).findFirst();
+        return cmdEnumOptional.isPresent() ? cmdEnumOptional.get().description : null;
+    }
+
 
     public String getType() {
         return type;

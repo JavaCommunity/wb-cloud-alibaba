@@ -35,6 +35,12 @@ public abstract class WorkFlowGenericCmdRequest<T> implements WorkFlowCmdRequest
     //  the task
     protected Task task;
 
+    //  the approve opinion
+    protected String approveOpinion;
+
+    //  the cmd type
+    protected String cmdType;
+
     public String getDefinitionId() {
         return definitionId;
     }
@@ -89,5 +95,21 @@ public abstract class WorkFlowGenericCmdRequest<T> implements WorkFlowCmdRequest
 
     public void setTask(Task task) {
         this.task = task;
+    }
+
+    public String getApproveOpinion() {
+        return approveOpinion;
+    }
+
+    public void setApproveOpinion(String approveOpinion) {
+        this.approveOpinion = approveOpinion;
+    }
+
+    public String getCmdType() {
+        return cmdType;
+    }
+
+    public void setCmdType(String cmdType) {
+        this.cmdType = cmdType;
     }
 }

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wb.workflow.core.repository.WorkFlowTaskOperationMapper">
+
+    <sql id="table_name">
+        sys_workflow_task_operation
+    </sql>
+
+    <sql id="column_name">
+        id,
+        create_time,
+        create_org,
+        create_org_id,
+        create_user,
+        create_user_id,
+        update_time,
+        update_user,
+        update_user_id,
+        del_flag,
+        del_time,
+        instance_id,
+        task_id,
+        task_key,
+        task_name,
+        approver_id,
+        approver_name,
+        approve_result,
+        approve_type,
+        approve_opinion,
+        due_date
+    </sql>
+
+    <resultMap id="workFlowTaskRecordEntityMap" type="com.wb.workflow.core.entity.WorkFlowTaskOperationEntity">
+        <result column="id" property="id"></result>
+        <result column="create_time" property="createTime"></result>
+        <result column="create_org" property="createOrg"></result>
+        <result column="create_org_id" property="createOrgId"></result>
+        <result column="create_user" property="createUser"></result>
+        <result column="create_user_id" property="createUserId"></result>
+        <result column="update_time" property="updateTime"></result>
+        <result column="update_user" property="updateUser"></result>
+        <result column="update_user_id" property="updateUserId"></result>
+        <result column="del_flag" property="delFlag"></result>
+        <result column="del_time" property="delTime"></result>
+        <result column="instance_id" property="instanceId"></result>
+        <result column="task_id" property="taskId"></result>
+        <result column="task_key" property="taskKey"></result>
+        <result column="task_name" property="taskName"></result>
+        <result column="approver_id" property="approverId"></result>
+        <result column="approver_name" property="approverName"></result>
+        <result column="approve_result" property="approveResult"></result>
+        <result column="approve_type" property="approveType"></result>
+        <result column="approve_opinion" property="approveOpinion"></result>
+        <result column="due_date" property="dueDate"></result>
+    </resultMap>
+
+    <insert id="save" parameterType="com.wb.workflow.core.entity.WorkFlowTaskOperationEntity">
+        insert into
+        <include refid="table_name"></include>(<include refid="column_name"></include>)
+        values(#{id},#{createTime},#{createOrg},#{createOrgId},#{createUser},#{createUserId},
+        #{updateTime},#{updateUser},#{updateUserId},#{delFlag},#{delTime},#{instanceId},
+        #{taskId},#{taskKey},#{taskName},#{approverId},#{approverName},#{approveResult},
+        #{approveType},#{approveOpinion},#{dueDate})
+    </insert>
+
+    <update id="update" parameterType="com.wb.workflow.core.entity.WorkFlowTaskOperationEntity">
+        update
+        <include refid="table_name"></include>
+        <set>
+            <if test="delTime != null and delTime != ''">
+                del_time = #{delTime},
+            </if>
+            <if test="delFlag != null and delFlag != ''">
+                del_flag = #{delFlag},
+            </if>
+            <if test="updateTime != null and updateTime != ''">
+                update_time = #{updateTime},
+            </if>
+            <if test="updateUser != null and updateUser != ''">
+                update_user = #{updateUser},
+            </if>
+            <if test="updateUserId != null and updateUserId != ''">
+                update_user_id = #{updateUserId},
+            </if>
+            <if test="instanceId != null and instanceId != ''">
+                instance_id = #{instanceId},
+            </if>
+            <if test="taskId != null and taskId != ''">
+                task_id = #{taskId},
+            </if>
+            <if test="taskKey != null and taskKey != ''">
+                task_key = #{taskKey},
+            </if>
+            <if test="taskName != null and taskName != ''">
+                task_name = #{taskName},
+            </if>
+            <if test="approverId != null and approverId != ''">
+                approver_id = #{approverId},
+            </if>
+            <if test="approverName != null and approverName != ''">
+                approver_name = #{approverName},
+            </if>
+            <if test="approveResult != null and approveResult != ''">
+                approve_result = #{approveResult},
+            </if>
+            <if test="approveType != null and approveType != ''">
+                approve_type = #{approveType},
+            </if>
+            <if test="totalTime != null and totalTime != ''">
+                total_time = #{totalTime},
+            </if>
+        </set>
+        where id = #{id}
+        and del_flag = '1'
+    </update>
+</mapper>
