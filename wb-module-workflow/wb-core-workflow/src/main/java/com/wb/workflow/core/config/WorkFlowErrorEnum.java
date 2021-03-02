@@ -35,6 +35,7 @@ public enum WorkFlowErrorEnum {
     NO_DELEGATE_TASK("44448", "当前任务不是委托任务不能执行取消委托操作！"),
 
     //  system
+    NOT_FOUND("4444", "未找到可使用对象！"),
     EXECUTE_CMD("4444", "执行命令异常！"),
     NOT_FOUND_CMD("4443", "未找到可执行命令！"),
     REPEAT_EXECUTE("4445", "请勿重复执行！"),

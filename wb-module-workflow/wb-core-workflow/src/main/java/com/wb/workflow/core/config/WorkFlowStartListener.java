@@ -1,12 +1,12 @@
 package com.wb.workflow.core.config;
 
-import com.wb.common.utils.spring.SpringApplicationContextProvider;
-import com.wb.workflow.core.cmd.interceptor.WorkFlowCmdInterceptor;
 import com.wb.workflow.core.cmd.executor.WorkFlowExecutor;
+import com.wb.workflow.core.cmd.interceptor.WorkFlowCmdInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanFactoryUtils;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
@@ -31,25 +31,27 @@ public class WorkFlowStartListener implements ApplicationListener<ApplicationRea
 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
-        initCmdInterceptorChain();
+        ApplicationContext applicationContext = applicationReadyEvent.getApplicationContext();
+        initCmdInterceptorChain(applicationContext);
+
         log.info("[WorkFlow Starter] Start Success.");
     }
 
     /**
-     * init cmd interceptor chain
+     * init cmd interceptor chain with the specified application context
+     *
+     * @param applicationContext the application context
      */
-    private void initCmdInterceptorChain() {
+    private void initCmdInterceptorChain(ApplicationContext applicationContext) {
         //  get executor bean map
-        Map<String, WorkFlowExecutor> executorMap = BeanFactoryUtils
-                .beansOfTypeIncludingAncestors(SpringApplicationContextProvider.applicationContext,
-                        WorkFlowExecutor.class, true, false);
+        Map<String, WorkFlowExecutor> executorMap = BeanFactoryUtils.beansOfTypeIncludingAncestors
+                (applicationContext, WorkFlowExecutor.class, true, false);
         if (CollectionUtils.isEmpty(executorMap)) {
             return;
         }
         //  get cmd interceptor
-        Map<String, WorkFlowCmdInterceptor> cmdInterceptorMap = BeanFactoryUtils
-                .beansOfTypeIncludingAncestors(SpringApplicationContextProvider.applicationContext,
-                        WorkFlowCmdInterceptor.class, true, false);
+        Map<String, WorkFlowCmdInterceptor> cmdInterceptorMap = BeanFactoryUtils.beansOfTypeIncludingAncestors
+                (applicationContext, WorkFlowCmdInterceptor.class, true, false);
         if (!CollectionUtils.isEmpty(cmdInterceptorMap)) {
             List<WorkFlowCmdInterceptor> cmdInterceptorList = cmdInterceptorMap.entrySet().stream().
                     map(var -> var.getValue()).filter(var -> var.enable()).collect(Collectors.toList());

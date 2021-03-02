@@ -1,18 +1,25 @@
 package com.wb.workflow.service.config;
 
 import com.wb.flowable.ext.api.config.FlowableConstants;
+import com.wb.flowable.ext.api.event.FlowableDispatcherEventListenerExt;
+import com.wb.flowable.ext.api.event.FlowableEventListenerExt;
 import com.wb.flowable.ext.api.idgenerator.DefaultFlowableIdGeneratorExt;
 import com.wb.flowable.ext.api.idgenerator.FlowableIdGeneratorExt;
 import org.flowable.engine.*;
 import org.flowable.spring.ProcessEngineFactoryBean;
 import org.flowable.spring.SpringProcessEngineConfiguration;
+import org.springframework.beans.factory.BeanFactoryUtils;
+import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.util.CollectionUtils;
 
 import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @ClassName: WorkFlowConfiguration
@@ -93,5 +100,19 @@ public class WorkFlowConfiguration {
         //  开启flowable sql 日志
         processConfiguration.setEnableLogSqlExecutionTime(true);
         return processConfiguration;
+    }
+
+    @Bean
+    public FlowableDispatcherEventListenerExt flowableDispatcherEventListener(ListableBeanFactory beanFactory) {
+        Map<String, FlowableEventListenerExt> beanMap = BeanFactoryUtils.beansOfTypeIncludingAncestors
+                (beanFactory, FlowableEventListenerExt.class, true, false);
+        if (CollectionUtils.isEmpty(beanMap)) {
+            return new FlowableDispatcherEventListenerExt();
+        }
+        Map<String, FlowableEventListenerExt> eventListenerMap = new HashMap<>(beanMap.size());
+        beanMap.forEach((beanName, object) -> {
+            eventListenerMap.put(object.getType(), object);
+        });
+        return new FlowableDispatcherEventListenerExt(eventListenerMap);
     }
 }
