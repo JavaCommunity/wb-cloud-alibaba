@@ -2,8 +2,10 @@ package com.wb.workflow.core.cmd.interceptor;
 
 import com.wb.workflow.core.cmd.WorkFlowCmd;
 import com.wb.workflow.core.cmd.request.WorkFlowGenericCmdRequest;
+import com.wb.workflow.core.config.WorkFlowErrorEnum;
 import com.wb.workflow.core.entity.WorkFlowDefinitionEntity;
 import com.wb.workflow.core.entity.WorkFlowInstanceEntity;
+import com.wb.workflow.core.exception.WorkFlowObjectNotFoundException;
 import com.wb.workflow.core.service.WorkFlowDefinitionService;
 import com.wb.workflow.core.service.WorkFlowInstanceService;
 import com.wb.workflow.core.service.WorkFlowTaskService;
@@ -59,14 +61,20 @@ public class WorkFlowInitCmdInterceptor extends AbstractWorkFlowCmdInterceptor {
      * @param cmdRequest the cmd request
      */
     private void initDefinition(WorkFlowGenericCmdRequest cmdRequest) {
-        cmdRequest.setDefinition(null);
         String definitionId = cmdRequest.getDefinitionId();
-        WorkFlowDefinitionEntity definitionEntity = null;
         String definitionCode = cmdRequest.getDefinitionCode();
+        if (StringUtils.isEmpty(definitionId) && StringUtils.isEmpty(definitionCode)) {
+            return;
+        }
+        cmdRequest.setDefinition(null);
+        WorkFlowDefinitionEntity definitionEntity = null;
         if (!StringUtils.isEmpty(definitionId)) {
             definitionEntity = definitionService.queryForId(definitionId);
         } else if (!StringUtils.isEmpty(definitionCode) && ObjectUtils.isEmpty(definitionEntity)) {
             definitionEntity = definitionService.queryMainForCode(definitionCode);
+        }
+        if (ObjectUtils.isEmpty(definitionEntity)) {
+            throw new WorkFlowObjectNotFoundException(WorkFlowErrorEnum.NOT_FOUND_DEFINITION.getMsg(), WorkFlowInitCmdInterceptor.class);
         }
         cmdRequest.setDefinition(definitionEntity);
     }

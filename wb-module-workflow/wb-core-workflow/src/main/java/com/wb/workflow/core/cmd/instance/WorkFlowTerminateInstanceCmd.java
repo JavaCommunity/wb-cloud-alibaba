@@ -35,11 +35,6 @@ public class WorkFlowTerminateInstanceCmd extends AbstractWorkFlowInstanceCmd {
     private FlowableModelExt modelExt;
 
     @Override
-    public void check(WorkFlowGenericCmdRequest cmdRequest) {
-        super.isSuspended(Optional.ofNullable(cmdRequest.getInstance().getStatus()).orElse(null));
-    }
-
-    @Override
     public <T> T execute(WorkFlowGenericCmdRequest<T> cmdRequest) {
         WorkFlowInstanceEntity instance = cmdRequest.getInstance();
         ProcessInstance processInstance = instanceExt.queryForId(instance.getfInstanceId());

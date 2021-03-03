@@ -21,6 +21,7 @@ public enum WorkFlowErrorEnum {
     //  definition
     DEFINITION_EXIST("33313", "流程定义已存在！"),
     DEFINITION_DISABLE("333314", "该流程已停用！"),
+    NOT_FOUND_DEFINITION("33335", "未找到流程定义信息！"),
 
     //  deployment
     DEPLOYMENT("44444", "部署流程失败"),

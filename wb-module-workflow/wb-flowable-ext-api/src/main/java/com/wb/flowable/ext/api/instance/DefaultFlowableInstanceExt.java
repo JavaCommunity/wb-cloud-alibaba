@@ -10,6 +10,8 @@ import org.flowable.engine.ManagementService;
 import org.flowable.engine.RuntimeService;
 import org.flowable.engine.runtime.Execution;
 import org.flowable.engine.runtime.ProcessInstance;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
@@ -30,6 +32,9 @@ import java.util.stream.Collectors;
  */
 @Component
 public class DefaultFlowableInstanceExt implements FlowableInstanceExt {
+
+    //  the slf4j log
+    private static final Logger log = LoggerFactory.getLogger(DefaultFlowableInstanceExt.class);
 
     @Autowired
     private RuntimeService runtimeService;
@@ -84,6 +89,7 @@ public class DefaultFlowableInstanceExt implements FlowableInstanceExt {
                 return runtimeService.startProcessInstanceById(definitionId, businessKey, variables);
             }
         } catch (Exception e) {
+            log.error("[Flowable Ext Api] Start Process Instance Error,ErrMsg:{}", e.getMessage());
             throw new FlowableException(FlowableErrorEnum.START_INSTANCE.getMsg());
         } finally {
             Authentication.setAuthenticatedUserId(null);

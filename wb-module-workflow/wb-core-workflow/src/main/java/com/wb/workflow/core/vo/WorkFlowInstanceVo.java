@@ -3,6 +3,8 @@ package com.wb.workflow.core.vo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import java.util.Map;
+
 /**
  * @ClassName: WorkFlowInstanceVo
  * @Package: com.wb.workflow.core.vo
@@ -52,6 +54,9 @@ public class WorkFlowInstanceVo {
 
     @ApiModelProperty(value = "描述信息")
     private String description;
+
+    @ApiModelProperty(value = "流程变量")
+    private Map<String, Object> variables;
 
     public String getCmdType() {
         return cmdType;
@@ -155,5 +160,13 @@ public class WorkFlowInstanceVo {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Map<String, Object> getVariables() {
+        return variables;
+    }
+
+    public void setVariables(Map<String, Object> variables) {
+        this.variables = variables;
     }
 }
