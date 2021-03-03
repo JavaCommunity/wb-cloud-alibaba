@@ -1,7 +1,5 @@
 package com.wb.common.context;
 
-import org.springframework.util.CollectionUtils;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,12 +12,6 @@ import java.util.Map;
  * @Version: 1.0
  */
 public class BaseContext {
-
-    //  the context user key
-    public static final String CONTEXT_USER_KEY = "user";
-
-    //  the context user id key
-    public static final String CONTEXT_USER_ID_KEY = "user_id";
 
     //  the default context
     private static final ThreadLocal<Map<String, Object>> DEFAULT_CONTEXT = new ThreadLocal<Map<String, Object>>() {
@@ -53,9 +45,6 @@ public class BaseContext {
      * clear all default context
      */
     public static void clear() {
-        Map<String, Object> defaultContext = DEFAULT_CONTEXT.get();
-        if (!CollectionUtils.isEmpty(defaultContext)) {
-            defaultContext.clear();
-        }
+        DEFAULT_CONTEXT.get().clear();
     }
 }

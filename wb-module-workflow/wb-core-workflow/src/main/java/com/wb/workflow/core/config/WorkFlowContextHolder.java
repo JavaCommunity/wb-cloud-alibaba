@@ -2,6 +2,8 @@ package com.wb.workflow.core.config;
 
 import com.wb.common.context.BaseContext;
 import com.wb.common.wrapper.SysUserWrapper;
+import com.wb.workflow.core.utils.WorkFlowReqCheckUtils;
+import org.springframework.util.ObjectUtils;
 
 import java.util.Optional;
 
@@ -15,24 +17,34 @@ import java.util.Optional;
  */
 public class WorkFlowContextHolder extends BaseContext {
 
+    //  the context user key
+    public static final String CONTEXT_USER_KEY = "work_flow_user";
+
+    //  the context user id key
+    public static final String CONTEXT_USER_ID_KEY = "work_flow_user_id";
+
     /**
      * get current user info
      *
      * @return the user info
      */
     public static SysUserWrapper getCurrentUser() {
-        SysUserWrapper userWrapper = new SysUserWrapper();
-        userWrapper.setName("张三");
-        userWrapper.setId("111111111111");
-        userWrapper.setCreateOrg("技术部");
-        userWrapper.setCreateOrgId("222222222222222222222");
-//        Object obj = get(CONTEXT_USER_KEY);
-//        if (!ObjectUtils.isEmpty(obj) && obj instanceof SysUserWrapper) {
-//            SysUserWrapper userEntity = (SysUserWrapper) obj;
-//            return userEntity;
-//        }
-//        return null;
-        return userWrapper;
+        Object obj = BaseContext.get(CONTEXT_USER_KEY);
+        if (ObjectUtils.isEmpty(obj) || !(obj instanceof SysUserWrapper)) {
+            return null;
+        }
+        SysUserWrapper userEntity = (SysUserWrapper) obj;
+        return userEntity;
+    }
+
+    /**
+     * set user wrapper
+     *
+     * @param userWrapper the user wrapper
+     */
+    public static void setCurrentUser(SysUserWrapper userWrapper) {
+        WorkFlowReqCheckUtils.checkEmpty(userWrapper, "userWrapper");
+        BaseContext.put(CONTEXT_USER_KEY, userWrapper);
     }
 
     /**
@@ -43,5 +55,12 @@ public class WorkFlowContextHolder extends BaseContext {
     public static String getCurrentUserId() {
         SysUserWrapper currentUser = getCurrentUser();
         return Optional.ofNullable(currentUser.getId()).orElse(null);
+    }
+
+    /**
+     * clear default context
+     */
+    public static void clear() {
+        BaseContext.clear();
     }
 }

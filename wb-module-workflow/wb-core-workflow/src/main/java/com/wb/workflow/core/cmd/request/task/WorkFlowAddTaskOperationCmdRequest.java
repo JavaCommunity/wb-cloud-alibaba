@@ -34,11 +34,6 @@ public class WorkFlowAddTaskOperationCmdRequest extends WorkFlowGenericCmdReques
     //  the due date
     private String dueDate;
 
-    @Override
-    public void check() {
-        WorkFlowReqCheckUtils.checkEmpty(taskId, "taskId");
-    }
-
     public String getTaskKey() {
         return taskKey;
     }

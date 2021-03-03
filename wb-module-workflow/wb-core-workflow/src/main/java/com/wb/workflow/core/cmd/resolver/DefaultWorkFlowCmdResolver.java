@@ -45,7 +45,7 @@ public class DefaultWorkFlowCmdResolver implements WorkFlowCmdResolver {
         WorkFlowCmd command = (WorkFlowCmd) bean;
         WorkFlowGenericCmdRequest cmdRequest = null;
         try {
-            cmdRequest = (WorkFlowGenericCmdRequest) command.getReqClass().newInstance();
+            cmdRequest = (WorkFlowGenericCmdRequest) BeanUtils.instantiateClass(command.getReqClass());
         } catch (Exception e) {
             throw new WorkFlowObjectNotFoundException(WorkFlowErrorEnum.EXECUTE_CMD.getMsg(), DefaultWorkFlowCmdResolver.class);
         }

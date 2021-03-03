@@ -36,15 +36,14 @@ public class WorkFlowInitCmdInterceptor extends AbstractWorkFlowCmdInterceptor {
     @Override
     public <T> T execute(WorkFlowCmd cmd, WorkFlowGenericCmdRequest<T> cmdRequest) {
         if (!ObjectUtils.isEmpty(cmdRequest)) {
-            WorkFlowGenericCmdRequest genericRequest = (WorkFlowGenericCmdRequest) cmdRequest;
             //  init definition info
-            initDefinition(genericRequest);
+            initDefinition(cmdRequest);
 
             //  init instance info
-            initInstance(genericRequest);
+            initInstance(cmdRequest);
 
             //  init task info
-            initTask(genericRequest);
+            initTask(cmdRequest);
         }
         return super.execute(cmd, cmdRequest);
     }

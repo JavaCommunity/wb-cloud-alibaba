@@ -48,4 +48,11 @@ public class WorkFlowCmdContext {
     public static void set(Class<?> key, Object value) {
         DEFAULT_CONTEXT.get().put(key, value);
     }
+
+    /**
+     * clear default context
+     */
+    public static void clear() {
+        DEFAULT_CONTEXT.get().clear();
+    }
 }

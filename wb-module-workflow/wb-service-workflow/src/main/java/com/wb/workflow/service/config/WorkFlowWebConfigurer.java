@@ -1,6 +1,8 @@
 package com.wb.workflow.service.config;
 
+import com.wb.workflow.service.interceptor.WorkFlowHandlerInterceptor;
 import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -20,5 +22,11 @@ public class WorkFlowWebConfigurer implements WebMvcConfigurer {
         registry
                 .addResourceHandler("/modeler/**")
                 .addResourceLocations("classpath:/templates/modeler/");
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new WorkFlowHandlerInterceptor())
+                .addPathPatterns("/**");
     }
 }

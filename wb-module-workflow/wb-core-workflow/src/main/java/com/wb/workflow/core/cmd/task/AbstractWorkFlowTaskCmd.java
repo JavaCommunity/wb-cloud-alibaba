@@ -1,14 +1,22 @@
 package com.wb.workflow.core.cmd.task;
 
+import com.wb.common.utils.date.DateUtils;
 import com.wb.common.utils.spring.SpringApplicationContextProvider;
+import com.wb.common.wrapper.SysUserWrapper;
 import com.wb.workflow.core.cmd.WorkFlowCmd;
 import com.wb.workflow.core.cmd.request.WorkFlowGenericCmdRequest;
 import com.wb.workflow.core.cmd.request.task.WorkFlowAddTaskOperationCmdRequest;
 import com.wb.workflow.core.cmd.resolver.WorkFlowCmdResolver;
 import com.wb.workflow.core.config.WorkFlowCmdEnum;
+import com.wb.workflow.core.config.WorkFlowContextHolder;
+import com.wb.workflow.core.config.WorkFlowErrorEnum;
+import com.wb.workflow.core.exception.WorkFlowObjectNotFoundException;
 import org.flowable.task.api.Task;
 import org.springframework.beans.BeanUtils;
 import org.springframework.util.ObjectUtils;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @ClassName: AbstractWorkFlowTaskCmd
@@ -20,8 +28,34 @@ import org.springframework.util.ObjectUtils;
  */
 public abstract class AbstractWorkFlowTaskCmd implements WorkFlowCmd {
 
+    //  the exclude cmd list
+    private static final List<String> excludeCmdList = Arrays.asList(new String[]{
+            WorkFlowCmdEnum.GET_ALREADY_HANDLE_TASK.getType(),
+            WorkFlowCmdEnum.GET_WAIT_HANDLE_TASK.getType()
+    });
+
     //  the work flow executor
     private WorkFlowCmdResolver cmdResolver = null;
+
+    /**
+     * check task with the specified cmd request
+     *
+     * @param cmdRequest this cmd request
+     */
+    @Override
+    public void check(WorkFlowGenericCmdRequest cmdRequest) {
+        if (excludeCmdList.contains(cmdRequest.getCmdType())) {
+            return;
+        }
+
+        //  the check task is exist
+        Task task = cmdRequest.getTask();
+        if (ObjectUtils.isEmpty(task)) {
+            throw new WorkFlowObjectNotFoundException(WorkFlowErrorEnum.NOT_FOUND_TASK.getMsg(), AbstractWorkFlowTaskCmd.class);
+        }
+
+        //  TODO the check task authority
+    }
 
     /**
      * add task operation with the specified request
@@ -33,15 +67,18 @@ public abstract class AbstractWorkFlowTaskCmd implements WorkFlowCmd {
         WorkFlowAddTaskOperationCmdRequest taskOperation = new WorkFlowAddTaskOperationCmdRequest();
         BeanUtils.copyProperties(request, taskOperation);
         taskOperation.setInstanceId(request.getInstanceId());
-        taskOperation.setTaskId(request.getTaskId());
         taskOperation.setApproveOpinion(request.getApproveOpinion());
-        // operation.setApproveResult(approveResult);
         taskOperation.setApproveType(WorkFlowCmdEnum.getOperation(request.getCmdType()));
         Task task = request.getTask();
         taskOperation.setTaskName(task.getName());
         taskOperation.setTaskKey(task.getTaskDefinitionKey());
-        //  TODO 计算时间之差
-        //  recordRequest.setTotalTime();
+        taskOperation.setDueDate(DateUtils.formatDateTime(task.getDueDate()));
+        SysUserWrapper userWrapper = WorkFlowContextHolder.getCurrentUser();
+        if (!ObjectUtils.isEmpty(userWrapper)) {
+            taskOperation.setApproverId(userWrapper.getId());
+            taskOperation.setApproverName(userWrapper.getName());
+        }
+        taskOperation.setTaskId(null);
         cmdResolver.resolverCmdInvoke(WorkFlowCmdEnum.ADD_TASK_OPERATION.getType(), taskOperation);
     }
 

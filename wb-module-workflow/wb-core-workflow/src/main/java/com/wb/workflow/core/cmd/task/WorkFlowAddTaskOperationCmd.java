@@ -7,6 +7,7 @@ import com.wb.workflow.core.service.WorkFlowTaskOperationService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @ClassName: WorkFlowAddTaskOperationCmd
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Component;
  * @Version: 1.0
  */
 @Component
+@Transactional(rollbackFor = Exception.class)
 public class WorkFlowAddTaskOperationCmd extends AbstractWorkFlowTaskCmd {
 
     @Autowired
@@ -27,6 +29,7 @@ public class WorkFlowAddTaskOperationCmd extends AbstractWorkFlowTaskCmd {
         WorkFlowAddTaskOperationCmdRequest request = (WorkFlowAddTaskOperationCmdRequest) cmdRequest;
         WorkFlowTaskOperationEntity taskOperationEntity = new WorkFlowTaskOperationEntity();
         BeanUtils.copyProperties(request, taskOperationEntity);
+        taskOperationEntity.setTaskId(cmdRequest.getTask().getId());
         taskOperationService.save(taskOperationEntity);
         return null;
     }

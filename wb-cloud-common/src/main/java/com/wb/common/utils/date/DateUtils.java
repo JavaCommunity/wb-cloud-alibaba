@@ -1,5 +1,7 @@
 package com.wb.common.utils.date;
 
+import org.springframework.util.ObjectUtils;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -28,6 +30,9 @@ public class DateUtils {
      * @return
      */
     public static String formatDateTime(Date date) {
+        if (ObjectUtils.isEmpty(date)) {
+            return null;
+        }
         return DATE_FORMAT.format(date);
     }
 

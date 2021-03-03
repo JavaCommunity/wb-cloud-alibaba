@@ -33,6 +33,7 @@ public enum WorkFlowErrorEnum {
     //  task
     CREATE_SUB_TASK("44447", "创建子任务失败！"),
     NO_DELEGATE_TASK("44448", "当前任务不是委托任务不能执行取消委托操作！"),
+    NOT_FOUND_TASK("4449", "未找到流程任务！"),
 
     //  system
     NOT_FOUND("4444", "未找到可使用对象！"),

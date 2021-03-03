@@ -28,7 +28,6 @@ public class WorkFlowCompleteTaskCmd extends AbstractWorkFlowTaskCmd {
 
     @Override
     public <T> T execute(WorkFlowGenericCmdRequest<T> cmdRequest) {
-        // TODO 添加审批记录
         WorkFlowCompleteTaskCmdRequest request = (WorkFlowCompleteTaskCmdRequest) cmdRequest;
         String userId = request.getUserId();
         if (StringUtils.isEmpty(userId)) {
