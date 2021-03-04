@@ -20,10 +20,12 @@ wb-cloud-alibaba
     |     ├──── wb-knife4j-component --  knife4j组件
     |     ├──── wb-office-component -- office组件
     |     ├──── wb-oss-component -- oss组件
-    |     └──── wb-quartz-component -- 基于quartz定时任务
+    |     ├──── wb-quartz-component -- 基于quartz定时任务
+    |     └──── wb-sign-component -- 基于e宝电子签名
     |──── wb-module-examples -- 样例
     |     ├──── wb-docker-example -- docker使用样例
     |     ├──── wb-dynamic-datasource-example -- 动态数据源样例
+    |     ├──── wb-feign-example -- open-fegin使用样例
     |     ├──── wb-knife4j-example -- knife4j使用样例
     |     ├──── wb-nacos-example -- nacos使用样例
     |     ├──── wb-office-example -- office使用样例
@@ -32,13 +34,21 @@ wb-cloud-alibaba
     |     ├──── wb-seata-example -- seata使用样例
     |     |     ├──── wb-seata-order-service -- seata-order样例
     |     |     └──── wb-seata-storage-service -- seata-storeage样例
-    |     ├──── wb-sso-example -- sso使用样例
+    |     ├──── wb-sentinel-example -- sentinel使用样例
+    |     ├──── wb-sso-example -- 基于Oauth2实现的单间登录样例
     |     |     ├──── wb-sso1-example -- sso client1
     |     |     └──── wb-sso2-example -- sso client2
     |──── wb-module-oauth -- 基于oauth2的认证中心
     |     ├──── wb-core-oauth -- oauth核心代码
-    |     └──── wb-service-oauth -- oauth提供者
+    |     └──── wb-service-oauth -- oauth接口API
+    |──── wb-module-oss -- 基于FastDFS和Minio实现的资源存储
+    |     ├──── wb-feign-api-oss -- oss feign接口API
+    |     └──── wb-service-oss -- oss接口
     |──── wb-module-workflow -- 基于flowable工作流
+    |     ├──── wb-core-workflow -- workflow核心代码
+    |     ├──── wb-feign-workflow -- workflow feign接口API
+    |     ├──── wb-flowable-ext-api -- flowable扩展API
+    |     └──── wb-service-workflow -- workflow接口API
 ~~~
 
 ## 技术选型
@@ -52,7 +62,7 @@ TBD
 √   1.wb-oss-component 对象存储组件
 √   2.wb-dynamic-datasource-component 动态数据源,基于AbstractRoutingDataSource实现
 √   3.wb-office-component 在线文档编辑,基于pageoffice实现
-    4.wb-sentinel-example 限流样例
+√   4.wb-sentinel-example 限流样例
     5.wb-sentinel-datasource-component Sentinel数据源
 √   6.wb-cloud-gateway 网关
 √   7.wb-knife4j-component knife4j在线接口显示组件 
@@ -60,7 +70,7 @@ TBD
 √   9.wb-feign-example feign使用样例
     10.wb-ureport-component 在线报表组件
 √   11.wb-quartz-component 定时任务组件
-    12.wb-workflow-component 工作流组件，基于flowable实现
+√   12.wb-module-workflow 工作流组件，基于flowable实现
     13.wb-sign-component 电子签名组件
 ~~~
 
