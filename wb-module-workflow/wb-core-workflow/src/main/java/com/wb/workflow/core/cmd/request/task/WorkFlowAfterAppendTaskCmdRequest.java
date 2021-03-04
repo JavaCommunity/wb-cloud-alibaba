@@ -1,6 +1,7 @@
 package com.wb.workflow.core.cmd.request.task;
 
 import com.wb.workflow.core.cmd.request.WorkFlowGenericCmdRequest;
+import com.wb.workflow.core.utils.WorkFlowReqCheckUtils;
 
 import java.util.List;
 
@@ -19,6 +20,12 @@ public class WorkFlowAfterAppendTaskCmdRequest extends WorkFlowGenericCmdRequest
 
     //  the by append after user
     private List<String> byAppendUser;
+
+    @Override
+    public void check() {
+        WorkFlowReqCheckUtils.checkEmpty(taskId, "taskId");
+        WorkFlowReqCheckUtils.checkEmpty(byAppendUser, "byAppendUser");
+    }
 
     public String getUserId() {
         return userId;

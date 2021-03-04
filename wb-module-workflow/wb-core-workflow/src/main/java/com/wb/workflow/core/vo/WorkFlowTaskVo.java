@@ -3,6 +3,7 @@ package com.wb.workflow.core.vo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,6 +34,9 @@ public class WorkFlowTaskVo {
 
     @ApiModelProperty(value = "流程变量")
     private Map<String, Object> variables;
+
+    @ApiModelProperty(value = "被加签人")
+    private List<String> byAppendUser;
 
     public String getCmdType() {
         return cmdType;
@@ -80,5 +84,13 @@ public class WorkFlowTaskVo {
 
     public void setVariables(Map<String, Object> variables) {
         this.variables = variables;
+    }
+
+    public List<String> getByAppendUser() {
+        return byAppendUser;
+    }
+
+    public void setByAppendUser(List<String> byAppendUser) {
+        this.byAppendUser = byAppendUser;
     }
 }
