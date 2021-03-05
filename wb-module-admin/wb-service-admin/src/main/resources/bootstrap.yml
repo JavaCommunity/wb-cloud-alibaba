@@ -1,0 +1,38 @@
+server:
+  port: 8003
+
+spring:
+  application:
+    name: wb-service-admin
+
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:mysql://127.0.0.1:3306/wb-cloud?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&useOldAliasMetadataBehavior=true&autoReconnect=true&useSSL=false&serverTimezone=GMT%2B8
+      username: root
+      password: root
+
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        server-addr: 127.0.0.1:8848
+        port: ${server.port}
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.wb.admin.entity
+
+wb-cloud:
+  knife4j:
+    enabled: true
+    title: Wb Cloud Alibaba 接口规范
+    terms-of-service-url: http://localhost:${server.port}
+    scan-package: com.wb.workflow.service.controller
+    description: Wb Cloud Alibaba 接口规范
+    version: 1.0.1
+    contactUrl: www.wb.com
+    contactName: BoWang
+    contatcEmail: 169966586@qq.com
+

@@ -75,6 +75,7 @@
         <module>wb-module-examples</module>
         <module>wb-module-oss</module>
         <module>wb-module-workflow</module>
+        <module>wb-module-admin</module>
     </modules>
 
     <properties>
