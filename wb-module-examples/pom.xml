@@ -26,5 +26,6 @@
         <module>wb-dynamic-datasource-example</module>
         <module>wb-feign-example</module>
         <module>wb-sentinel-example</module>
+        <module>wb-elasticsearch-example</module>
     </modules>
 </project>

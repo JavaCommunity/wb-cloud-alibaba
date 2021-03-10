@@ -1,0 +1,16 @@
+server:
+  port: 7013
+
+spring:
+  application:
+    name: wb-elasticsearch-example
+
+# elasticsearch config
+# https://www.elastic.co/guide/en/elasticsearch/client/java-rest/7.x/index.html
+wb-cloud:
+  elasticsearch:
+    model: standalone
+    standalone:
+      hostname: 192.168.79.3
+      port: 9200
+      scheme: http

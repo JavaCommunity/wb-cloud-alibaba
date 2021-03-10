@@ -1,0 +1,84 @@
+{
+  "properties": [
+    {
+      "name": "wb-cloud.elasticsearch.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "enable or disable elasticsearch auto configure."
+    },
+    {
+      "name": "wb-cloud.elasticsearch.model",
+      "type": "com.wb.elasticsearch.component.config.ElasticsearchModelEnum",
+      "defaultValue": "standalone",
+      "description": "elasticsearch model."
+    },
+    {
+      "name": "wb-cloud.elasticsearch.standalone.hostname",
+      "type": "java.lang.String",
+      "description": "elasticsearch standalone hostname."
+    },
+    {
+      "name": "wb-cloud.elasticsearch.standalone.port",
+      "type": "java.lang.Integer",
+      "defaultValue": 9200,
+      "description": "elasticsearch standalone port."
+    },
+    {
+      "name": "wb-cloud.elasticsearch.standalone.scheme",
+      "type": "java.lang.String",
+      "defaultValue": "http",
+      "description": "elasticsearch standalone scheme."
+    },
+    {
+      "name": "wb-cloud.elasticsearch.cluster.first.hostname",
+      "type": "java.lang.String",
+      "description": "elasticsearch cluster first hostname."
+    },
+    {
+      "name": "wb-cloud.elasticsearch.cluster.first.port",
+      "type": "java.lang.Integer",
+      "defaultValue": 9200,
+      "description": "elasticsearch cluster first port."
+    },
+    {
+      "name": "wb-cloud.elasticsearch.cluster.first.scheme",
+      "type": "java.lang.String",
+      "defaultValue": "http",
+      "description": "elasticsearch cluster first scheme."
+    },
+    {
+      "name": "wb-cloud.elasticsearch.cluster.second.hostname",
+      "type": "java.lang.String",
+      "description": "elasticsearch cluster second hostname."
+    },
+    {
+      "name": "wb-cloud.elasticsearch.cluster.second.port",
+      "type": "java.lang.Integer",
+      "defaultValue": 9200,
+      "description": "elasticsearch cluster second port."
+    },
+    {
+      "name": "wb-cloud.elasticsearch.cluster.second.scheme",
+      "type": "java.lang.String",
+      "defaultValue": "http",
+      "description": "elasticsearch cluster second scheme."
+    },
+    {
+      "name": "wb-cloud.elasticsearch.cluster.third.hostname",
+      "type": "java.lang.String",
+      "description": "elasticsearch cluster third hostname."
+    },
+    {
+      "name": "wb-cloud.elasticsearch.cluster.third.port",
+      "type": "java.lang.Integer",
+      "defaultValue": 9200,
+      "description": "elasticsearch cluster third port."
+    },
+    {
+      "name": "wb-cloud.elasticsearch.cluster.third.scheme",
+      "type": "java.lang.String",
+      "defaultValue": "http",
+      "description": "elasticsearch cluster third scheme."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+## elasticsearch configuration
+#wb-cloud:
+#  elasticsearch:
+#    enabled: true
+#    model: standalone
+#    # elasticsearch standalone model example
+#    standalone:
+#      hostname: 127.0.0.1
+#      port: 9200
+#      scheme: http
+#    # elasticsearch cluster model example
+#    cluster:
+#      first:
+#        hostname: 127.0.0.1
+#        port: 9200
+#        scheme: http
+#      second:
+#        hostname: 127.0.0.1
+#        port: 9200
+#        scheme: http
+#      third:
+#        hostname: 127.0.0.1
+#        port: 9200
+#        scheme: http
