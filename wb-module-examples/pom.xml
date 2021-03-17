@@ -27,5 +27,6 @@
         <module>wb-feign-example</module>
         <module>wb-sentinel-example</module>
         <module>wb-elasticsearch-example</module>
+        <module>wb-sms-example</module>
     </modules>
 </project>

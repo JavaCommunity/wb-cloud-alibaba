@@ -1,0 +1,22 @@
+server:
+  port: 7015
+
+spring:
+  application:
+    name: wb-sms-example
+
+wb-cloud:
+  sms:
+    aliyun:
+      connectTimeout: 10000
+      readTimeout: 10000
+      product:
+      domain:
+      accessKeyId:
+      accessKeySecret:
+    tencent:
+      appid: 4545454
+      secretId: 454545
+      secretKey: 45454
+      endpoint: 45454
+      sign: 4444

@@ -1,0 +1,15 @@
+#wb-cloud:
+#  sms:
+#    aliyun:
+#      connectTimeout: 10000
+#      readTimeout: 10000
+#      product:
+#      domain:
+#      accessKeyId:
+#      accessKeySecret:
+#    tencent:
+#      appid:
+#      secretId:
+#      secretKey:
+#      endpoint:
+#      sign:

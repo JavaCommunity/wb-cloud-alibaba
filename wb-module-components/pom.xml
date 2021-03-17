@@ -22,5 +22,6 @@
         <module>wb-dynamic-datasource-component</module>
         <module>wb-sign-component</module>
         <module>wb-elasticsearch-component</module>
+        <module>wb-sms-componet</module>
     </modules>
 </project>

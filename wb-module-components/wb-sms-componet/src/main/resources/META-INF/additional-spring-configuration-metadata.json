@@ -1,0 +1,69 @@
+{
+  "properties": [
+    {
+      "name": "wb-cloud.sms.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "enable or disable sms auto configure."
+    },
+    {
+      "name": "wb-cloud.sms.aliyun.connectTimeout",
+      "type": "java.lang.String",
+      "defaultValue": "10000",
+      "description": "aliyun sms connect timeout."
+    },
+    {
+      "name": "wb-cloud.sms.aliyun.readTimeout",
+      "type": "java.lang.String",
+      "defaultValue": "10000",
+      "description": "aliyun sms read timeout."
+    },
+    {
+      "name": "wb-cloud.sms.aliyun.product",
+      "type": "java.lang.String",
+      "defaultValue": "Dysmsapi",
+      "description": "aliyun sms product."
+    },
+    {
+      "name": "wb-cloud.sms.aliyun.domain",
+      "type": "java.lang.String",
+      "defaultValue": "dysmsapi.aliyuncs.com",
+      "description": "aliyun sms domain."
+    },
+    {
+      "name": "wb-cloud.sms.aliyun.accessKeyId",
+      "type": "java.lang.String",
+      "description": "aliyun sms access key id."
+    },
+    {
+      "name": "wb-cloud.sms.aliyun.accessKeySecret",
+      "type": "java.lang.String",
+      "description": "aliyun sms access key secret."
+    },
+    {
+      "name": "wb-cloud.sms.tencent.secretId",
+      "type": "java.lang.String",
+      "description": "tencent sms secret id."
+    },
+    {
+      "name": "wb-cloud.sms.tencent.secretKey",
+      "type": "java.lang.String",
+      "description": "tencent sms secret key."
+    },
+    {
+      "name": "wb-cloud.sms.tencent.endpoint",
+      "type": "java.lang.String",
+      "description": "tencent sms endpoint."
+    },
+    {
+      "name": "wb-cloud.sms.tencent.appid",
+      "type": "java.lang.String",
+      "description": "tencent sms appid."
+    },
+    {
+      "name": "wb-cloud.sms.tencent.sign",
+      "type": "java.lang.String",
+      "description": "tencent sms sign."
+    }
+  ]
+}
