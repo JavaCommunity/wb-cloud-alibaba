@@ -28,5 +28,6 @@
         <module>wb-sentinel-example</module>
         <module>wb-elasticsearch-example</module>
         <module>wb-sms-example</module>
+        <module>wb-admin-monitor-example</module>
     </modules>
 </project>

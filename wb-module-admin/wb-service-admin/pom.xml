@@ -66,6 +66,14 @@
             <version>${revision}</version>
         </dependency>
         <!--repository admin end-->
+
+        <!--cloud common start-->
+        <dependency>
+            <groupId>com.wb</groupId>
+            <artifactId>wb-cloud-common</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <!--cloud common end-->
     </dependencies>
 
     <build>

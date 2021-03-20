@@ -76,6 +76,7 @@
         <module>wb-module-oss</module>
         <module>wb-module-workflow</module>
         <module>wb-module-admin</module>
+        <module>wb-module-monitor</module>
     </modules>
 
     <properties>
@@ -114,6 +115,7 @@
         <docker.image.prefix-alibaba>registry.cn-hangzhou.aliyuncs.com/wb-cloud</docker.image.prefix-alibaba>
         <!--与maven setting.xml中的server标签中配置名称一致-->
         <docker-maven-serverId>docker-repository</docker-maven-serverId>
+        <spring-boot-admin.version>2.1.4</spring-boot-admin.version>
     </properties>
 
     <dependencyManagement>

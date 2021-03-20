@@ -1,0 +1,20 @@
+server:
+  port: ${SERVER_PORT:7007}
+
+spring:
+  application:
+    name: ${APPLICATION_NAME:wb-admin-monitor}
+
+  cloud:
+    nacos:
+      config:
+        refresh-enabled: ${NACOS_CONFIG_REFRESH_ENABLED:true}
+        server-addr: ${NACOS_CONFIG_SERVER_ADDR:127.0.0.1:8848}
+        file-extension: ${NACOS_CONFIG_FILE_EXTENSION:yaml}
+        group: ${NACOS_CONFIG_GROUP:DEFAULT_GROUP}
+      discovery:
+        server-addr: ${NACOS_DISCOVERY_SERVER_ADDR:127.0.0.1:8848}
+        service: ${NACOS_DISCOVERY_SERVICE:${spring.application.name}}
+        group: ${NACOS_DISCOVERY_GROUP:DEFAULT_GROUP}
+        port: ${NACOS_DISCOVERY_PORT:${server.port}}
+

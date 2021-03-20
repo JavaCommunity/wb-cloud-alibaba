@@ -1,0 +1,19 @@
+server:
+  port: 7014
+
+spring:
+  application:
+    name: wb-admin-minitor-example
+  boot:
+    admin:
+      client:
+        url: http://localhost:7007
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
