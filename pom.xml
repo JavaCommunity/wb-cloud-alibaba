@@ -77,6 +77,7 @@
         <module>wb-module-workflow</module>
         <module>wb-module-admin</module>
         <module>wb-module-monitor</module>
+        <module>wb-cloud-log</module>
     </modules>
 
     <properties>
@@ -116,6 +117,7 @@
         <!--与maven setting.xml中的server标签中配置名称一致-->
         <docker-maven-serverId>docker-repository</docker-maven-serverId>
         <spring-boot-admin.version>2.1.4</spring-boot-admin.version>
+        <mybatis-puls.version>3.2.0</mybatis-puls.version>
     </properties>
 
     <dependencyManagement>
