@@ -1,0 +1,82 @@
+{
+  "properties": [
+    {
+      "name": "wb-cloud.sign.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "enable or disable sign auto configure."
+    },
+    {
+      "name": "wb-cloud.sign.type",
+      "type": "java.lang.String",
+      "defaultValue": "EBAO",
+      "sourceType": "com.wb.sign.component.config.SignTypeEnum",
+      "description": "the sign type."
+    },
+    {
+      "name": "wb-cloud.sign.ebao.projectId",
+      "type": "java.lang.String",
+      "description": "the sign e bao project id."
+    },
+    {
+      "name": "wb-cloud.sign.ebao.projectSecret",
+      "type": "java.lang.String",
+      "description": "the sign e bao project secret."
+    },
+    {
+      "name": "wb-cloud.sign.ebao.apisUrl",
+      "type": "java.lang.String",
+      "defaultValue": "http://openapi.tsign.cn:8080/tgmonitor/rest/app!getAPIInfo2",
+      "description": "the sign e bao apis url."
+    },
+    {
+      "name": "wb-cloud.sign.ebao.config.algorithm",
+      "type": "java.lang.String",
+      "defaultValue": "HMAC-SHA256",
+      "description": "the sign e bao config algorithm."
+    },
+    {
+      "name": "wb-cloud.sign.ebao.httConfig.proxyIp",
+      "type": "java.lang.String",
+      "description": "the sign e bao http config proxy ip."
+    },
+    {
+      "name": "wb-cloud.sign.ebao.httConfig.proxyPort",
+      "type": "java.lang.Integer",
+      "description": "the sign e bao http config proxy port."
+    },
+    {
+      "name": "wb-cloud.sign.ebao.httConfig.httpType",
+      "type": "java.lang.String",
+      "description": "the sign e bao http config http type."
+    },
+    {
+      "name": "wb-cloud.sign.ebao.httConfig.retry",
+      "type": "java.lang.Integer",
+      "defaultValue": 5,
+      "description": "the sign e bao http config retry."
+    },
+    {
+      "name": "wb-cloud.sign.ebao.httConfig.timeoutConnect",
+      "type": "java.lang.Integer",
+      "defaultValue": 30,
+      "description": "the sign e bao http timeout connect."
+    },
+    {
+      "name": "wb-cloud.sign.ebao.httConfig.timeoutRequest",
+      "type": "java.lang.Integer",
+      "defaultValue": 30,
+      "description": "the sign e bao http timeout request."
+    },
+    {
+      "name": "wb-cloud.sign.ebao.httConfig.username",
+      "type": "java.lang.String",
+      "description": "the sign e bao http username."
+    },
+    {
+      "name": "wb-cloud.sign.ebao.httConfig.password",
+      "type": "java.lang.String",
+      "description": "the sign e bao http password."
+    }
+  ]
+}

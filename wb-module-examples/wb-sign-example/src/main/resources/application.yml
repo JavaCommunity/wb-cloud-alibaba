@@ -1,0 +1,26 @@
+server:
+  port: 7008
+
+spring:
+  application:
+    name: wb-sign-example
+
+wb-cloud:
+  sign:
+    enabled: true
+    type: EBAO
+    ebao:
+      projectId: 12123
+      projectSecret: 123123
+      config:
+        algorithm: https
+      httConfig:
+        proxyIp: 12312312
+        proxyPort: 8878
+        httpType: https
+        retry: 5
+        username: 12312
+        password: 123123
+        timeoutConnect: 30
+        timeoutRequest: 30
+

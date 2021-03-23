@@ -13,4 +13,148 @@
     <name>wb-sign-component</name>
     <packaging>jar</packaging>
     <description>wb sign component for spring-boot</description>
+
+    <dependencies>
+        <!--spring-boot configuration processor start-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!--spring-boot configuration processor end-->
+
+        <!--spring-boot autoconfigure start-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!--spring-boot autoconfigure end-->
+
+        <!--e bao sdk start-->
+        <dependency>
+            <groupId>esigntech-sdk</groupId>
+            <artifactId>esigntech-sdk</artifactId>
+            <version>2.1.43</version>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/src/main/resources/lib/tech-sdk-2.1.43.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>esigntech-tgtext</groupId>
+            <artifactId>esigntech-tgtext</artifactId>
+            <version>3.3.64.2143</version>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/src/main/resources/lib/tgtext-3.3.64.2143.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>esigntech-sdk-utils</groupId>
+            <artifactId>esigntech-sdk-utils</artifactId>
+            <version>3.0.6.2143</version>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/src/main/resources/lib/utils-3.0.6.2143.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>esigntech-sdk-smUtil</groupId>
+            <artifactId>esigntech-sdk-utils-smUtil</artifactId>
+            <version>1.3.3.2143</version>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/src/main/resources/lib/smUtil-1.3.3.2143.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>esigntech-ext-sdk-fonts</groupId>
+            <artifactId>esigntech-ext-sdk-fonts</artifactId>
+            <version>1.0.3</version>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/src/main/resources/lib/ext-sdk-fonts-1.0.3.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>core</artifactId>
+            <version>2.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.2.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>10.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+            <version>4.4.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpmime</artifactId>
+            <version>4.5.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>javase</artifactId>
+            <version>2.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.16.1-GA</version>
+        </dependency>
+        <!--e bao sdk end-->
+
+        <!--slf4j start-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <!--slf4j end-->
+
+        <!--cloud common start-->
+        <dependency>
+            <groupId>com.wb</groupId>
+            <artifactId>wb-cloud-common</artifactId>
+            <version>${revision}</version>
+            <optional>true</optional>
+        </dependency>
+        <!--cloud common end-->
+    </dependencies>
 </project>

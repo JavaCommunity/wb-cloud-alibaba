@@ -29,5 +29,6 @@
         <module>wb-elasticsearch-example</module>
         <module>wb-sms-example</module>
         <module>wb-admin-monitor-example</module>
+        <module>wb-sign-example</module>
     </modules>
 </project>
