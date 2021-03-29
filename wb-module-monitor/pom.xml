@@ -16,5 +16,6 @@
 
     <modules>
         <module>wb-admin-monitor</module>
+        <module>wb-zipkin-monitor</module>
     </modules>
 </project>

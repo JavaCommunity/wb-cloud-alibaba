@@ -118,6 +118,7 @@
         <docker-maven-serverId>docker-repository</docker-maven-serverId>
         <spring-boot-admin.version>2.1.4</spring-boot-admin.version>
         <mybatis-puls.version>3.2.0</mybatis-puls.version>
+        <zipkin.version>2.12.3</zipkin.version>
     </properties>
 
     <dependencyManagement>
