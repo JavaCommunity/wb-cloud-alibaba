@@ -1,0 +1,78 @@
+{
+  "properties": [
+    {
+      "name": "wb-cloud.rocketmq.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "enable or disable rocketmq auto configure."
+    },
+    {
+      "name": "wb-cloud.rocketmq.nameServer",
+      "type": "java.lang.String",
+      "description": "rocket mq name server."
+    },
+    {
+      "name": "wb-cloud.rocketmq.producer.group",
+      "type": "java.lang.String",
+      "description": "rocket mq producer group."
+    },
+    {
+      "name": "wb-cloud.rocketmq.producer.sendMessageTimeout",
+      "type": "java.lang.Integer",
+      "defaultValue": 3000,
+      "description": "rocket mq producer send message timeout."
+    },
+    {
+      "name": "wb-cloud.rocketmq.producer.compressMessageBodyThreshold",
+      "type": "java.lang.Integer",
+      "defaultValue": 4096,
+      "description": "rocket mq producer compress message body threshold."
+    },
+    {
+      "name": "wb-cloud.rocketmq.producer.retryTimesWhenSendFailed",
+      "type": "java.lang.Integer",
+      "defaultValue": 2,
+      "description": "rocket mq producer retry times when send failed."
+    },
+    {
+      "name": "wb-cloud.rocketmq.producer.retryTimesWhenSendAsyncFailed",
+      "type": "java.lang.Integer",
+      "defaultValue": 2,
+      "description": "rocket mq producer retry times when send async failed."
+    },
+    {
+      "name": "wb-cloud.rocketmq.producer.retryNextServer",
+      "type": "java.lang.Boolean",
+      "defaultValue": false,
+      "description": "rocket mq producer retry next server."
+    },
+    {
+      "name": "wb-cloud.rocketmq.producer.maxMessageSize",
+      "type": "java.lang.Integer",
+      "defaultValue": 4194304,
+      "description": "rocket mq producer max message size."
+    },
+    {
+      "name": "wb-cloud.rocketmq.producer.accessKey",
+      "type": "java.lang.String",
+      "description": "rocket mq producer access key."
+    },
+    {
+      "name": "wb-cloud.rocketmq.producer.secretKey",
+      "type": "java.lang.String",
+      "description": "rocket mq producer secret key."
+    },
+    {
+      "name": "wb-cloud.rocketmq.producer.enableMsgTrace",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "rocket mq producer enable msg trace."
+    },
+    {
+      "name": "wb-cloud.rocketmq.producer.customizedTraceTopic",
+      "type": "java.lang.String",
+      "defaultValue": "RMQ_SYS_TRACE_TOPIC",
+      "description": "rocket mq producer customized trace topic."
+    }
+  ]
+}

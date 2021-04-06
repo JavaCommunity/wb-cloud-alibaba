@@ -30,5 +30,6 @@
         <module>wb-sms-example</module>
         <module>wb-admin-monitor-example</module>
         <module>wb-sign-example</module>
+        <module>wb-rocketmq-example</module>
     </modules>
 </project>

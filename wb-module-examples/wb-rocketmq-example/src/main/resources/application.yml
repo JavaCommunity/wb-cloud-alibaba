@@ -1,0 +1,14 @@
+server:
+  port: 7014
+
+spring:
+  application:
+    name: wb-rocketmq-example
+
+wb-cloud:
+  rocketmq:
+    name-server: 192.168.79.6:9876;192.168.79.7:9876
+    producer:
+      group: RocketMQ_Group1
+
+

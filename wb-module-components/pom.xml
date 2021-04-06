@@ -23,5 +23,6 @@
         <module>wb-sign-component</module>
         <module>wb-elasticsearch-component</module>
         <module>wb-sms-componet</module>
+        <module>wb-rocketmq-component</module>
     </modules>
 </project>
