@@ -5,10 +5,11 @@ spring:
   application:
     name: wb-rocketmq-example
 
+# rocketMQ config
 wb-cloud:
   rocketmq:
-    name-server: 192.168.79.6:9876;192.168.79.7:9876
+    enabled: true
+    nameServer: 192.168.79.6:9876;192.168.79.7:9876
     producer:
       group: RocketMQ_Group1
-
 
