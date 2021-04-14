@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
@@ -26,6 +27,8 @@ import javax.sql.DataSource;
         havingValue = "true",
         matchIfMissing = true
 )
+//  exposeProxy=true enabled aopContext
+@EnableAspectJAutoProxy(exposeProxy = true)
 public class DynamicDataSourceAutoConfiguration implements InitializingBean {
 
     //  the slf4j log

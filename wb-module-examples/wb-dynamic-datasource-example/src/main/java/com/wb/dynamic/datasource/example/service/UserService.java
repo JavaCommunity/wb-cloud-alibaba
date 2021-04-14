@@ -27,4 +27,12 @@ public interface UserService {
      * @return the user info entity
      */
     UserEntity queryForDd2(String userId);
+
+    /**
+     * query user info with the specified user id
+     *
+     * @param userId the user id
+     * @return the user info entity
+     */
+    UserEntity queryForDd3(String userId);
 }

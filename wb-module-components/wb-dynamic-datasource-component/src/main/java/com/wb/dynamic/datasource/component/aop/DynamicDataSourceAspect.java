@@ -2,12 +2,15 @@ package com.wb.dynamic.datasource.component.aop;
 
 import com.wb.dynamic.datasource.component.annotation.DynamicDataSource;
 import com.wb.dynamic.datasource.component.config.DynamicDataSourceContext;
+import com.wb.dynamic.datasource.component.config.DynamicDataSourceProperties;
+import com.wb.dynamic.datasource.component.exception.DynamicDataSourceException;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.aop.support.AopUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.util.ObjectUtils;
@@ -25,6 +28,9 @@ import java.lang.reflect.Method;
 @Aspect
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class DynamicDataSourceAspect {
+
+    @Autowired
+    private DynamicDataSourceProperties dataSourceProperties;
 
     /**
      * the dynamic datasource point cut
@@ -52,8 +58,12 @@ public class DynamicDataSourceAspect {
             targetDataSource = mostSpecificMethod.getAnnotation(DynamicDataSource.class);
         }
         if (!ObjectUtils.isEmpty(targetDataSource)) {
-            String value = targetDataSource.value();
-            DynamicDataSourceContext.setCurrentDataSource(value);
+            String dataSourceKey = targetDataSource.value();
+            boolean isContains = dataSourceProperties.getDatasource().containsKey(dataSourceKey);
+            if (!isContains) {
+                throw new DynamicDataSourceException("the DynamicDataSource annotation value is not config file data source key！");
+            }
+            DynamicDataSourceContext.setCurrentDataSource(dataSourceKey);
         }
         try {
             return point.proceed();

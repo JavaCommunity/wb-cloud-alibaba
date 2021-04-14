@@ -1,6 +1,7 @@
 package com.wb.dynamic.datasource.example.service.impl;
 
 import com.wb.dynamic.datasource.component.annotation.DynamicDataSource;
+import com.wb.dynamic.datasource.component.aop.AopBeanFactory;
 import com.wb.dynamic.datasource.example.entity.UserEntity;
 import com.wb.dynamic.datasource.example.repository.UserMapper;
 import com.wb.dynamic.datasource.example.service.UserService;
@@ -29,6 +30,14 @@ public class UserServiceImpl implements UserService {
     @Override
     @DynamicDataSource("second")
     public UserEntity queryForDd2(String userId) {
+        UserService bean = AopBeanFactory.getBean(UserService.class);
+        UserEntity userEntity = bean.queryForDd3(userId);
+        return userMapper.queryForDd2(userId);
+    }
+
+    @Override
+    @DynamicDataSource("third")
+    public UserEntity queryForDd3(String userId) {
         return userMapper.queryForDd2(userId);
     }
 }
