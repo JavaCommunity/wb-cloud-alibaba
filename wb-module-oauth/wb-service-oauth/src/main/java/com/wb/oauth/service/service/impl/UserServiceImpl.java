@@ -1,13 +1,15 @@
 package com.wb.oauth.service.service.impl;
 
+import com.wb.oauth.service.config.AuthorizationErrorEnum;
+import com.wb.oauth.service.entity.OauthUserEntity;
+import com.wb.oauth.service.mapper.UserMapper;
 import com.wb.oauth.service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
+import org.springframework.util.ObjectUtils;
 
 /**
  * @ClassName: UserServiceImpl
@@ -21,12 +23,25 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    private UserMapper userMapper;
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        //  TODO 增加数据库查询
-        String encode = passwordEncoder.encode("123456");
-        return new User(userName, encode, AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
+        Assert.hasText(userName, "账号不能为空！");
+        OauthUserEntity userEntity = userMapper.queryForAccount(userName);
+
+        if (ObjectUtils.isEmpty(userEntity)) {
+            throw new UsernameNotFoundException(AuthorizationErrorEnum.USER_NOT_FOUND.getErrMsg());
+        }
+        if ("0".equalsIgnoreCase(userEntity.getStatus())) {
+            throw new UsernameNotFoundException(AuthorizationErrorEnum.USER_DRAFT.getErrMsg());
+        }
+        if ("2".equalsIgnoreCase(userEntity.getStatus())) {
+            throw new UsernameNotFoundException(AuthorizationErrorEnum.USER_LOCK.getErrMsg());
+        }
+        if ("3".equalsIgnoreCase(userEntity.getStatus())) {
+            throw new UsernameNotFoundException(AuthorizationErrorEnum.USER_DISABLE.getErrMsg());
+        }
+        return userEntity;
     }
 }

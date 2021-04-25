@@ -27,6 +27,10 @@ spring:
     password:
     database: 0
 
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.wb.oauth.service.entity
+
 wb-cloud:
   security-oauth:
     token-store:

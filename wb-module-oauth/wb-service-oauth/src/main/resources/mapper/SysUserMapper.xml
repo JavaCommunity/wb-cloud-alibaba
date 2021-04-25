@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wb.oauth.service.mapper.UserMapper">
+
+    <sql id="table_name">
+        sys_user
+    </sql>
+
+    <sql id="column_name">
+        id,
+        create_time,
+        create_org,
+        create_org_id,
+        create_user,
+        create_user_id,
+        update_time,
+        update_user,
+        update_user_id,
+        del_flag,
+        del_time,
+        account,
+        password,
+        user_name,
+        nick_name,
+        email,
+        phone,
+        data_year
+    </sql>
+
+    <select id="queryForAccount" parameterType="java.lang.String"
+            resultType="com.wb.oauth.service.entity.OauthUserEntity">
+        select
+        <include refid="column_name"></include>
+        from
+        <include refid="table_name"></include>
+        where account = #{account}
+    </select>
+</mapper>

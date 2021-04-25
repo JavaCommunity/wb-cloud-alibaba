@@ -38,6 +38,11 @@ public class BaseEntity implements Serializable {
 
     private String delFlag;
 
+    /**
+     * 数据年度
+     */
+    private String dataYear;
+
     public String getId() {
         return id;
     }
@@ -132,5 +137,13 @@ public class BaseEntity implements Serializable {
 
     public void setDelFlag(String delFlag) {
         this.delFlag = delFlag;
+    }
+
+    public String getDataYear() {
+        return dataYear;
+    }
+
+    public void setDataYear(String dataYear) {
+        this.dataYear = dataYear;
     }
 }
