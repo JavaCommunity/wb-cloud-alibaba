@@ -22,12 +22,12 @@
         </dependency>
         <!--spring-boot web end-->
 
-        <!--knife4j component start-->
+        <!--admin entity start-->
         <dependency>
             <groupId>com.wb</groupId>
-            <artifactId>wb-knife4j-component</artifactId>
+            <artifactId>wb-entity-admin</artifactId>
             <version>${revision}</version>
         </dependency>
-        <!--knife4j component end-->
+        <!--admin entity end-->
     </dependencies>
 </project>

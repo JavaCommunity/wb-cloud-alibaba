@@ -5,6 +5,7 @@ import com.wb.common.config.DelFlagEnum;
 import com.wb.common.utils.date.DateUtils;
 import com.wb.common.utils.id.UUIDUtils;
 import com.wb.common.wrapper.SysUserWrapper;
+import org.springframework.beans.BeanUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
@@ -45,5 +46,13 @@ public class EntityUtils {
                 baseEntity.setUpdateTime(DateUtils.formatDateTime(new Date()));
             }
         }
+
+        BaseEntity entity = new BaseEntity();
+        entity.setDataYear("123");
+
+        BaseEntity entity1 = new BaseEntity();
+        entity.setDataYear("123123");
+        entity.setDelFlag("1");
+        BeanUtils.copyProperties(entity,entity1);
     }
 }

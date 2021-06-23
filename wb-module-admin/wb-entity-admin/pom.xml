@@ -14,4 +14,22 @@
     <name>wb-entity-admin</name>
     <packaging>jar</packaging>
     <description>wb-entity-admin fro spring-boot</description>
+
+    <dependencies>
+        <!--cloud common start-->
+        <dependency>
+            <groupId>com.wb</groupId>
+            <artifactId>wb-cloud-common</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <!--cloud common end-->
+
+        <!--mybatis-plus start-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis-plus.version}</version>
+        </dependency>
+        <!--mybatis-plus end-->
+    </dependencies>
 </project>

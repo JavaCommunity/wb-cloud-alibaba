@@ -12,4 +12,3 @@ wb-cloud:
     nameServer: 192.168.79.6:9876;192.168.79.7:9876
     producer:
       group: RocketMQ_Group1
-

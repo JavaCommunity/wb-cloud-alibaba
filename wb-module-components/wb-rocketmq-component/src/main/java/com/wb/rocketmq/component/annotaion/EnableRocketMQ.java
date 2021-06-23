@@ -1,6 +1,7 @@
 package com.wb.rocketmq.component.annotaion;
 
 import com.wb.rocketmq.component.config.RocketMQAutoConfiguration;
+import com.wb.rocketmq.component.config.RocketMQAutoConfigurationV2;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;
@@ -17,7 +18,8 @@ import java.lang.annotation.*;
 @Documented
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-@Import({RocketMQAutoConfiguration.class})
+//@Import({RocketMQAutoConfiguration.class})
+@Import({RocketMQAutoConfigurationV2.class})
 public @interface EnableRocketMQ {
 
     //  the value,default ""
